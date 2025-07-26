@@ -119,8 +119,8 @@
                 'Yellow Dune 🏜️': { stage: 'Stage 2', field: 'Year 3', station: 'Skill 2', color: 'yellow' },
                 'Pink Coral 🪸': { stage: 'Stage 2', field: 'Year 3', station: 'Skill 1', color: 'pink' },
                 'Red Driftwood 🪵': { stage: 'Stage 2', field: 'Year 4', station: 'Game', color: 'red' },
-                'Blue Lagoons 🏝️': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 2', color: 'blue' },
-                'Green Waves 🌊': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 1', color: 'green' },
+                'Green Waves 🌊': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 2', color: 'green' },
+                'Blue Lagoons 🏝️': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 1', color: 'blue' },
                 'Shells G 🐚': { stage: 'Stage 3', field: 'Year 6', station: 'Skill 2' },
                 'Dunes H 🏜️': { stage: 'Stage 3', field: 'Year 5', station: 'Skill 1' },
                 'Cliffs I ⛰️': { stage: 'Stage 3', field: 'Year 6', station: 'Skill 2' },
@@ -241,7 +241,7 @@
                     col2.className = 'space-y-3';
 
                     // Define the specific order for buttons in each column
-                    const year4Order = ['Red Driftwood 🪵', 'Blue Lagoons 🏝️', 'Green Waves 🌊'];
+                    const year4Order = ['Red Driftwood 🪵', 'Green Waves 🌊', 'Blue Lagoons 🏝️'];
                     const year3Order = ['Purple Reef 🏄', 'Yellow Dune 🏜️', 'Pink Coral 🪸'];
 
                     // Populate column 1 (Year 4)
@@ -417,7 +417,7 @@ const getTeacherInfo = (group) => {
                     green:  { pastel: state.darkMode ? 'bg-green-950/20 text-gray-300 border-green-900/30' : 'bg-green-50/50 text-gray-800 border-green-100/50', strong: state.darkMode ? 'bg-green-600 text-white border-green-400 shadow-lg' : 'bg-green-600 text-white border-green-500 shadow-lg' },
                     red:    { pastel: state.darkMode ? 'bg-red-950/20 text-gray-300 border-red-900/30'     : 'bg-red-50/50 text-gray-800 border-red-100/50',     strong: state.darkMode ? 'bg-red-600 text-white border-red-400 shadow-lg'     : 'bg-red-600 text-white border-red-500 shadow-lg' },
                     pink:   { pastel: state.darkMode ? 'bg-pink-950/20 text-gray-300 border-pink-900/30'   : 'bg-pink-50/50 text-gray-800 border-pink-100/50',   strong: state.darkMode ? 'bg-pink-600 text-white border-pink-400 shadow-lg'   : 'bg-pink-600 text-white border-pink-500 shadow-lg' },
-                    yellow: { pastel: state.darkMode ? 'bg-yellow-950/20 text-gray-300 border-yellow-900/30': 'bg-yellow-50/50 text-gray-800 border-yellow-100/50',strong: state.darkMode ? 'bg-yellow-600 text-white border-yellow-400 shadow-lg': 'bg-yellow-600 text-white border-yellow-500 shadow-lg' },
+                    yellow: { pastel: state.darkMode ? 'bg-yellow-950/20 text-gray-300 border-yellow-900/30': 'bg-yellow-50/50 text-gray-800 border-yellow-100/50',strong: state.darkMode ? 'bg-yellow-300 text-black border-yellow-400 shadow-lg': 'bg-yellow-300 text-black border-yellow-400 shadow-lg' },
                     purple: { pastel: state.darkMode ? 'bg-purple-950/20 text-gray-300 border-purple-900/30': 'bg-purple-50/50 text-gray-800 border-purple-100/50',strong: state.darkMode ? 'bg-purple-600 text-white border-purple-400 shadow-lg': 'bg-purple-600 text-white border-purple-500 shadow-lg' }
                 };
 
@@ -439,7 +439,7 @@ const getTeacherInfo = (group) => {
                      green:  { subtle: state.darkMode ? 'bg-green-950/20 text-gray-200 border-green-900/30' : 'bg-green-50/30 text-gray-700 border-green-100/50', selected: state.darkMode ? 'bg-green-700 text-white border-green-500 shadow-lg' : 'bg-green-700 text-white border-green-600 shadow-lg', hover: state.darkMode ? 'hover:bg-green-900/40 hover:border-green-700/50' : 'hover:bg-green-100/50 hover:border-green-200/70' },
                      red:    { subtle: state.darkMode ? 'bg-red-950/20 text-gray-200 border-red-900/30'     : 'bg-red-50/30 text-gray-700 border-red-100/50',     selected: state.darkMode ? 'bg-red-700 text-white border-red-500 shadow-lg'     : 'bg-red-700 text-white border-red-600 shadow-lg',  hover: state.darkMode ? 'hover:bg-red-900/40 hover:border-red-700/50' : 'hover:bg-red-100/50 hover:border-red-200/70' },
                      pink:   { subtle: state.darkMode ? 'bg-pink-950/20 text-gray-200 border-pink-900/30'   : 'bg-pink-50/30 text-gray-700 border-pink-100/50',   selected: state.darkMode ? 'bg-pink-700 text-white border-pink-500 shadow-lg'   : 'bg-pink-700 text-white border-pink-600 shadow-lg',  hover: state.darkMode ? 'hover:bg-pink-900/40 hover:border-pink-700/50' : 'hover:bg-pink-100/50 hover:border-pink-200/70' },
-                     yellow: { subtle: state.darkMode ? 'bg-yellow-950/20 text-gray-200 border-yellow-900/30': 'bg-yellow-50/30 text-gray-700 border-yellow-100/50',selected: state.darkMode ? 'bg-yellow-700 text-white border-yellow-500 shadow-lg': 'bg-yellow-700 text-white border-yellow-600 shadow-lg',hover: state.darkMode ? 'hover:bg-yellow-900/40 hover:border-yellow-700/50' : 'hover:bg-yellow-100/50 hover:border-yellow-200/70' },
+                     yellow: { subtle: state.darkMode ? 'bg-yellow-950/20 text-gray-200 border-yellow-900/30': 'bg-yellow-50/30 text-gray-700 border-yellow-100/50',selected: state.darkMode ? 'bg-yellow-300 text-black border-yellow-400 shadow-lg': 'bg-yellow-300 text-black border-yellow-400 shadow-lg',hover: state.darkMode ? 'hover:bg-yellow-900/40 hover:border-yellow-700/50' : 'hover:bg-yellow-100/50 hover:border-yellow-200/70' },
                      purple: { subtle: state.darkMode ? 'bg-purple-950/20 text-gray-200 border-purple-900/30': 'bg-purple-50/30 text-gray-700 border-purple-100/50',selected: state.darkMode ? 'bg-purple-700 text-white border-purple-500 shadow-lg': 'bg-purple-700 text-white border-purple-600 shadow-lg',hover: state.darkMode ? 'hover:bg-purple-900/40 hover:border-purple-700/50' : 'hover:bg-purple-100/50 hover:border-purple-200/70' }
                 };
                 const scheme = colorSchemes[color] || colorSchemes.blue;
