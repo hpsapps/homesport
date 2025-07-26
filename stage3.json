@@ -1,39 +1,12 @@
-[
-  {
-    "Week": 1,
-    "Stage": 2,
-    "Section": "Skill 1",
-    "Skill Type": ["Throw"],
-    "Activity Name": "Hoop Toss Challenge",
-    "Description": [
-      "Throw bean bags into 3 hoops at increasing distances.",
-      "Further hoop is more points."
-    ],
-    "Equipment": "Bean bags, hoops"
-  },
-  {
-    "Week": 2,
-    "Stage": 2,
-    "Section": "Skill 1",
-    "Skill Type": ["Throw"],
-    "Activity Name": "Vortex Launch",
-    "Description": [
-      "Take turns launching vortexes as far as possible.",
-      "Use cones to mark distances."
-    ],
-    "Equipment": "Vortexes, cones"
-  },
-  {
-    "Week": 3,
-    "Stage": 2,
-    "Section": "Skill 1",
-    "Skill Type": ["Throw", "Catch"],
-    "Activity Name": "Catch and Dash Relay",
-    "Description": [
-      "Pairs throw and catch.",
-      "After a successful catch, both sprint to tag the next pair.",
-      "Add a relay format."
-    ],
-    "Equipment": "Footy balls, cones"
-  }
-]
+{
+    "year6": {
+      "Skill 1": { "activity": "Throwing/Catching", "game": "Bucket Toss", "description": "Throw ball in bucket, furthest bucket = more points" },
+      "Skill 2": { "activity": "Dribble/Shooting", "game": "Hockey", "description": "Zig-zag dribble, shoot ball" },
+      "Game": { "activity": "Game", "game": "Capture the Flag", "description": "Team-based strategy game" }
+    },
+    "year5": {
+      "Skill 1": { "activity": "Throwing/Catching", "game": "Bucket Toss", "description": "Throw ball in bucket, furthest bucket = more points" },
+      "Skill 2": { "activity": "Dribble/Shooting", "game": "Hockey", "description": "Zig-zag dribble, shoot ball" },
+      "Game": { "activity": "Game", "game": "Capture the Flag", "description": "Team-based strategy game" }
+    }
+}
