@@ -32,9 +32,6 @@
                     <h1 id="main-title" class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight">
                         Sport Rotation Tracker
                     </h1>
-                    <p id="sub-title" class="text-gray-600 text-sm sm:text-base">
-                        Teachers stay at assigned stations - Week 2
-                    </p>
                 </div>
                 
                 <button id="dark-mode-toggle" class="p-3 rounded-xl transition-all duration-300 flex-shrink-0 bg-white hover:bg-gray-50 text-gray-700 shadow-sm border border-gray-200">
@@ -124,9 +121,9 @@
                 'Green Waves 🌊': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 2', color: 'green' },
                 'Blue Lagoons 🏝️': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 1', color: 'blue' },
                 'Shells G 🐚': { stage: 'Stage 3', field: 'Year 6', station: 'Skill 2', color: 'green' },
-                'Dunes H 🏜️': { stage: 'Stage 3', field: 'Year 5', station: 'Skill 1', color: 'pink' },
+                'Dunes J 🏜️': { stage: 'Stage 3', field: 'Year 5', station: 'Skill 2', color: 'yellow' },
                 'Cliffs I ⛰️': { stage: 'Stage 3', field: 'Year 6', station: 'Skill 1', color: 'blue' },
-                'Tsunamis J ⚠️': { stage: 'Stage 3', field: 'Year 5', station: 'Skill 2', color: 'yellow' }
+                'Tsunamis H ⚠️': { stage: 'Stage 3', field: 'Year 5', station: 'Skill 1', color: 'pink' }
             };
 
             // --- DOM ELEMENT REFERENCES ---
@@ -134,7 +131,6 @@
                 html: document.documentElement,
                 appContainer: document.getElementById('app-container'),
                 mainTitle: document.getElementById('main-title'),
-                subTitle: document.getElementById('sub-title'),
                 darkModeToggle: document.getElementById('dark-mode-toggle'),
                 moonIcon: document.getElementById('moon-icon'),
                 sunIcon: document.getElementById('sun-icon'),
@@ -204,9 +200,7 @@
             };
 
             const renderHeader = () => {
-                dom.subTitle.textContent = `Teachers stay at assigned stations - Week ${state.selectedWeek}`;
                 dom.mainTitle.className = state.darkMode ? 'text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight' : 'text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight';
-                dom.subTitle.className = state.darkMode ? 'text-gray-300 text-sm sm:text-base' : 'text-gray-600 text-sm sm:text-base';
 
                 dom.moonIcon.classList.toggle('hidden', state.darkMode);
                 dom.sunIcon.classList.toggle('hidden', !state.darkMode);
