@@ -116,7 +116,7 @@
 
             const teacherAssignments = {
                 'Pink Coral 🪸': { stage: 'Stage 2', field: 'Year 3', station: 'Skill 1', color: 'pink' },
-                'Yellow Tides ↕️': { stage: 'Stage 2', field: 'Year 3', station: 'Skill 2', color: 'yellow' },
+                'Yellow Dune 🏜️': { stage: 'Stage 2', field: 'Year 3', station: 'Skill 2', color: 'yellow' },
                 'Purple Reef 🏄': { stage: 'Stage 2', field: 'Year 3', station: 'Game', color: 'purple' },
                 'Blue Lagoons 🏝️': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 1', color: 'blue' },
                 'Green Waves 🌊': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 2', color: 'green' },
@@ -231,17 +231,54 @@
                 dom.groupCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
                 dom.groupCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
                 
-                dom.groupSelector.innerHTML = ''; 
+                dom.groupSelector.innerHTML = ''; // Clear previous content
 
-                const filteredGroups = Object.keys(teacherAssignments).filter(group => teacherAssignments[group].stage === state.selectedStage);
-                
-                filteredGroups.forEach(group => {
-                    const button = document.createElement('button');
-                    button.textContent = group;
-                    button.dataset.group = group;
-                    button.className = `group-btn p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 ${getGroupButtonColor(group, state.selectedGroup === group)}`;
-                    dom.groupSelector.appendChild(button);
-                });
+                if (state.selectedStage === 'Stage 2') {
+                    // Create columns for the two Year groups
+                    const col1 = document.createElement('div');
+                    col1.className = 'space-y-3';
+                    const col2 = document.createElement('div');
+                    col2.className = 'space-y-3';
+
+                    // Define the specific order for buttons in each column
+                    const year4Order = ['Red Driftwood 🪵', 'Blue Lagoons 🏝️', 'Green Waves 🌊'];
+                    const year3Order = ['Purple Reef 🏄', 'Yellow Dune 🏜️', 'Pink Coral 🪸'];
+
+                    // Populate column 1 (Year 4)
+                    year4Order.forEach(groupName => {
+                        if (teacherAssignments[groupName]) {
+                            const button = document.createElement('button');
+                            button.textContent = groupName;
+                            button.dataset.group = groupName;
+                            button.className = `group-btn w-full p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 ${getGroupButtonColor(groupName, state.selectedGroup === groupName)}`;
+                            col1.appendChild(button);
+                        }
+                    });
+                    
+                    // Populate column 2 (Year 3)
+                    year3Order.forEach(groupName => {
+                        if (teacherAssignments[groupName]) {
+                            const button = document.createElement('button');
+                            button.textContent = groupName;
+                            button.dataset.group = groupName;
+                            button.className = `group-btn w-full p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 ${getGroupButtonColor(groupName, state.selectedGroup === groupName)}`;
+                            col2.appendChild(button);
+                        }
+                    });
+
+                    dom.groupSelector.appendChild(col1);
+                    dom.groupSelector.appendChild(col2);
+                    
+                } else { // Handle Stage 3 groups
+                    const filteredGroups = Object.keys(teacherAssignments).filter(group => teacherAssignments[group].stage === state.selectedStage);
+                    filteredGroups.forEach(group => {
+                        const button = document.createElement('button');
+                        button.textContent = group;
+                        button.dataset.group = group;
+                        button.className = `group-btn p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 ${getGroupButtonColor(group, state.selectedGroup === group)}`;
+                        dom.groupSelector.appendChild(button);
+                    });
+                }
             };
             
             const renderInfo = () => {
