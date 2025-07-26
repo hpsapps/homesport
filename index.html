@@ -368,23 +368,28 @@
                 dom.fieldLayoutContainer.innerHTML = layoutHtml;
             };
 
-            // --- HELPER FUNCTIONS ---
-            const getTeacherInfo = (group) => {
-                const assignment = teacherAssignments[group];
-                if (!assignment) return null;
+// --- HELPER FUNCTIONS ---
+const getTeacherInfo = (group) => {
+    const assignment = teacherAssignments[group];
+    if (!assignment) return null;
 
-                let activityData;
-                if (assignment.stage === 'Stage 2') {
-                    activityData = stage2Data.find(item => item.Week === state.selectedWeek && item.Stage === 2 && item.Section === assignment.station);
-                    if(activityData) {
-                        activityData = { ...activityData, game: activityData['Activity Name'] };
-                    }
-                } else { // Stage 3
-                    const fieldKey = assignment.field.toLowerCase().replace(' ', '');
-                    activityData = stage3Data[fieldKey]?.[assignment.station];
-                }
-                return { ...assignment, activityData };
+    let activityData;
+    if (assignment.stage === 'Stage 2') {
+        const foundActivity = stage2Data.find(item => item.Week === state.selectedWeek && item.Stage === 2 && item.Section === assignment.station);
+        if (foundActivity) {
+            // Create a new, normalized object with lowercase keys
+            activityData = {
+                game: foundActivity['Activity Name'],
+                description: foundActivity.Description, // Use capital 'D' from the source data
+                equipment: foundActivity.Equipment      // Use capital 'E' from the source data
             };
+        }
+    } else { // Stage 3
+        const fieldKey = assignment.field.toLowerCase().replace(' ', '');
+        activityData = stage3Data[fieldKey]?.[assignment.station];
+    }
+    return { ...assignment, activityData };
+};
 
             const getActivityForStation = (field, station) => {
                 if (state.selectedStage === 'Stage 2') {
