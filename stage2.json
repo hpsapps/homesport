@@ -3,7 +3,7 @@
       "Week": 1,
       "Stage": 2,
       "Section": "Skill 1",
-      "Skill Type": ["Throw"],
+      "Type": ["Throwing"],
       "Activity Name": "Hoop Toss Challenge",
       "Description": [
         "Throw bean bags into 3 hoops at increasing distances.",
@@ -15,7 +15,7 @@
       "Week": 2,
       "Stage": 2,
       "Section": "Skill 1",
-      "Skill Type": ["Throw"],
+      "Type": ["Throwing"],
       "Activity Name": "Vortex Launch",
       "Description": [
         "Take turns launching vortexes as far as possible.",
@@ -27,7 +27,7 @@
       "Week": 3,
       "Stage": 2,
       "Section": "Skill 1",
-      "Skill Type": ["Throw", "Catch"],
+      "Type": ["Throwing", "Catching"],
       "Activity Name": "Catch and Dash Relay",
       "Description": [
         "Pairs throw and catch.",
@@ -40,7 +40,7 @@
       "Week": 4,
       "Stage": 2,
       "Section": "Skill 1",
-      "Skill Type": ["Throw"],
+      "Type": ["Throwing"],
       "Activity Name": "Bucket Bombs",
       "Description": [
         "Throw tennis balls into buckets at varying distances.",
@@ -53,7 +53,7 @@
       "Week": 5,
       "Stage": 2,
       "Section": "Skill 1",
-      "Skill Type": ["Throw", "Catch"],
+      "Type": ["Throwing", "Catching"],
       "Activity Name": "Catch Race",
       "Description": [
         "In pairs, race to 10 successful overarm catches.",
@@ -66,7 +66,7 @@
       "Week": 6,
       "Stage": 2,
       "Section": "Skill 1",
-      "Skill Type": ["Throw"],
+      "Type": ["Throwing"],
       "Activity Name": "Target Practice",
       "Description": [
         "Set up 3 goal zones.",
@@ -79,7 +79,7 @@
       "Week": 7,
       "Stage": 2,
       "Section": "Skill 1",
-      "Skill Type": ["Throw"],
+      "Type": ["Throwing"],
       "Activity Name": "Tower Knockdown",
       "Description": [
         "Stack cones or buckets into towers.",
@@ -91,7 +91,7 @@
       "Week": 8,
       "Stage": 2,
       "Section": "Skill 1",
-      "Skill Type": ["Throw"],
+      "Type": ["Throwing"],
       "Activity Name": "Three-Point Shot",
       "Description": [
         "Throw from 3 different marked points into a goal - bucket.",
@@ -103,7 +103,7 @@
       "Week": 9,
       "Stage": 2,
       "Section": "Skill 1",
-      "Skill Type": ["Throw"],
+      "Type": ["Throwing"],
       "Activity Name": "Tic-Tac-Throw",
       "Description": [
         "Relay-style game.",
@@ -116,7 +116,7 @@
       "Week": 10,
       "Stage": 2,
       "Section": "Skill 1",
-      "Skill Type": ["Throw"],
+      "Type": ["Throwing"],
       "Activity Name": "Target Bucket Relay",
       "Description": [
         "Player runs to a throw line and throws into a bucket.",
@@ -129,7 +129,7 @@
       "Week": 1,
       "Stage": 2,
       "Section": "Skill 2",
-      "Skill Type": ["Dribbling", "Shooting"],
+      "Type": ["Dribbling", "Shooting"],
       "Activity Name": "Zig-Zag Soccer Dribble",
       "Description": [
         "Dribble around cones.",
@@ -141,7 +141,7 @@
       "Week": 2,
       "Stage": 2,
       "Section": "Skill 2",
-      "Skill Type": ["Dribbling", "Shooting"],
+      "Type": ["Dribbling", "Shooting"],
       "Activity Name": "Shoot & Sprint Relay",
       "Description": [
         "Dribble to a marked line.",
@@ -153,7 +153,7 @@
       "Week": 3,
       "Stage": 2,
       "Section": "Skill 2",
-      "Skill Type": ["Striking"],
+      "Type": ["Striking"],
       "Activity Name": "Target Strike Cricket",
       "Description": [
         "Hit a stationary ball off a tee through two cones or marker posts.",
@@ -165,7 +165,7 @@
       "Week": 4,
       "Stage": 2,
       "Section": "Skill 2",
-      "Skill Type": ["Striking"],
+      "Type": ["Striking"],
       "Activity Name": "Bat and Dash",
       "Description": [
         "Hit ball off tee, run to a cone and back before it's returned."
@@ -176,7 +176,7 @@
       "Week": 5,
       "Stage": 2,
       "Section": "Skill 2",
-      "Skill Type": ["Dribbling"],
+      "Type": ["Dribbling"],
       "Activity Name": "Obstacle Dribble Course",
       "Description": [
         "Dribble through a creative cone course.",
@@ -188,7 +188,7 @@
       "Week": 6,
       "Stage": 2,
       "Section": "Skill 2",
-      "Skill Type": ["Dribbling", "Shooting"],
+      "Type": ["Dribbling", "Shooting"],
       "Activity Name": "Hockey Cone Slalom",
       "Description": [
         "Dribble with a foam bat around cones.",
@@ -200,7 +200,7 @@
       "Week": 7,
       "Stage": 2,
       "Section": "Skill 2",
-      "Skill Type": ["Passing"],
+      "Type": ["Passing"],
       "Activity Name": "Pass and Move",
       "Description": [
         "In pairs: pass short distances.",
@@ -212,7 +212,7 @@
       "Week": 8,
       "Stage": 2,
       "Section": "Skill 2",
-      "Skill Type": ["Striking"],
+      "Type": ["Striking"],
       "Activity Name": "Bean Bag Baseball",
       "Description": [
         "Strike bean bag off a tee.",
@@ -226,7 +226,7 @@
       "Week": 9,
       "Stage": 2,
       "Section": "Skill 2",
-      "Skill Type": ["Rolling"],
+      "Type": ["Rolling"],
       "Activity Name": "Tunnel Ball Relay",
       "Description": [
         "Teams line up.",
@@ -239,7 +239,7 @@
       "Week": 10,
       "Stage": 2,
       "Section": "Skill 2",
-      "Skill Type": ["Dribbling", "Shooting"],
+      "Type": ["Dribbling", "Shooting"],
       "Activity Name": "Cone Goal Knockout",
       "Description": [
         "Dribble and shoot to knock over cone \"goals\".",
@@ -251,7 +251,7 @@
       "Week": 1,
       "Stage": 2,
       "Section": "Game",
-      "Skill Type": ["Game"],
+      "Type": ["Game"],
       "Activity Name": "Capture the Flag",
       "Description": [
         "Two teams protect their flag.",
@@ -263,7 +263,7 @@
       "Week": 2,
       "Stage": 2,
       "Section": "Game",
-      "Skill Type": ["Game"],
+      "Type": ["Game"],
       "Activity Name": "Dodgeball",
       "Description": [
         "Players eliminate others by throwing soft dodgeballs.",
@@ -277,7 +277,7 @@
       "Week": 3,
       "Stage": 2,
       "Section": "Game",
-      "Skill Type": ["Game"],
+      "Type": ["Game"],
       "Activity Name": "Oz-Tag Chase",
       "Description": [
         "Team A tries to cross a line without losing tags to Team B."
@@ -288,7 +288,7 @@
       "Week": 4,
       "Stage": 2,
       "Section": "Game",
-      "Skill Type": ["Game"],
+      "Type": ["Game"],
       "Activity Name": "Rob the Nest",
       "Description": [
         "Teams run to the centre to collect items for their nest.",
@@ -301,7 +301,7 @@
       "Week": 5,
       "Stage": 2,
       "Section": "Game",
-      "Skill Type": ["Game"],
+      "Type": ["Game"],
       "Activity Name": "Clean Up the Yard",
       "Description": [
         "Teams throw soft balls over a central line.",
@@ -314,7 +314,7 @@
       "Week": 6,
       "Stage": 2,
       "Section": "Game",
-      "Skill Type": ["Game"],
+      "Type": ["Game"],
       "Activity Name": "Pin Guard",
       "Description": [
         "Each team guards a cone - pin while trying to knock over others'.",
@@ -326,7 +326,7 @@
       "Week": 7,
       "Stage": 2,
       "Section": "Game",
-      "Skill Type": ["Game"],
+      "Type": ["Game"],
       "Activity Name": "Sinking Islands",
       "Description": [
         "\"Sharks\" tip \"sailors.\" Tipped players become sharks.",
@@ -340,7 +340,7 @@
       "Week": 8,
       "Stage": 2,
       "Section": "Game",
-      "Skill Type": ["Game"],
+      "Type": ["Game"],
       "Activity Name": "Bucket Freeze",
       "Description": [
         "Team A: stands behind throw line, tries to throw ball into bucket",
@@ -355,7 +355,7 @@
       "Week": 9,
       "Stage": 2,
       "Section": "Game",
-      "Skill Type": ["Game"],
+      "Type": ["Game"],
       "Activity Name": "Ultimate Ball",
       "Description": [
         "Like Ultimate Frisbee, but with a ball.",
@@ -368,7 +368,7 @@
       "Week": 10,
       "Stage": 2,
       "Section": "Game",
-      "Skill Type": ["Game"],
+      "Type": ["Game"],
       "Activity Name": "Numbers Game",
       "Description": [
         "Two teams are numbered.",

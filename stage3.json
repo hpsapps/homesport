@@ -1,12 +1,380 @@
-{
-    "year6": {
-      "Skill 1": { "activity": "Throwing/Catching", "game": "Bucket Toss", "description": "Throw ball in bucket, furthest bucket = more points" },
-      "Skill 2": { "activity": "Dribble/Shooting", "game": "Hockey", "description": "Zig-zag dribble, shoot ball" },
-      "Game": { "activity": "Game", "game": "Capture the Flag", "description": "Team-based strategy game" }
+[
+    {
+      "Week": 1,
+      "Stage": 3,
+      "Section": "Skill 1",
+      "Type": ["Throwing"],
+      "Activity Name": "Vortex Launch",
+      "Description": [
+        "Take turns launching vortexes as far as possible.",
+        "Use cones to mark distances."
+      ],
+      "Equipment": "Vortexes, cones"
     },
-    "year5": {
-      "Skill 1": { "activity": "Throwing/Catching", "game": "Bucket Toss", "description": "Throw ball in bucket, furthest bucket = more points" },
-      "Skill 2": { "activity": "Dribble/Shooting", "game": "Hockey", "description": "Zig-zag dribble, shoot ball" },
-      "Game": { "activity": "Game", "game": "Capture the Flag", "description": "Team-based strategy game" }
+    {
+      "Week": 2,
+      "Stage": 3,
+      "Section": "Skill 1",
+      "Type": ["Throwing"],
+      "Activity Name": "Hoop Toss Challenge",
+      "Description": [
+        "Throw bean bags into 3 hoops at increasing distances.",
+        "Further hoop is more points."
+      ],
+      "Equipment": "Bean bags, hoops"
+    },
+    {
+      "Week": 3,
+      "Stage": 3,
+      "Section": "Skill 1",
+      "Type": ["Throwing"],
+      "Activity Name": "Bucket Bombs",
+      "Description": [
+        "Throw tennis balls into buckets at varying distances.",
+        "Points for each successful shot.",
+        "Further bucket is more points."
+      ],
+      "Equipment": "Tennis balls, buckets"
+    },
+    {
+      "Week": 4,
+      "Stage": 3,
+      "Section": "Skill 1",
+      "Type": ["Throwing", "Catching"],
+      "Activity Name": "Catch and Dash Relay",
+      "Description": [
+        "Pairs throw and catch.",
+        "After a successful catch, both sprint to tag the next pair.",
+        "Add a relay format."
+      ],
+      "Equipment": "Footy balls, cones"
+    },
+    {
+      "Week": 5,
+      "Stage": 3,
+      "Section": "Skill 1",
+      "Type": ["Throwing"],
+      "Activity Name": "Target Practice",
+      "Description": [
+        "Set up 3 goal zones.",
+        "Aim for accurate throws rather than distance.",
+        "Rotate through different objects (e.g. vortex, foxtail)."
+      ],
+      "Equipment": "Vortexes, foxtails, cones, buckets"
+    },
+    {
+      "Week": 6,
+      "Stage": 3,
+      "Section": "Skill 1",
+      "Type": ["Throwing", "Catching"],
+      "Activity Name": "Catch Race",
+      "Description": [
+        "In pairs, race to 10 successful overarm catches.",
+        "Option B: See which pair can get the most successful catches.",
+        "Drop is restart count."
+      ],
+      "Equipment": "Tennis balls"
+    },
+    {
+      "Week": 7,
+      "Stage": 3,
+      "Section": "Skill 1",
+      "Type": ["Throwing"],
+      "Activity Name": "Three-Point Shot",
+      "Description": [
+        "Throw from 3 different marked points into a goal - bucket.",
+        "Points increase with distance."
+      ],
+      "Equipment": "Balls (cricket - tennis), buckets or goals, markers"
+    },
+    {
+      "Week": 8,
+      "Stage": 3,
+      "Section": "Skill 1",
+      "Type": ["Throwing"],
+      "Activity Name": "Tower Knockdown",
+      "Description": [
+        "Stack cones or buckets into towers.",
+        "Take turns throwing balls to knock them down."
+      ],
+      "Equipment": "Balls, cones or buckets"
+    },
+    {
+      "Week": 9,
+      "Stage": 3,
+      "Section": "Skill 1",
+      "Type": ["Throwing"],
+      "Activity Name": "Target Bucket Relay",
+      "Description": [
+        "Player runs to a throw line and throws into a bucket.",
+        "Run back and tag next teammate.",
+        "1 point per successful shot."
+      ],
+      "Equipment": "Buckets, bean bags or tennis balls, cones"
+    },
+    {
+      "Week": 10,
+      "Stage": 3,
+      "Section": "Skill 1",
+      "Type": ["Throwing"],
+      "Activity Name": "Tic-Tac-Throw",
+      "Description": [
+        "Relay-style game.",
+        "Throw bean bags into a 3x3 hoop grid.",
+        "Aim to create a line (like naughts and crosses)."
+      ],
+      "Equipment": "Bean bags, hoops (in a 3x3 grid)"
+    },
+    {
+      "Week": 1,
+      "Stage": 3,
+      "Section": "Skill 2",
+      "Type": ["Striking"],
+      "Activity Name": "Target Strike Cricket",
+      "Description": [
+        "Hit a stationary ball off a tee through two cones or marker posts.",
+        "Through is 3 points, successful hit but miss is 1"
+      ],
+      "Equipment": "Cricket bats, tees, tennis balls, cones"
+    },
+    {
+      "Week": 2,
+      "Stage": 3,
+      "Section": "Skill 2",
+      "Type": ["Striking"],
+      "Activity Name": "Bat and Dash",
+      "Description": [
+        "Hit ball off tee, run to a cone and back before it's returned."
+      ],
+      "Equipment": "Foam bat, soft ball, tee, cones"
+    },
+    {
+      "Week": 3,
+      "Stage": 3,
+      "Section": "Skill 2",
+      "Type": ["Dribbling", "Shooting"],
+      "Activity Name": "Zig-Zag Soccer Dribble",
+      "Description": [
+        "Dribble around cones.",
+        "Shoot into a mini goal."
+      ],
+      "Equipment": "Soccer balls, cones, mini goals"
+    },
+    {
+      "Week": 4,
+      "Stage": 3,
+      "Section": "Skill 2",
+      "Type": ["Dribbling", "Shooting"],
+      "Activity Name": "Shoot & Sprint Relay",
+      "Description": [
+        "Dribble to a marked line.",
+        "Shoot into goal, then sprint to end of the line."
+      ],
+      "Equipment": "Soccer balls, cones, mini goals"
+    },
+    {
+      "Week": 5,
+      "Stage": 3,
+      "Section": "Skill 2",
+      "Type": ["Striking"],
+      "Activity Name": "Bean Bag Baseball",
+      "Description": [
+        "Strike bean bag off a tee.",
+        "Fielders stand back outside the diamond.",
+        "Run to base before it is returned to the catcher.",
+        "Fielding team must pass the bean bag 5 times before returning it to catcher."
+      ],
+      "Equipment": "Bean bags, bats (if striking), cones"
+    },
+    {
+      "Week": 6,
+      "Stage": 3,
+      "Section": "Skill 2",
+      "Type": ["Passing"],
+      "Activity Name": "Pass and Move",
+      "Description": [
+        "In pairs: pass short distances.",
+        "After passing, sprint to a new position."
+      ],
+      "Equipment": "Balls (soccer or tennis), cones"
+    },
+    {
+      "Week": 7,
+      "Stage": 3,
+      "Section": "Skill 2",
+      "Type": ["Dribbling"],
+      "Activity Name": "Obstacle Dribble Course",
+      "Description": [
+        "Dribble through a creative cone course.",
+        "Add turns and optional obstacles."
+      ],
+      "Equipment": "Soccer or tennis balls, cones"
+    },
+    {
+      "Week": 8,
+      "Stage": 3,
+      "Section": "Skill 2",
+      "Type": ["Dribbling", "Shooting"],
+      "Activity Name": "Hockey Cone Slalom",
+      "Description": [
+        "Dribble with a foam bat around cones.",
+        "Finish by shooting into a goal."
+      ],
+      "Equipment": "Foam bats, balls, cones, mini goals"
+    },
+    {
+      "Week": 9,
+      "Stage": 3,
+      "Section": "Skill 2",
+      "Type": ["Rolling"],
+      "Activity Name": "Tunnel Ball Relay",
+      "Description": [
+        "Teams line up.",
+        "Pass ball through legs to the end.",
+        "Last player runs to front. Repeat until back at starting order."
+      ],
+      "Equipment": "Balls"
+    },
+    {
+      "Week": 10,
+      "Stage": 3,
+      "Section": "Skill 2",
+      "Type": ["Dribbling", "Shooting"],
+      "Activity Name": "Cone Goal Knockout",
+      "Description": [
+        "Dribble and shoot to knock over cone \"goals\".",
+        "First team to knock over all wins."
+      ],
+      "Equipment": "Soccer balls, cones"
+    },
+    {
+      "Week": 1,
+      "Stage": 3,
+      "Section": "Game",
+      "Type": ["Game"],
+      "Activity Name": "Capture the Flag",
+      "Description": [
+        "Two teams protect their flag.",
+        "Try to steal the opponent's flag and return to base without being tagged."
+      ],
+      "Equipment": "Cones, flags or tags"
+    },
+    {
+      "Week": 2,
+      "Stage": 3,
+      "Section": "Game",
+      "Type": ["Game"],
+      "Activity Name": "Oz-Tag Chase",
+      "Description": [
+        "Team A tries to cross a line without losing tags to Team B."
+      ],
+      "Equipment": "Oz-tag belts"
+    },
+    {
+      "Week": 3,
+      "Stage": 3,
+      "Section": "Game",
+      "Type": ["Game"],
+      "Activity Name": "Rob the Nest",
+      "Description": [
+        "Teams run to the centre to collect items for their nest.",
+        "Teams steal from other nests.",
+        "Most items wins."
+      ],
+      "Equipment": "Cones, bean bags, hoops, things"
+    },
+    {
+      "Week": 4,
+      "Stage": 3,
+      "Section": "Game",
+      "Type": ["Game"],
+      "Activity Name": "Dodgeball",
+      "Description": [
+        "Players eliminate others by throwing soft dodgeballs.",
+        "A catch eliminates the thrower and revives a team mate.",
+        "\"Jailbreak\" to revive all players.",
+        "No headshots."
+      ],
+      "Equipment": "Dodgeballs"
+    },
+    {
+      "Week": 5,
+      "Stage": 3,
+      "Section": "Game",
+      "Type": ["Game"],
+      "Activity Name": "Pin Guard",
+      "Description": [
+        "Each team guards a cone - pin while trying to knock over others'.",
+        "If your pin falls, you're out."
+      ],
+      "Equipment": "Cones, dodgeballs"
+    },
+    {
+      "Week": 6,
+      "Stage": 3,
+      "Section": "Game",
+      "Type": ["Game"],
+      "Activity Name": "Clean Up the Yard",
+      "Description": [
+        "Teams throw soft balls over a central line.",
+        "Fewest balls on your side after 3 minutes wins.",
+        "Overthrows don't count, must be on the field."
+      ],
+      "Equipment": "Dodgeballs"
+    },
+    {
+      "Week": 7,
+      "Stage": 3,
+      "Section": "Game",
+      "Type": ["Game"],
+      "Activity Name": "Bucket Freeze",
+      "Description": [
+        "Team A: stands behind throw line, tries to throw ball into bucket",
+        "Team B: sends one runner at a time around a cone circuit",
+        "If Team A gets a ball in the bucket, the runner freezes",
+        "Next runner starts and can free any frozen runners by tagging them",
+        "Team with most players who finish a lap wins"
+      ],
+      "Equipment": "Cones, optional balls"
+    },
+    {
+      "Week": 8,
+      "Stage": 3,
+      "Section": "Game",
+      "Type": ["Game"],
+      "Activity Name": "Sinking Islands",
+      "Description": [
+        "\"Sharks\" tip \"sailors.\" Tipped players become sharks.",
+        "Sailors safe in hoops but can't stay longer than 5 sec.",
+        "Teacher removes hoop after 5 sec.",
+        "Final sailors get to \"level up\" and tag sharks."
+      ],
+      "Equipment": "Hoops, cones (for boundaries), pinnies or belts (optional)"
+    },
+    {
+      "Week": 9,
+      "Stage": 3,
+      "Section": "Game",
+      "Type": ["Game"],
+      "Activity Name": "Numbers Game",
+      "Description": [
+        "Two teams are numbered.",
+        "Teacher calls out a number.",
+        "That number from each team races to get the ball and score."
+      ],
+      "Equipment": "Ball, cones, number tags or bibs"
+    },
+    {
+      "Week": 10,
+      "Stage": 3,
+      "Section": "Game",
+      "Type": ["Game"],
+      "Activity Name": "Ultimate Ball",
+      "Description": [
+        "Like Ultimate Frisbee, but with a ball.",
+        "Pass to teammates without dropping.",
+        "No running with the ball."
+      ],
+      "Equipment": "Soft ball or vortex"
     }
-}
+]

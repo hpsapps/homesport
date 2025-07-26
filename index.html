@@ -48,7 +48,7 @@
             <!-- Week Selection Card -->
             <div id="week-card" class="bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300">
                 <div class="p-4 pb-3">
-                    <h2 class="text-lg font-semibold text-gray-900">Select Week</h2>
+                    <h2 class="text-lg font-semibold text-gray-900">What Week Do You Want?</h2>
                 </div>
                 <div class="p-4 pt-0">
                     <select id="week-selector" class="w-full p-3 rounded-xl border-2 font-medium transition-all duration-200 bg-white text-gray-700 border-gray-200 focus:border-blue-300">
@@ -60,7 +60,7 @@
             <!-- Stage Selection Card -->
             <div id="stage-card" class="bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300">
                 <div class="p-4 pb-3">
-                    <h2 class="text-lg font-semibold text-gray-900">Select Stage</h2>
+                    <h2 class="text-lg font-semibold text-gray-900">What Stage Are You On?</h2>
                 </div>
                 <div id="stage-selector" class="p-4 pt-0 grid grid-cols-2 gap-3">
                     <button data-stage="Stage 2" class="stage-btn p-4 rounded-xl border-2 font-medium transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:bg-blue-50 shadow-sm">Stage 2</button>
@@ -104,16 +104,18 @@
 
             // --- STATE MANAGEMENT ---
             let state = {
-                selectedWeek: 2,
+                selectedWeek: null, // Will be determined dynamically
                 selectedStage: '',
                 selectedGroup: '',
                 darkMode: false,
+                stage3ShowGame: false,
             };
 
-            // --- EMBEDDED DATA ---
-            const stage2Data = [{"Week":1,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Hoop Toss Challenge","Description":["Throw bean bags into 3 hoops at increasing distances.","Further hoop is more points."],"Equipment":"Bean bags, hoops"},{"Week":2,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Vortex Launch","Description":["Take turns launching vortexes as far as possible.","Use cones to mark distances."],"Equipment":"Vortexes, cones"},{"Week":3,"Stage":2,"Section":"Skill 1","Skill Type":["Throw","Catch"],"Activity Name":"Catch and Dash Relay","Description":["Pairs throw and catch.","After a successful catch, both sprint to tag the next pair.","Add a relay format."],"Equipment":"Footy balls, cones"},{"Week":4,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Bucket Bombs","Description":["Throw tennis balls into buckets at varying distances.","Points for each successful shot.","Further bucket is more points."],"Equipment":"Tennis balls, buckets"},{"Week":5,"Stage":2,"Section":"Skill 1","Skill Type":["Throw","Catch"],"Activity Name":"Catch Race","Description":["In pairs, race to 10 successful overarm catches.","Option B: See which pair can get the most successful catches.","Drop is restart count."],"Equipment":"Tennis balls"},{"Week":6,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Target Practice","Description":["Set up 3 goal zones.","Aim for accurate throws rather than distance.","Rotate through different objects (e.g. vortex, foxtail)."],"Equipment":"Vortexes, foxtails, cones, buckets"},{"Week":7,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Tower Knockdown","Description":["Stack cones or buckets into towers.","Take turns throwing balls to knock them down."],"Equipment":"Balls, cones or buckets"},{"Week":8,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Three-Point Shot","Description":["Throw from 3 different marked points into a goal - bucket.","Points increase with distance."],"Equipment":"Balls (cricket - tennis), buckets or goals, markers"},{"Week":9,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Tic-Tac-Throw","Description":["Relay-style game.","Throw bean bags into a 3x3 hoop grid.","Aim to create a line (like naughts and crosses)."],"Equipment":"Bean bags, hoops (in a 3x3 grid)"},{"Week":10,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Target Bucket Relay","Description":["Player runs to a throw line and throws into a bucket.","Run back and tag next teammate.","1 point per successful shot."],"Equipment":"Buckets, bean bags or tennis balls, cones"},{"Week":1,"Stage":2,"Section":"Skill 2","Skill Type":["Dribbling","Shooting"],"Activity Name":"Zig-Zag Soccer Dribble","Description":["Dribble around cones.","Shoot into a mini goal."],"Equipment":"Soccer balls, cones, mini goals"},{"Week":2,"Stage":2,"Section":"Skill 2","Skill Type":["Dribbling","Shooting"],"Activity Name":"Shoot & Sprint Relay","Description":["Dribble to a marked line.","Shoot into goal, then sprint to end of the line."],"Equipment":"Soccer balls, cones, mini goals"},{"Week":3,"Stage":2,"Section":"Skill 2","Skill Type":["Striking"],"Activity Name":"Target Strike Cricket","Description":["Hit a stationary ball off a tee through two cones or marker posts.","Through is 3 points, successful hit but miss is 1"],"Equipment":"Cricket bats, tees, tennis balls, cones"},{"Week":4,"Stage":2,"Section":"Skill 2","Skill Type":["Striking"],"Activity Name":"Bat and Dash","Description":["Hit ball off tee, run to a cone and back before it's returned."],"Equipment":"Foam bat, soft ball, tee, cones"},{"Week":5,"Stage":2,"Section":"Skill 2","Skill Type":["Dribbling"],"Activity Name":"Obstacle Dribble Course","Description":["Dribble through a creative cone course.","Add turns and optional obstacles."],"Equipment":"Soccer or tennis balls, cones"},{"Week":6,"Stage":2,"Section":"Skill 2","Skill Type":["Dribbling","Shooting"],"Activity Name":"Hockey Cone Slalom","Description":["Dribble with a foam bat around cones.","Finish by shooting into a goal."],"Equipment":"Foam bats, balls, cones, mini goals"},{"Week":7,"Stage":2,"Section":"Skill 2","Skill Type":["Passing"],"Activity Name":"Pass and Move","Description":["In pairs: pass short distances.","After passing, sprint to a new position."],"Equipment":"Balls (soccer or tennis), cones"},{"Week":8,"Stage":2,"Section":"Skill 2","Skill Type":["Striking"],"Activity Name":"Bean Bag Baseball","Description":["Strike bean bag off a tee.","Fielders stand back outside the diamond.","Run to base before it is returned to the catcher.","Fielding team must pass the bean bag 5 times before returning it to catcher."],"Equipment":"Bean bags, bats (if striking), cones"},{"Week":9,"Stage":2,"Section":"Skill 2","Skill Type":["Rolling"],"Activity Name":"Tunnel Ball Relay","Description":["Teams line up.","Pass ball through legs to the end.","Last player runs to front. Repeat until back at starting order."],"Equipment":"Balls"},{"Week":10,"Stage":2,"Section":"Skill 2","Skill Type":["Dribbling","Shooting"],"Activity Name":"Cone Goal Knockout","Description":["Dribble and shoot to knock over cone \"goals\".","First team to knock over all wins."],"Equipment":"Soccer balls, cones"},{"Week":1,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Capture the Flag","Description":["Two teams protect their flag.","Try to steal the opponent's flag and return to base without being tagged."],"Equipment":"Cones, flags or tags"},{"Week":2,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Dodgeball","Description":["Players eliminate others by throwing soft dodgeballs.","A catch eliminates the thrower and revives a team mate.","\"Jailbreak\" to revive all players.","No headshots."],"Equipment":"Dodgeballs"},{"Week":3,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Oz-Tag Chase","Description":["Team A tries to cross a line without losing tags to Team B."],"Equipment":"Oz-tag belts"},{"Week":4,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Rob the Nest","Description":["Teams run to the centre to collect items for their nest.","Teams steal from other nests.","Most items wins."],"Equipment":"Cones, bean bags, hoops, things"},{"Week":5,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Clean Up the Yard","Description":["Teams throw soft balls over a central line.","Fewest balls on your side after 3 minutes wins.","Overthrows don't count, must be on the field."],"Equipment":"Dodgeballs"},{"Week":6,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Pin Guard","Description":["Each team guards a cone - pin while trying to knock over others'.","If your pin falls, you're out."],"Equipment":"Cones, dodgeballs"},{"Week":7,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Sinking Islands","Description":["\"Sharks\" tip \"sailors.\" Tipped players become sharks.","Sailors safe in hoops but can't stay longer than 5 sec.","Teacher removes hoop after 5 sec.","Final sailors get to \"level up\" and tag sharks."],"Equipment":"Hoops, cones (for boundaries), pinnies or belts (optional)"},{"Week":8,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Bucket Freeze","Description":["Team A: stands behind throw line, tries to throw ball into bucket","Team B: sends one runner at a time around a cone circuit","If Team A gets a ball in the bucket, the runner freezes","Next runner starts and can free any frozen runners by tagging them","Team with most players who finish a lap wins"],"Equipment":"Cones, optional balls"},{"Week":9,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Ultimate Ball","Description":["Like Ultimate Frisbee, but with a ball.","Pass to teammates without dropping.","No running with the ball."],"Equipment":"Soft ball or vortex"},{"Week":10,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Numbers Game","Description":["Two teams are numbered.","Teacher calls out a number.","That number from each team races to get the ball and score."],"Equipment":"Ball, cones, number tags or bibs"}];
-            const stage3Data = {"year6":{"Skill 1":{"activity":"Throwing/Catching","game":"Bucket Toss","description":"Throw ball in bucket, furthest bucket = more points"},"Skill 2":{"activity":"Dribble/Shooting","game":"Hockey","description":"Zig-zag dribble, shoot ball"},"Game":{"activity":"Game","game":"Capture the Flag","description":"Team-based strategy game"}},"year5":{"Skill 1":{"activity":"Throwing/Catching","game":"Bucket Toss","description":"Throw ball in bucket, furthest bucket = more points"},"Skill 2":{"activity":"Dribble/Shooting","game":"Hockey","description":"Zig-zag dribble, shoot ball"},"Game":{"activity":"Game","game":"Capture the Flag","description":"Team-based strategy game"}}};
-
+            // --- DATA ---
+            let allData = {
+                stage2: [],
+                stage3: [],
+            };
             const teacherAssignments = {
                 'Purple Reef 🏄': { stage: 'Stage 2', field: 'Year 3', station: 'Game', color: 'purple' },
                 'Yellow Dune 🏜️': { stage: 'Stage 2', field: 'Year 3', station: 'Skill 2', color: 'yellow' },
@@ -121,10 +123,10 @@
                 'Red Driftwood 🪵': { stage: 'Stage 2', field: 'Year 4', station: 'Game', color: 'red' },
                 'Green Waves 🌊': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 2', color: 'green' },
                 'Blue Lagoons 🏝️': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 1', color: 'blue' },
-                'Shells G 🐚': { stage: 'Stage 3', field: 'Year 6', station: 'Skill 2' },
-                'Dunes H 🏜️': { stage: 'Stage 3', field: 'Year 5', station: 'Skill 1' },
-                'Cliffs I ⛰️': { stage: 'Stage 3', field: 'Year 6', station: 'Skill 2' },
-                'Tsunamis J ⚠️': { stage: 'Stage 3', field: 'Year 5', station: 'Skill 1' }
+                'Shells G 🐚': { stage: 'Stage 3', field: 'Year 6', station: 'Skill 2', color: 'green' },
+                'Dunes H 🏜️': { stage: 'Stage 3', field: 'Year 5', station: 'Skill 1', color: 'pink' },
+                'Cliffs I ⛰️': { stage: 'Stage 3', field: 'Year 6', station: 'Skill 1', color: 'blue' },
+                'Tsunamis J ⚠️': { stage: 'Stage 3', field: 'Year 5', station: 'Skill 2', color: 'yellow' }
             };
 
             // --- DOM ELEMENT REFERENCES ---
@@ -150,9 +152,41 @@
 
             // --- ICONS (for dynamic injection) ---
             const icons = {
-                target: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>`,
                 mapPin: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>`,
                 clock: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-600 flex-shrink-0"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`,
+            };
+
+            const getWeekByDate = () => {
+                const now = new Date();
+                // Define the start date of each week (Monday)
+                const weekStartDates = [
+                    new Date('2025-07-21'), // Week 1
+                    new Date('2025-07-28'), // Week 2
+                    new Date('2025-08-04'), // Week 3
+                    new Date('2025-08-11'), // Week 4
+                    new Date('2025-08-18'), // Week 5
+                    new Date('2025-08-25'), // Week 6
+                    new Date('2025-09-01'), // Week 7
+                    new Date('2025-09-08'), // Week 8
+                    new Date('2025-09-15'), // Week 9
+                    new Date('2025-09-22'), // Week 10
+                ];
+
+                // Find the current week
+                let currentWeek = 1; // Default to week 1
+                for (let i = weekStartDates.length - 1; i >= 0; i--) {
+                    if (now >= weekStartDates[i]) {
+                        currentWeek = i + 1;
+                        break;
+                    }
+                }
+                
+                // If the date is after the last week, default to the last week.
+                if (now >= new Date('2025-09-29')) {
+                    currentWeek = 10;
+                }
+
+                return currentWeek;
             };
             
             // --- RENDER FUNCTIONS ---
@@ -248,9 +282,20 @@
                     year4Order.forEach(groupName => {
                         if (teacherAssignments[groupName]) {
                             const button = document.createElement('button');
-                            button.textContent = groupName;
+                            const lastSpaceIndex = groupName.lastIndexOf(' ');
+                            const text = groupName.substring(0, lastSpaceIndex);
+                            const emoji = groupName.substring(lastSpaceIndex + 1);
+                            
+                            const textSpan = document.createElement('span');
+                            textSpan.textContent = text;
+                            const emojiSpan = document.createElement('span');
+                            emojiSpan.textContent = emoji;
+
+                            button.appendChild(textSpan);
+                            button.appendChild(emojiSpan);
+                            
                             button.dataset.group = groupName;
-                            button.className = `group-btn w-full p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 ${getGroupButtonColor(groupName, state.selectedGroup === groupName)}`;
+                            button.className = `group-btn w-full p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 flex flex-col sm:flex-row items-center justify-center gap-1 ${getGroupButtonColor(groupName, state.selectedGroup === groupName)}`;
                             col1.appendChild(button);
                         }
                     });
@@ -259,9 +304,20 @@
                     year3Order.forEach(groupName => {
                         if (teacherAssignments[groupName]) {
                             const button = document.createElement('button');
-                            button.textContent = groupName;
+                            const lastSpaceIndex = groupName.lastIndexOf(' ');
+                            const text = groupName.substring(0, lastSpaceIndex);
+                            const emoji = groupName.substring(lastSpaceIndex + 1);
+
+                            const textSpan = document.createElement('span');
+                            textSpan.textContent = text;
+                            const emojiSpan = document.createElement('span');
+                            emojiSpan.textContent = emoji;
+
+                            button.appendChild(textSpan);
+                            button.appendChild(emojiSpan);
+
                             button.dataset.group = groupName;
-                            button.className = `group-btn w-full p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 ${getGroupButtonColor(groupName, state.selectedGroup === groupName)}`;
+                            button.className = `group-btn w-full p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 flex flex-col sm:flex-row items-center justify-center gap-1 ${getGroupButtonColor(groupName, state.selectedGroup === groupName)}`;
                             col2.appendChild(button);
                         }
                     });
@@ -273,9 +329,20 @@
                     const filteredGroups = Object.keys(teacherAssignments).filter(group => teacherAssignments[group].stage === state.selectedStage);
                     filteredGroups.forEach(group => {
                         const button = document.createElement('button');
-                        button.textContent = group;
+                        const lastSpaceIndex = group.lastIndexOf(' ');
+                        const text = group.substring(0, lastSpaceIndex);
+                        const emoji = group.substring(lastSpaceIndex + 1);
+
+                        const textSpan = document.createElement('span');
+                        textSpan.textContent = text;
+                        const emojiSpan = document.createElement('span');
+                        emojiSpan.textContent = emoji;
+
+                        button.appendChild(textSpan);
+                        button.appendChild(emojiSpan);
+                        
                         button.dataset.group = group;
-                        button.className = `group-btn p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 ${getGroupButtonColor(group, state.selectedGroup === group)}`;
+                        button.className = `group-btn p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 flex flex-col sm:flex-row items-center justify-center gap-1 ${getGroupButtonColor(group, state.selectedGroup === group)}`;
                         dom.groupSelector.appendChild(button);
                     });
                 }
@@ -283,17 +350,51 @@
             
             const renderInfo = () => {
                 const teacherInfo = state.selectedGroup ? getTeacherInfo(state.selectedGroup) : null;
-                if (!teacherInfo || !teacherInfo.activityData) {
+                if (!teacherInfo) {
                     dom.infoContainer.classList.add('hidden');
                     return;
                 }
 
+                let activityData;
+                let title;
+
+                if (state.selectedStage === 'Stage 3' && state.stage3ShowGame) {
+                    const gameActivityObject = allData.stage3.find(item => item.Week === state.selectedWeek && item.Section === 'Game');
+                    if (gameActivityObject) {
+                        activityData = {
+                            game: gameActivityObject['Activity Name'],
+                            description: gameActivityObject.Description,
+                            equipment: gameActivityObject.Equipment,
+                            type: gameActivityObject.Type
+                        };
+                        title = `Game Time: ${activityData.game}`;
+                    }
+                } else {
+                    activityData = teacherInfo.activityData;
+                    if(activityData) {
+                        title = state.selectedStage === 'Stage 3' 
+                            ? `You are teaching ${activityData.game} first` 
+                            : `You are teaching: ${activityData.game}`;
+                    } else {
+                        title = 'No activity found';
+                    }
+                }
+
+                if (!activityData) {
+                    dom.infoContainer.classList.add('hidden');
+                    return;
+                }
+                
                 dom.infoContainer.classList.remove('hidden');
 
                 dom.teacherInfoCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
-                const descriptionHtml = Array.isArray(teacherInfo.activityData.description) 
-                    ? `<ul>${teacherInfo.activityData.description.map(d => `<li class="ml-4 list-disc">${d}</li>`).join('')}</ul>`
-                    : `<p>${teacherInfo.activityData.description}</p>`;
+                const descriptionHtml = Array.isArray(activityData.description) 
+                    ? `<ul>${activityData.description.map(d => `<li class="ml-4 list-disc">${d}</li>`).join('')}</ul>`
+                    : `<p>${activityData.description}</p>`;
+                
+                const typeHtml = Array.isArray(activityData.type)
+                    ? activityData.type.join(', ')
+                    : activityData.type;
 
                 const accentBlue = state.darkMode ? 'bg-blue-800/40 border-blue-600/50' : 'bg-blue-50/70 border-blue-200';
                 const accentGreen = state.darkMode ? 'bg-green-800/40 border-green-600/50' : 'bg-green-50/70 border-green-200';
@@ -302,20 +403,30 @@
                 const textSecondary = state.darkMode ? 'text-gray-300' : 'text-gray-600';
                 const textAccent = state.darkMode ? 'text-blue-400' : 'text-blue-600';
 
+                const gameButtonHtml = state.selectedStage === 'Stage 3' ? `
+                    <div class="sm:col-span-2 md:col-span-1 flex items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 
+                    ${state.darkMode 
+                    ? 'bg-gray-700 text-gray-200 border-gray-500 hover:bg-gray-600' 
+                    : 'bg-gray-100 text-gray-700 border-gray-400 hover:bg-gray-200'}">
+                            <button id="stage3-game-toggle" class="w-full text-sm font-bold text-center">
+                                ${state.stage3ShowGame ? 'SHOW SKILL' : 'SHOW GAME'}
+                            </button>
+                    </div>
+                ` : '';
+
                 dom.teacherInfoCard.innerHTML = `
                     <div class="p-4 pb-3">
                         <h3 class="flex items-center gap-2 text-lg ${textPrimary} font-semibold">
-                            ${icons.target}
-                            <span>You are teaching: ${teacherInfo.activityData.game}</span>
+                            <span>${title}</span>
                         </h3>
                     </div>
                     <div class="p-4 pt-0 space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
                             <div class="flex items-center gap-3 p-3 rounded-lg border ${accentBlue}">
                                 ${icons.mapPin.replace('flex-shrink-0', `flex-shrink-0 ${textAccent}`)}
                                 <div class="min-w-0">
                                     <p class="font-medium text-sm ${textPrimary}">${teacherInfo.field}</p>
-                                    <p class="text-xs ${textSecondary}">${teacherInfo.station}</p>
+                                    <p class="text-xs ${textSecondary}">${typeHtml}</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-3 p-3 rounded-lg border ${accentGreen}">
@@ -326,13 +437,14 @@
                                 </div>
                             </div>
                         </div>
+                        ${gameButtonHtml ? `<div class="pt-2">${gameButtonHtml}</div>` : ''}
                         <div class="p-3 rounded-lg border ${accentGray} ${textSecondary} text-sm space-y-1">
                             <h4 class="font-semibold mb-1 ${textPrimary}">Description:</h4>
                             ${descriptionHtml}
                         </div>
                          <div class="p-3 rounded-lg border ${accentGray} ${textSecondary} text-sm">
                             <h4 class="font-semibold mb-1 ${textPrimary}">Equipment:</h4>
-                            <p>${teacherInfo.activityData.equipment || 'N/A'}</p>
+                            <p>${activityData.equipment || 'N/A'}</p>
                         </div>
                     </div>
                 `;
@@ -349,13 +461,16 @@
                 const fieldsToShow = state.selectedStage === 'Stage 2' ? ['Year 4', 'Year 3'] : ['Year 6', 'Year 5'];
                 const stations = ['Game', 'Skill 2', 'Skill 1'];
                 
+                const highlightStation = (state.selectedStage === 'Stage 3' && state.stage3ShowGame) ? 'Game' : teacherInfo.station;
+                const highlightField = teacherInfo.field;
+
                 let layoutHtml = `<div class="grid gap-3 w-full max-w-lg mx-auto ${fieldsToShow.length === 2 ? 'grid-cols-2' : 'grid-cols-4'}">`;
                 fieldsToShow.forEach(field => {
                     layoutHtml += `<div class="text-center font-semibold ${state.darkMode ? 'text-gray-200' : 'text-gray-800'} text-sm p-2">${field}</div>`;
                 });
                 stations.forEach(station => {
                     fieldsToShow.forEach(field => {
-                        const stationColorClass = getStationColor(field, station, teacherInfo.field, teacherInfo.station);
+                        const stationColorClass = getStationColor(field, station, highlightField, station === highlightStation);
                         const activityName = getActivityForStation(field, station);
                         layoutHtml += `
                             <div class="p-3 rounded-lg text-center text-xs font-medium border transition-all ${stationColorClass}">
@@ -368,48 +483,51 @@
                 dom.fieldLayoutContainer.innerHTML = layoutHtml;
             };
 
-// --- HELPER FUNCTIONS ---
-const getTeacherInfo = (group) => {
-    const assignment = teacherAssignments[group];
-    if (!assignment) return null;
+            // --- HELPER FUNCTIONS ---
+            const getTeacherInfo = (group) => {
+                const assignment = teacherAssignments[group];
+                if (!assignment) return null;
 
-    let activityData;
-    if (assignment.stage === 'Stage 2') {
-        const foundActivity = stage2Data.find(item => item.Week === state.selectedWeek && item.Stage === 2 && item.Section === assignment.station);
-        if (foundActivity) {
-            // Create a new, normalized object with lowercase keys
-            activityData = {
-                game: foundActivity['Activity Name'],
-                description: foundActivity.Description, // Use capital 'D' from the source data
-                equipment: foundActivity.Equipment      // Use capital 'E' from the source data
+                const dataSet = assignment.stage === 'Stage 2' ? allData.stage2 : allData.stage3;
+                const stageNumber = assignment.stage === 'Stage 2' ? 2 : 3;
+
+                const foundActivity = dataSet.find(item => 
+                    item.Week === state.selectedWeek && 
+                    item.Stage === stageNumber && 
+                    item.Section === assignment.station
+                );
+
+                let activityData = null;
+                if (foundActivity) {
+                    activityData = {
+                        game: foundActivity['Activity Name'],
+                        description: foundActivity.Description,
+                        equipment: foundActivity.Equipment,
+                        type: foundActivity['Type']
+                    };
+                }
+                
+                return { ...assignment, activityData };
             };
-        }
-    } else { // Stage 3
-        const fieldKey = assignment.field.toLowerCase().replace(' ', '');
-        activityData = stage3Data[fieldKey]?.[assignment.station];
-    }
-    return { ...assignment, activityData };
-};
 
             const getActivityForStation = (field, station) => {
+                let activity;
                 if (state.selectedStage === 'Stage 2') {
-                    const activity = stage2Data.find(item => item.Week === state.selectedWeek && item.Stage === 2 && item.Section === station);
-                    return activity ? activity['Activity Name'] : '';
+                    activity = allData.stage2.find(item => item.Week === state.selectedWeek && item.Stage === 2 && item.Section === station);
+                } else if (state.selectedStage === 'Stage 3') {
+                    activity = allData.stage3.find(item => item.Week === state.selectedWeek && item.Stage === 3 && item.Section === station);
                 }
-                if (state.selectedStage === 'Stage 3') {
-                     const fieldKey = field.toLowerCase().replace(' ', '');
-                     return stage3Data[fieldKey]?.[station]?.game || '';
-                }
-                return '';
+                return activity ? activity['Activity Name'] : '';
             };
             
-            const getStationColor = (field, station, highlightField, highlightStation) => {
-                if (state.selectedStage === 'Stage 3') {
-                    return state.darkMode ? 'bg-gray-700 text-gray-300 border-gray-600' : 'bg-gray-50 text-gray-700 border-gray-200';
-                }
-
-                const isHighlighted = highlightField === field && highlightStation === station;
-                const baseColorMap = { 'Year 4': { 'Skill 1': 'blue', 'Skill 2': 'green', 'Game': 'red' }, 'Year 3': { 'Skill 1': 'pink', 'Skill 2': 'yellow', 'Game': 'purple' } };
+            const getStationColor = (field, station, highlightField, isStationHighlighted) => {
+                const isHighlighted = highlightField === field && isStationHighlighted;
+                const baseColorMap = { 
+                    'Year 4': { 'Skill 1': 'blue', 'Skill 2': 'green', 'Game': 'red' }, 
+                    'Year 3': { 'Skill 1': 'pink', 'Skill 2': 'yellow', 'Game': 'purple' },
+                    'Year 6': { 'Skill 1': 'blue', 'Skill 2': 'green', 'Game': 'red' },
+                    'Year 5': { 'Skill 1': 'pink', 'Skill 2': 'yellow', 'Game': 'purple' }
+                };
                 const baseColor = baseColorMap[field]?.[station] || 'gray';
                 
                 const colorSchemes = {
@@ -471,12 +589,46 @@ const getTeacherInfo = (group) => {
                 const button = e.target.closest('.group-btn');
                 if (button) {
                     state.selectedGroup = button.dataset.group;
+                    state.stage3ShowGame = false; // Reset game view on group change
+                    render();
+                }
+            });
+
+            dom.teacherInfoCard.addEventListener('click', (e) => {
+                const button = e.target.closest('#stage3-game-toggle');
+                if (button) {
+                    state.stage3ShowGame = !state.stage3ShowGame;
                     render();
                 }
             });
 
             // --- INITIALIZATION ---
-            render();
+            const initialize = async () => {
+                try {
+                    // Set the initial week based on the current date
+                    state.selectedWeek = getWeekByDate();
+
+                    const [stage2Res, stage3Res] = await Promise.all([
+                        fetch('stage2.json'),
+                        fetch('stage3.json')
+                    ]);
+                    if (!stage2Res.ok || !stage3Res.ok) {
+                        throw new Error('Failed to fetch data');
+                    }
+                    const [stage2Data, stage3Data] = await Promise.all([
+                        stage2Res.json(),
+                        stage3Res.json()
+                    ]);
+                    allData.stage2 = stage2Data;
+                    allData.stage3 = stage3Data;
+                    render();
+                } catch (error) {
+                    console.error("Error initializing app:", error);
+                    // Optionally, display an error message to the user
+                }
+            };
+
+            initialize();
         });
     </script>
 
