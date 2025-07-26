@@ -1,5 +1,4 @@
-  // Activity data from JSON
-  const activitiesJsonData = [
+[
     {
       "Week": 1,
       "Stage": 2,
@@ -378,4 +377,4 @@
       ],
       "Equipment": "Ball, cones, number tags or bibs"
     }
-  ];
+]
