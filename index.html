@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sport Rotation Tracker</title>
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font -->
+    <!-- Google Font: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
                 
                 <button id="dark-mode-toggle" class="p-3 rounded-xl transition-all duration-300 flex-shrink-0 bg-white hover:bg-gray-50 text-gray-700 shadow-sm border border-gray-200">
                     <!-- Moon Icon -->
-                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
                     <!-- Sun Icon (hidden by default) -->
                     <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
                 </button>
@@ -110,11 +110,10 @@
                 darkMode: false,
             };
 
-            // --- DATA (will be fetched) ---
-            let stage2Data = [];
-            let stage3Data = {};
-            
-            // This data is static configuration, so it can live here.
+            // --- EMBEDDED DATA ---
+            const stage2Data = [{"Week":1,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Hoop Toss Challenge","Description":["Throw bean bags into 3 hoops at increasing distances.","Further hoop is more points."],"Equipment":"Bean bags, hoops"},{"Week":2,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Vortex Launch","Description":["Take turns launching vortexes as far as possible.","Use cones to mark distances."],"Equipment":"Vortexes, cones"},{"Week":3,"Stage":2,"Section":"Skill 1","Skill Type":["Throw","Catch"],"Activity Name":"Catch and Dash Relay","Description":["Pairs throw and catch.","After a successful catch, both sprint to tag the next pair.","Add a relay format."],"Equipment":"Footy balls, cones"},{"Week":4,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Bucket Bombs","Description":["Throw tennis balls into buckets at varying distances.","Points for each successful shot.","Further bucket is more points."],"Equipment":"Tennis balls, buckets"},{"Week":5,"Stage":2,"Section":"Skill 1","Skill Type":["Throw","Catch"],"Activity Name":"Catch Race","Description":["In pairs, race to 10 successful overarm catches.","Option B: See which pair can get the most successful catches.","Drop is restart count."],"Equipment":"Tennis balls"},{"Week":6,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Target Practice","Description":["Set up 3 goal zones.","Aim for accurate throws rather than distance.","Rotate through different objects (e.g. vortex, foxtail)."],"Equipment":"Vortexes, foxtails, cones, buckets"},{"Week":7,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Tower Knockdown","Description":["Stack cones or buckets into towers.","Take turns throwing balls to knock them down."],"Equipment":"Balls, cones or buckets"},{"Week":8,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Three-Point Shot","Description":["Throw from 3 different marked points into a goal - bucket.","Points increase with distance."],"Equipment":"Balls (cricket - tennis), buckets or goals, markers"},{"Week":9,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Tic-Tac-Throw","Description":["Relay-style game.","Throw bean bags into a 3x3 hoop grid.","Aim to create a line (like naughts and crosses)."],"Equipment":"Bean bags, hoops (in a 3x3 grid)"},{"Week":10,"Stage":2,"Section":"Skill 1","Skill Type":["Throw"],"Activity Name":"Target Bucket Relay","Description":["Player runs to a throw line and throws into a bucket.","Run back and tag next teammate.","1 point per successful shot."],"Equipment":"Buckets, bean bags or tennis balls, cones"},{"Week":1,"Stage":2,"Section":"Skill 2","Skill Type":["Dribbling","Shooting"],"Activity Name":"Zig-Zag Soccer Dribble","Description":["Dribble around cones.","Shoot into a mini goal."],"Equipment":"Soccer balls, cones, mini goals"},{"Week":2,"Stage":2,"Section":"Skill 2","Skill Type":["Dribbling","Shooting"],"Activity Name":"Shoot & Sprint Relay","Description":["Dribble to a marked line.","Shoot into goal, then sprint to end of the line."],"Equipment":"Soccer balls, cones, mini goals"},{"Week":3,"Stage":2,"Section":"Skill 2","Skill Type":["Striking"],"Activity Name":"Target Strike Cricket","Description":["Hit a stationary ball off a tee through two cones or marker posts.","Through is 3 points, successful hit but miss is 1"],"Equipment":"Cricket bats, tees, tennis balls, cones"},{"Week":4,"Stage":2,"Section":"Skill 2","Skill Type":["Striking"],"Activity Name":"Bat and Dash","Description":["Hit ball off tee, run to a cone and back before it's returned."],"Equipment":"Foam bat, soft ball, tee, cones"},{"Week":5,"Stage":2,"Section":"Skill 2","Skill Type":["Dribbling"],"Activity Name":"Obstacle Dribble Course","Description":["Dribble through a creative cone course.","Add turns and optional obstacles."],"Equipment":"Soccer or tennis balls, cones"},{"Week":6,"Stage":2,"Section":"Skill 2","Skill Type":["Dribbling","Shooting"],"Activity Name":"Hockey Cone Slalom","Description":["Dribble with a foam bat around cones.","Finish by shooting into a goal."],"Equipment":"Foam bats, balls, cones, mini goals"},{"Week":7,"Stage":2,"Section":"Skill 2","Skill Type":["Passing"],"Activity Name":"Pass and Move","Description":["In pairs: pass short distances.","After passing, sprint to a new position."],"Equipment":"Balls (soccer or tennis), cones"},{"Week":8,"Stage":2,"Section":"Skill 2","Skill Type":["Striking"],"Activity Name":"Bean Bag Baseball","Description":["Strike bean bag off a tee.","Fielders stand back outside the diamond.","Run to base before it is returned to the catcher.","Fielding team must pass the bean bag 5 times before returning it to catcher."],"Equipment":"Bean bags, bats (if striking), cones"},{"Week":9,"Stage":2,"Section":"Skill 2","Skill Type":["Rolling"],"Activity Name":"Tunnel Ball Relay","Description":["Teams line up.","Pass ball through legs to the end.","Last player runs to front. Repeat until back at starting order."],"Equipment":"Balls"},{"Week":10,"Stage":2,"Section":"Skill 2","Skill Type":["Dribbling","Shooting"],"Activity Name":"Cone Goal Knockout","Description":["Dribble and shoot to knock over cone \"goals\".","First team to knock over all wins."],"Equipment":"Soccer balls, cones"},{"Week":1,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Capture the Flag","Description":["Two teams protect their flag.","Try to steal the opponent's flag and return to base without being tagged."],"Equipment":"Cones, flags or tags"},{"Week":2,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Dodgeball","Description":["Players eliminate others by throwing soft dodgeballs.","A catch eliminates the thrower and revives a team mate.","\"Jailbreak\" to revive all players.","No headshots."],"Equipment":"Dodgeballs"},{"Week":3,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Oz-Tag Chase","Description":["Team A tries to cross a line without losing tags to Team B."],"Equipment":"Oz-tag belts"},{"Week":4,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Rob the Nest","Description":["Teams run to the centre to collect items for their nest.","Teams steal from other nests.","Most items wins."],"Equipment":"Cones, bean bags, hoops, things"},{"Week":5,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Clean Up the Yard","Description":["Teams throw soft balls over a central line.","Fewest balls on your side after 3 minutes wins.","Overthrows don't count, must be on the field."],"Equipment":"Dodgeballs"},{"Week":6,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Pin Guard","Description":["Each team guards a cone - pin while trying to knock over others'.","If your pin falls, you're out."],"Equipment":"Cones, dodgeballs"},{"Week":7,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Sinking Islands","Description":["\"Sharks\" tip \"sailors.\" Tipped players become sharks.","Sailors safe in hoops but can't stay longer than 5 sec.","Teacher removes hoop after 5 sec.","Final sailors get to \"level up\" and tag sharks."],"Equipment":"Hoops, cones (for boundaries), pinnies or belts (optional)"},{"Week":8,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Bucket Freeze","Description":["Team A: stands behind throw line, tries to throw ball into bucket","Team B: sends one runner at a time around a cone circuit","If Team A gets a ball in the bucket, the runner freezes","Next runner starts and can free any frozen runners by tagging them","Team with most players who finish a lap wins"],"Equipment":"Cones, optional balls"},{"Week":9,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Ultimate Ball","Description":["Like Ultimate Frisbee, but with a ball.","Pass to teammates without dropping.","No running with the ball."],"Equipment":"Soft ball or vortex"},{"Week":10,"Stage":2,"Section":"Game","Skill Type":["Game"],"Activity Name":"Numbers Game","Description":["Two teams are numbered.","Teacher calls out a number.","That number from each team races to get the ball and score."],"Equipment":"Ball, cones, number tags or bibs"}];
+            const stage3Data = {"year6":{"Skill 1":{"activity":"Throwing/Catching","game":"Bucket Toss","description":"Throw ball in bucket, furthest bucket = more points"},"Skill 2":{"activity":"Dribble/Shooting","game":"Hockey","description":"Zig-zag dribble, shoot ball"},"Game":{"activity":"Game","game":"Capture the Flag","description":"Team-based strategy game"}},"year5":{"Skill 1":{"activity":"Throwing/Catching","game":"Bucket Toss","description":"Throw ball in bucket, furthest bucket = more points"},"Skill 2":{"activity":"Dribble/Shooting","game":"Hockey","description":"Zig-zag dribble, shoot ball"},"Game":{"activity":"Game","game":"Capture the Flag","description":"Team-based strategy game"}}};
+
             const teacherAssignments = {
                 'Pink Coral 🪸': { stage: 'Stage 2', field: 'Year 3', station: 'Skill 1', color: 'pink' },
                 'Yellow Tides ↕️': { stage: 'Stage 2', field: 'Year 3', station: 'Skill 2', color: 'yellow' },
@@ -138,6 +137,8 @@
                 moonIcon: document.getElementById('moon-icon'),
                 sunIcon: document.getElementById('sun-icon'),
                 weekSelector: document.getElementById('week-selector'),
+                stageCard: document.getElementById('stage-card'),
+                weekCard: document.getElementById('week-card'),
                 stageSelector: document.getElementById('stage-selector'),
                 groupCard: document.getElementById('group-card'),
                 groupSelector: document.getElementById('group-selector'),
@@ -147,42 +148,20 @@
                 fieldLayoutContainer: document.getElementById('field-layout-container'),
             };
 
-            // --- ICONS ---
+            // --- ICONS (for dynamic injection) ---
             const icons = {
                 target: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>`,
                 mapPin: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>`,
                 clock: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-600 flex-shrink-0"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`,
             };
-
-            // --- DATA FETCHING ---
-            const fetchData = async () => {
-                try {
-                    const [stage2Response, stage3Response] = await Promise.all([
-                        fetch('stage2.json'),
-                        fetch('stage3.json')
-                    ]);
-                    stage2Data = await stage2Response.json();
-                    stage3Data = await stage3Response.json();
-                    // Initial render after data is ready
-                    render();
-                } catch (error) {
-                    console.error("Failed to load activity data:", error);
-                    dom.appContainer.innerHTML = `<div class="text-center text-red-500">Error loading data. Please check console.</div>`;
-                }
-            };
             
             // --- RENDER FUNCTIONS ---
-
-            /**
-             * Main render function, calls all sub-renderers
-             */
             const render = () => {
-                // Update theme
-                const isDarkMode = state.darkMode;
-                dom.html.classList.toggle('dark', isDarkMode);
-                dom.appContainer.className = isDarkMode ? 'min-h-screen bg-gray-900 p-4' : 'min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4';
+                // Update theme first
+                dom.html.classList.toggle('dark', state.darkMode);
+                dom.appContainer.className = state.darkMode ? 'min-h-screen bg-gray-900 p-4' : 'min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4';
                 
-                // Render all components
+                // Render all components that depend on state
                 renderHeader();
                 renderWeekSelector();
                 renderStageSelector();
@@ -192,11 +171,9 @@
 
             const renderHeader = () => {
                 dom.subTitle.textContent = `Teachers stay at assigned stations - Week ${state.selectedWeek}`;
-                // Update text colors
                 dom.mainTitle.className = state.darkMode ? 'text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight' : 'text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight';
                 dom.subTitle.className = state.darkMode ? 'text-gray-300 text-sm sm:text-base' : 'text-gray-600 text-sm sm:text-base';
 
-                // Update dark mode button style and icons
                 dom.moonIcon.classList.toggle('hidden', state.darkMode);
                 dom.sunIcon.classList.toggle('hidden', !state.darkMode);
                 dom.darkModeToggle.className = `p-3 rounded-xl transition-all duration-300 flex-shrink-0 border ${
@@ -207,7 +184,6 @@
             };
 
             const renderWeekSelector = () => {
-                // Only populate if empty
                 if(dom.weekSelector.options.length === 0) {
                     for (let i = 1; i <= 10; i++) {
                         const option = document.createElement('option');
@@ -217,9 +193,9 @@
                     }
                 }
                 dom.weekSelector.value = state.selectedWeek;
-                // Update styles for dark/light mode
-                document.getElementById('week-card').className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
-                dom.weekSelector.previousElementSibling.firstElementChild.className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
+                
+                dom.weekCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
+                dom.weekCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
                 dom.weekSelector.className = `w-full p-3 rounded-xl border-2 font-medium transition-all duration-200 ${
                     state.darkMode
                         ? 'bg-gray-700 text-gray-200 border-gray-600 focus:border-blue-400'
@@ -228,8 +204,8 @@
             };
             
             const renderStageSelector = () => {
-                 document.getElementById('stage-card').className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
-                 dom.stageSelector.previousElementSibling.firstElementChild.className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
+                dom.stageCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
+                dom.stageCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
 
                 const buttons = dom.stageSelector.querySelectorAll('.stage-btn');
                 buttons.forEach(button => {
@@ -253,9 +229,9 @@
 
                 dom.groupCard.classList.remove('hidden');
                 dom.groupCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
-                dom.groupSelector.previousElementSibling.firstElementChild.className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
+                dom.groupCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
                 
-                dom.groupSelector.innerHTML = ''; // Clear previous buttons
+                dom.groupSelector.innerHTML = ''; 
 
                 const filteredGroups = Object.keys(teacherAssignments).filter(group => teacherAssignments[group].stage === state.selectedStage);
                 
@@ -270,15 +246,13 @@
             
             const renderInfo = () => {
                 const teacherInfo = state.selectedGroup ? getTeacherInfo(state.selectedGroup) : null;
-
-                if (!teacherInfo) {
+                if (!teacherInfo || !teacherInfo.activityData) {
                     dom.infoContainer.classList.add('hidden');
                     return;
                 }
 
                 dom.infoContainer.classList.remove('hidden');
 
-                // -- Render Teacher Info Card --
                 dom.teacherInfoCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
                 const descriptionHtml = Array.isArray(teacherInfo.activityData.description) 
                     ? `<ul>${teacherInfo.activityData.description.map(d => `<li class="ml-4 list-disc">${d}</li>`).join('')}</ul>`
@@ -325,8 +299,6 @@
                         </div>
                     </div>
                 `;
-
-                // -- Render Field Layout --
                 renderFieldLayout();
             };
 
@@ -335,19 +307,15 @@
                 if (!teacherInfo) return;
 
                 dom.fieldLayoutCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
-                dom.fieldLayoutContainer.previousElementSibling.firstElementChild.className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
+                dom.fieldLayoutCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
 
                 const fieldsToShow = state.selectedStage === 'Stage 2' ? ['Year 4', 'Year 3'] : ['Year 6', 'Year 5'];
                 const stations = ['Game', 'Skill 2', 'Skill 1'];
                 
                 let layoutHtml = `<div class="grid gap-3 w-full max-w-lg mx-auto ${fieldsToShow.length === 2 ? 'grid-cols-2' : 'grid-cols-4'}">`;
-                
-                // Header Row
                 fieldsToShow.forEach(field => {
                     layoutHtml += `<div class="text-center font-semibold ${state.darkMode ? 'text-gray-200' : 'text-gray-800'} text-sm p-2">${field}</div>`;
                 });
-
-                // Station Rows
                 stations.forEach(station => {
                     fieldsToShow.forEach(field => {
                         const stationColorClass = getStationColor(field, station, teacherInfo.field, teacherInfo.station);
@@ -356,51 +324,34 @@
                             <div class="p-3 rounded-lg text-center text-xs font-medium border transition-all ${stationColorClass}">
                                 <div class="font-semibold mb-1">${station}</div>
                                 <div class="opacity-80">${activityName}</div>
-                            </div>
-                        `;
+                            </div>`;
                     });
                 });
-                
                 layoutHtml += `</div>`;
                 dom.fieldLayoutContainer.innerHTML = layoutHtml;
             };
 
             // --- HELPER FUNCTIONS ---
-            
             const getTeacherInfo = (group) => {
                 const assignment = teacherAssignments[group];
                 if (!assignment) return null;
 
                 let activityData;
                 if (assignment.stage === 'Stage 2') {
-                    const activity = stage2Data.find(item => 
-                        item.Week === state.selectedWeek && 
-                        item.Stage === 2 && 
-                        item.Section === assignment.station
-                    );
-                    if (activity) {
-                        activityData = {
-                            activity: activity['Skill Type'].join(', '),
-                            game: activity['Activity Name'],
-                            description: activity.Description,
-                            equipment: activity.Equipment
-                        };
+                    activityData = stage2Data.find(item => item.Week === state.selectedWeek && item.Stage === 2 && item.Section === assignment.station);
+                    if(activityData) {
+                        activityData = { ...activityData, game: activityData['Activity Name'] };
                     }
                 } else { // Stage 3
                     const fieldKey = assignment.field.toLowerCase().replace(' ', '');
                     activityData = stage3Data[fieldKey]?.[assignment.station];
                 }
-
                 return { ...assignment, activityData };
             };
 
             const getActivityForStation = (field, station) => {
                 if (state.selectedStage === 'Stage 2') {
-                    const activity = stage2Data.find(item => 
-                        item.Week === state.selectedWeek &&
-                        item.Stage === 2 &&
-                        item.Section === station
-                    );
+                    const activity = stage2Data.find(item => item.Week === state.selectedWeek && item.Stage === 2 && item.Section === station);
                     return activity ? activity['Activity Name'] : '';
                 }
                 if (state.selectedStage === 'Stage 3') {
@@ -453,7 +404,6 @@
                 return isSelected ? scheme.selected : `${scheme.subtle} ${scheme.hover}`;
             };
 
-
             // --- EVENT LISTENERS ---
             dom.darkModeToggle.addEventListener('click', () => {
                 state.darkMode = !state.darkMode;
@@ -462,28 +412,29 @@
 
             dom.weekSelector.addEventListener('change', (e) => {
                 state.selectedWeek = Number(e.target.value);
-                state.selectedGroup = ''; // Reset group when week changes
+                state.selectedGroup = ''; 
                 render();
             });
 
             dom.stageSelector.addEventListener('click', (e) => {
-                if (e.target.classList.contains('stage-btn')) {
-                    state.selectedStage = e.target.dataset.stage;
-                    state.selectedGroup = ''; // Reset group when stage changes
+                const button = e.target.closest('.stage-btn');
+                if (button) {
+                    state.selectedStage = button.dataset.stage;
+                    state.selectedGroup = '';
                     render();
                 }
             });
 
             dom.groupSelector.addEventListener('click', (e) => {
-                 if (e.target.classList.contains('group-btn')) {
-                    state.selectedGroup = e.target.dataset.group;
+                const button = e.target.closest('.group-btn');
+                if (button) {
+                    state.selectedGroup = button.dataset.group;
                     render();
                 }
             });
 
-
             // --- INITIALIZATION ---
-            fetchData();
+            render();
         });
     </script>
 
