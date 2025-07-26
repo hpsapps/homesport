@@ -1,20 +1,898 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sport Rotations</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100 text-gray-900">
-  <main class="p-6 max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold mb-4">Stage 2 Rotations</h1>
-    <div id="stage2-activities" class="space-y-4"></div>
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Clock, Users, MapPin, Target, Moon, Sun } from 'lucide-react';
 
-    <h1 class="text-3xl font-bold mt-10 mb-4">Stage 3 Rotations</h1>
-    <div id="stage3-activities" class="space-y-4"></div>
-  </main>
+const SportRotationApp = () => {
+  const [selectedWeek, setSelectedWeek] = useState(2); // Default to Week 2 (starts July 28, 2025)
+  const [selectedGroup, setSelectedGroup] = useState('');
+  const [selectedStage, setSelectedStage] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
 
-  <script src="script.js"></script>
-</body>
-</html>
+  // Activity data from JSON
+  const activitiesJsonData = [
+    {
+      "Week": 1,
+      "Stage": 2,
+      "Section": "Skill 1",
+      "Skill Type": ["Throw"],
+      "Activity Name": "Hoop Toss Challenge",
+      "Description": [
+        "Throw bean bags into 3 hoops at increasing distances.",
+        "Further hoop is more points."
+      ],
+      "Equipment": "Bean bags, hoops"
+    },
+    {
+      "Week": 2,
+      "Stage": 2,
+      "Section": "Skill 1",
+      "Skill Type": ["Throw"],
+      "Activity Name": "Vortex Launch",
+      "Description": [
+        "Take turns launching vortexes as far as possible.",
+        "Use cones to mark distances."
+      ],
+      "Equipment": "Vortexes, cones"
+    },
+    {
+      "Week": 3,
+      "Stage": 2,
+      "Section": "Skill 1",
+      "Skill Type": ["Throw", "Catch"],
+      "Activity Name": "Catch and Dash Relay",
+      "Description": [
+        "Pairs throw and catch.",
+        "After a successful catch, both sprint to tag the next pair.",
+        "Add a relay format."
+      ],
+      "Equipment": "Footy balls, cones"
+    },
+    {
+      "Week": 4,
+      "Stage": 2,
+      "Section": "Skill 1",
+      "Skill Type": ["Throw"],
+      "Activity Name": "Bucket Bombs",
+      "Description": [
+        "Throw tennis balls into buckets at varying distances.",
+        "Points for each successful shot.",
+        "Further bucket is more points."
+      ],
+      "Equipment": "Tennis balls, buckets"
+    },
+    {
+      "Week": 5,
+      "Stage": 2,
+      "Section": "Skill 1",
+      "Skill Type": ["Throw", "Catch"],
+      "Activity Name": "Catch Race",
+      "Description": [
+        "In pairs, race to 10 successful overarm catches.",
+        "Option B: See which pair can get the most successful catches.",
+        "Drop is restart count."
+      ],
+      "Equipment": "Tennis balls"
+    },
+    {
+      "Week": 6,
+      "Stage": 2,
+      "Section": "Skill 1",
+      "Skill Type": ["Throw"],
+      "Activity Name": "Target Practice",
+      "Description": [
+        "Set up 3 goal zones.",
+        "Aim for accurate throws rather than distance.",
+        "Rotate through different objects (e.g. vortex, foxtail)."
+      ],
+      "Equipment": "Vortexes, foxtails, cones, buckets"
+    },
+    {
+      "Week": 7,
+      "Stage": 2,
+      "Section": "Skill 1",
+      "Skill Type": ["Throw"],
+      "Activity Name": "Tower Knockdown",
+      "Description": [
+        "Stack cones or buckets into towers.",
+        "Take turns throwing balls to knock them down."
+      ],
+      "Equipment": "Balls, cones or buckets"
+    },
+    {
+      "Week": 8,
+      "Stage": 2,
+      "Section": "Skill 1",
+      "Skill Type": ["Throw"],
+      "Activity Name": "Three-Point Shot",
+      "Description": [
+        "Throw from 3 different marked points into a goal - bucket.",
+        "Points increase with distance."
+      ],
+      "Equipment": "Balls (cricket - tennis), buckets or goals, markers"
+    },
+    {
+      "Week": 9,
+      "Stage": 2,
+      "Section": "Skill 1",
+      "Skill Type": ["Throw"],
+      "Activity Name": "Tic-Tac-Throw",
+      "Description": [
+        "Relay-style game.",
+        "Throw bean bags into a 3x3 hoop grid.",
+        "Aim to create a line (like naughts and crosses)."
+      ],
+      "Equipment": "Bean bags, hoops (in a 3x3 grid)"
+    },
+    {
+      "Week": 10,
+      "Stage": 2,
+      "Section": "Skill 1",
+      "Skill Type": ["Throw"],
+      "Activity Name": "Target Bucket Relay",
+      "Description": [
+        "Player runs to a throw line and throws into a bucket.",
+        "Run back and tag next teammate.",
+        "1 point per successful shot."
+      ],
+      "Equipment": "Buckets, bean bags or tennis balls, cones"
+    },
+    {
+      "Week": 1,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Skill Type": ["Dribbling", "Shooting"],
+      "Activity Name": "Zig-Zag Soccer Dribble",
+      "Description": [
+        "Dribble around cones.",
+        "Shoot into a mini goal."
+      ],
+      "Equipment": "Soccer balls, cones, mini goals"
+    },
+    {
+      "Week": 2,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Skill Type": ["Dribbling", "Shooting"],
+      "Activity Name": "Shoot & Sprint Relay",
+      "Description": [
+        "Dribble to a marked line.",
+        "Shoot into goal, then sprint to end of the line."
+      ],
+      "Equipment": "Soccer balls, cones, mini goals"
+    },
+    {
+      "Week": 3,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Skill Type": ["Striking"],
+      "Activity Name": "Target Strike Cricket",
+      "Description": [
+        "Hit a stationary ball off a tee through two cones or marker posts.",
+        "Through is 3 points, successful hit but miss is 1"
+      ],
+      "Equipment": "Cricket bats, tees, tennis balls, cones"
+    },
+    {
+      "Week": 4,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Skill Type": ["Striking"],
+      "Activity Name": "Bat and Dash",
+      "Description": [
+        "Hit ball off tee, run to a cone and back before it's returned."
+      ],
+      "Equipment": "Foam bat, soft ball, tee, cones"
+    },
+    {
+      "Week": 5,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Skill Type": ["Dribbling"],
+      "Activity Name": "Obstacle Dribble Course",
+      "Description": [
+        "Dribble through a creative cone course.",
+        "Add turns and optional obstacles."
+      ],
+      "Equipment": "Soccer or tennis balls, cones"
+    },
+    {
+      "Week": 6,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Skill Type": ["Dribbling", "Shooting"],
+      "Activity Name": "Hockey Cone Slalom",
+      "Description": [
+        "Dribble with a foam bat around cones.",
+        "Finish by shooting into a goal."
+      ],
+      "Equipment": "Foam bats, balls, cones, mini goals"
+    },
+    {
+      "Week": 7,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Skill Type": ["Passing"],
+      "Activity Name": "Pass and Move",
+      "Description": [
+        "In pairs: pass short distances.",
+        "After passing, sprint to a new position."
+      ],
+      "Equipment": "Balls (soccer or tennis), cones"
+    },
+    {
+      "Week": 8,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Skill Type": ["Striking"],
+      "Activity Name": "Bean Bag Baseball",
+      "Description": [
+        "Strike bean bag off a tee.",
+        "Fielders stand back outside the diamond.",
+        "Run to base before it is returned to the catcher.",
+        "Fielding team must pass the bean bag 5 times before returning it to catcher."
+      ],
+      "Equipment": "Bean bags, bats (if striking), cones"
+    },
+    {
+      "Week": 9,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Skill Type": ["Rolling"],
+      "Activity Name": "Tunnel Ball Relay",
+      "Description": [
+        "Teams line up.",
+        "Pass ball through legs to the end.",
+        "Last player runs to front. Repeat until back at starting order."
+      ],
+      "Equipment": "Balls"
+    },
+    {
+      "Week": 10,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Skill Type": ["Dribbling", "Shooting"],
+      "Activity Name": "Cone Goal Knockout",
+      "Description": [
+        "Dribble and shoot to knock over cone \"goals\".",
+        "First team to knock over all wins."
+      ],
+      "Equipment": "Soccer balls, cones"
+    },
+    {
+      "Week": 1,
+      "Stage": 2,
+      "Section": "Game",
+      "Skill Type": ["Game"],
+      "Activity Name": "Capture the Flag",
+      "Description": [
+        "Two teams protect their flag.",
+        "Try to steal the opponent's flag and return to base without being tagged."
+      ],
+      "Equipment": "Cones, flags or tags"
+    },
+    {
+      "Week": 2,
+      "Stage": 2,
+      "Section": "Game",
+      "Skill Type": ["Game"],
+      "Activity Name": "Dodgeball",
+      "Description": [
+        "Players eliminate others by throwing soft dodgeballs.",
+        "A catch eliminates the thrower and revives a team mate.",
+        "\"Jailbreak\" to revive all players.",
+        "No headshots."
+      ],
+      "Equipment": "Dodgeballs"
+    },
+    {
+      "Week": 3,
+      "Stage": 2,
+      "Section": "Game",
+      "Skill Type": ["Game"],
+      "Activity Name": "Oz-Tag Chase",
+      "Description": [
+        "Team A tries to cross a line without losing tags to Team B."
+      ],
+      "Equipment": "Oz-tag belts"
+    },
+    {
+      "Week": 4,
+      "Stage": 2,
+      "Section": "Game",
+      "Skill Type": ["Game"],
+      "Activity Name": "Rob the Nest",
+      "Description": [
+        "Teams run to the centre to collect items for their nest.",
+        "Teams steal from other nests.",
+        "Most items wins."
+      ],
+      "Equipment": "Cones, bean bags, hoops, things"
+    },
+    {
+      "Week": 5,
+      "Stage": 2,
+      "Section": "Game",
+      "Skill Type": ["Game"],
+      "Activity Name": "Clean Up the Yard",
+      "Description": [
+        "Teams throw soft balls over a central line.",
+        "Fewest balls on your side after 3 minutes wins.",
+        "Overthrows don't count, must be on the field."
+      ],
+      "Equipment": "Dodgeballs"
+    },
+    {
+      "Week": 6,
+      "Stage": 2,
+      "Section": "Game",
+      "Skill Type": ["Game"],
+      "Activity Name": "Pin Guard",
+      "Description": [
+        "Each team guards a cone - pin while trying to knock over others'.",
+        "If your pin falls, you're out."
+      ],
+      "Equipment": "Cones, dodgeballs"
+    },
+    {
+      "Week": 7,
+      "Stage": 2,
+      "Section": "Game",
+      "Skill Type": ["Game"],
+      "Activity Name": "Sinking Islands",
+      "Description": [
+        "\"Sharks\" tip \"sailors.\" Tipped players become sharks.",
+        "Sailors safe in hoops but can't stay longer than 5 sec.",
+        "Teacher removes hoop after 5 sec.",
+        "Final sailors get to \"level up\" and tag sharks."
+      ],
+      "Equipment": "Hoops, cones (for boundaries), pinnies or belts (optional)"
+    },
+    {
+      "Week": 8,
+      "Stage": 2,
+      "Section": "Game",
+      "Skill Type": ["Game"],
+      "Activity Name": "Bucket Freeze",
+      "Description": [
+        "Team A: stands behind throw line, tries to throw ball into bucket",
+        "Team B: sends one runner at a time around a cone circuit",
+        "If Team A gets a ball in the bucket, the runner freezes",
+        "Next runner starts and can free any frozen runners by tagging them",
+        "Team with most players who finish a lap wins"
+      ],
+      "Equipment": "Cones, optional balls"
+    },
+    {
+      "Week": 9,
+      "Stage": 2,
+      "Section": "Game",
+      "Skill Type": ["Game"],
+      "Activity Name": "Ultimate Ball",
+      "Description": [
+        "Like Ultimate Frisbee, but with a ball.",
+        "Pass to teammates without dropping.",
+        "No running with the ball."
+      ],
+      "Equipment": "Soft ball or vortex"
+    },
+    {
+      "Week": 10,
+      "Stage": 2,
+      "Section": "Game",
+      "Skill Type": ["Game"],
+      "Activity Name": "Numbers Game",
+      "Description": [
+        "Two teams are numbered.",
+        "Teacher calls out a number.",
+        "That number from each team races to get the ball and score."
+      ],
+      "Equipment": "Ball, cones, number tags or bibs"
+    }
+  ];
+
+  // Legacy activities for Stage 3 (placeholder)
+  const weeklyActivities = {
+    week: selectedWeek,
+    stage3: {
+      year6: {
+        'Skill 1': { activity: 'Throwing/Catching', game: 'Bucket Toss', description: 'Throw ball in bucket, furthest bucket = more points' },
+        'Skill 2': { activity: 'Dribble/Shooting', game: 'Hockey', description: 'Zig-zag dribble, shoot ball' },
+        'Game': { activity: 'Game', game: 'Capture the Flag', description: 'Team-based strategy game' }
+      },
+      year5: {
+        'Skill 1': { activity: 'Throwing/Catching', game: 'Bucket Toss', description: 'Throw ball in bucket, furthest bucket = more points' },
+        'Skill 2': { activity: 'Dribble/Shooting', game: 'Hockey', description: 'Zig-zag dribble, shoot ball' },
+        'Game': { activity: 'Game', game: 'Capture the Flag', description: 'Team-based strategy game' }
+      }
+    }
+  };
+
+  // Teacher assignments with color coding
+  const teacherAssignments = {
+    // Year 3 groups (left side)
+    'Pink Coral 🪸': { stage: 'Stage 2', field: 'Year 3', station: 'Skill 1', color: 'pink' },
+    'Yellow Tides ↕️': { stage: 'Stage 2', field: 'Year 3', station: 'Skill 2', color: 'yellow' },
+    'Purple Reef 🏄': { stage: 'Stage 2', field: 'Year 3', station: 'Game', color: 'purple' },
+    // Year 4 groups (right side)
+    'Blue Lagoons 🏝️': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 1', color: 'blue' },
+    'Green Waves 🌊': { stage: 'Stage 2', field: 'Year 4', station: 'Skill 2', color: 'green' },
+    'Red Driftwood 🪵': { stage: 'Stage 2', field: 'Year 4', station: 'Game', color: 'red' },
+    // Stage 3 groups
+    'Shells G 🐚': { stage: 'Stage 3', field: 'Year 6', station: 'Skill 1' },
+    'Dunes H 🏜️': { stage: 'Stage 3', field: 'Year 5', station: 'Skill 2' },
+    'Cliffs I ⛰️': { stage: 'Stage 3', field: 'Year 6', station: 'Game' },
+    'Tsunamis J ⚠️': { stage: 'Stage 3', field: 'Year 5', station: 'Game' }
+  };
+
+  // Field layout component - shows only relevant fields based on stage
+  const StageFieldsLayout = ({ stage, highlightField, highlightStation, teacherColor }) => {
+    const getStationColor = (field, station) => {
+      // Stage 3 teachers don't need highlighting - they move with their groups
+      if (stage === 'Stage 3') {
+        return darkMode 
+          ? 'bg-gray-700 text-gray-300 border-gray-600' 
+          : 'bg-gray-50 text-gray-700 border-gray-200';
+      }
+      
+      // Stage 2: Use color-coded system
+      const isHighlighted = highlightField === field && highlightStation === station;
+      
+      // Define base colors for each field and station
+      const getBaseColor = (field, station) => {
+        if (field === 'Year 4') {
+          if (station === 'Skill 1') return 'blue';
+          if (station === 'Skill 2') return 'green';  
+          if (station === 'Game') return 'red';
+        } else if (field === 'Year 3') {
+          if (station === 'Skill 1') return 'pink';
+          if (station === 'Skill 2') return 'yellow';
+          if (station === 'Game') return 'purple';
+        }
+        return 'gray';
+      };
+      
+      const baseColor = getBaseColor(field, station);
+      
+      // Color mapping for pastel and strong colors
+      const colorMap = {
+        blue: {
+          pastel: darkMode ? 'bg-blue-950/20 text-gray-300 border-blue-900/30' : 'bg-blue-50/50 text-gray-800 border-blue-100/50',
+          strong: darkMode ? 'bg-blue-600 text-white border-blue-400 shadow-lg' : 'bg-blue-600 text-white border-blue-500 shadow-lg'
+        },
+        green: {
+          pastel: darkMode ? 'bg-green-950/20 text-gray-300 border-green-900/30' : 'bg-green-50/50 text-gray-800 border-green-100/50',
+          strong: darkMode ? 'bg-green-600 text-white border-green-400 shadow-lg' : 'bg-green-600 text-white border-green-500 shadow-lg'
+        },
+        red: {
+          pastel: darkMode ? 'bg-red-950/20 text-gray-300 border-red-900/30' : 'bg-red-50/50 text-gray-800 border-red-100/50',
+          strong: darkMode ? 'bg-red-600 text-white border-red-400 shadow-lg' : 'bg-red-600 text-white border-red-500 shadow-lg'
+        },
+        pink: {
+          pastel: darkMode ? 'bg-pink-950/20 text-gray-300 border-pink-900/30' : 'bg-pink-50/50 text-gray-800 border-pink-100/50',
+          strong: darkMode ? 'bg-pink-600 text-white border-pink-400 shadow-lg' : 'bg-pink-600 text-white border-pink-500 shadow-lg'
+        },
+        yellow: {
+          pastel: darkMode ? 'bg-yellow-950/20 text-gray-300 border-yellow-900/30' : 'bg-yellow-50/50 text-gray-800 border-yellow-100/50',
+          strong: darkMode ? 'bg-yellow-600 text-white border-yellow-400 shadow-lg' : 'bg-yellow-600 text-white border-yellow-500 shadow-lg'
+        },
+        purple: {
+          pastel: darkMode ? 'bg-purple-950/20 text-gray-300 border-purple-900/30' : 'bg-purple-50/50 text-gray-800 border-purple-100/50',
+          strong: darkMode ? 'bg-purple-600 text-white border-purple-400 shadow-lg' : 'bg-purple-600 text-white border-purple-500 shadow-lg'
+        }
+      };
+      
+      return isHighlighted 
+        ? colorMap[baseColor]?.strong || colorMap.blue.strong
+        : colorMap[baseColor]?.pastel || colorMap.blue.pastel;
+    };
+
+    const getActivityForStation = (field, station) => {
+      // For Stage 2, use JSON data
+      if (stage === 'Stage 2') {
+        const activity = activitiesJsonData.find(item => 
+          item.Week === selectedWeek && 
+          item.Stage === 2 && 
+          item.Section === station
+        );
+        return activity ? activity['Activity Name'] : '';
+      }
+      
+      // For Stage 3, use legacy data
+      const fieldKey = field.toLowerCase().replace(' ', '');
+      const stageKey = stage.toLowerCase().replace(' ', '');
+      
+      if (stageKey === 'stage3') {
+        return weeklyActivities.stage3[fieldKey]?.[station]?.game || '';
+      }
+      
+      return '';
+    };
+
+    const fieldTitleColor = darkMode ? 'text-gray-200' : 'text-gray-800';
+    
+    // Determine which fields to show based on stage
+    const fieldsToShow = stage === 'Stage 2' ? ['Year 4', 'Year 3'] : ['Year 6', 'Year 5'];
+    const stations = ['Game', 'Skill 2', 'Skill 1'];
+    
+    return (
+      <div className={`grid gap-3 w-full max-w-lg mx-auto ${fieldsToShow.length === 2 ? 'grid-cols-2' : 'grid-cols-4'}`}>
+        {/* Header Row */}
+        {fieldsToShow.map(field => (
+          <div key={field} className={`text-center font-semibold ${fieldTitleColor} text-sm p-2`}>
+            {field}
+          </div>
+        ))}
+        
+        {/* Station Rows */}
+        {stations.map(station => 
+          fieldsToShow.map(field => (
+            <div key={`${field}-${station}`} className={`p-3 rounded-lg text-center text-xs font-medium border transition-all ${getStationColor(field, station)}`}>
+              <div className="font-semibold mb-1">{station}</div>
+              <div className="opacity-80">{getActivityForStation(field, station)}</div>
+            </div>
+          ))
+        )}
+      </div>
+    );
+  };
+
+  const getGroupButtonColor = (group, isSelected) => {
+    const assignment = teacherAssignments[group];
+    if (!assignment?.color) {
+      // Fallback for Stage 3 groups without colors
+      return isSelected
+        ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white border-blue-500 shadow-lg'
+        : darkMode
+          ? 'bg-gray-700 text-gray-200 border-gray-600 hover:border-blue-400 hover:bg-gray-600'
+          : 'bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:bg-blue-50 shadow-sm';
+    }
+
+    const color = assignment.color;
+    
+    // Color mapping for group buttons
+    const groupColorMap = {
+      blue: {
+        subtle: darkMode ? 'bg-blue-950/20 text-gray-200 border-blue-900/30' : 'bg-blue-50/30 text-gray-700 border-blue-100/50',
+        selected: darkMode ? 'bg-blue-700 text-white border-blue-500 shadow-lg' : 'bg-blue-700 text-white border-blue-600 shadow-lg',
+        hover: darkMode ? 'hover:bg-blue-900/40 hover:border-blue-700/50' : 'hover:bg-blue-100/50 hover:border-blue-200/70'
+      },
+      green: {
+        subtle: darkMode ? 'bg-green-950/20 text-gray-200 border-green-900/30' : 'bg-green-50/30 text-gray-700 border-green-100/50',
+        selected: darkMode ? 'bg-green-700 text-white border-green-500 shadow-lg' : 'bg-green-700 text-white border-green-600 shadow-lg',
+        hover: darkMode ? 'hover:bg-green-900/40 hover:border-green-700/50' : 'hover:bg-green-100/50 hover:border-green-200/70'
+      },
+      red: {
+        subtle: darkMode ? 'bg-red-950/20 text-gray-200 border-red-900/30' : 'bg-red-50/30 text-gray-700 border-red-100/50',
+        selected: darkMode ? 'bg-red-700 text-white border-red-500 shadow-lg' : 'bg-red-700 text-white border-red-600 shadow-lg',
+        hover: darkMode ? 'hover:bg-red-900/40 hover:border-red-700/50' : 'hover:bg-red-100/50 hover:border-red-200/70'
+      },
+      pink: {
+        subtle: darkMode ? 'bg-pink-950/20 text-gray-200 border-pink-900/30' : 'bg-pink-50/30 text-gray-700 border-pink-100/50',
+        selected: darkMode ? 'bg-pink-700 text-white border-pink-500 shadow-lg' : 'bg-pink-700 text-white border-pink-600 shadow-lg',
+        hover: darkMode ? 'hover:bg-pink-900/40 hover:border-pink-700/50' : 'hover:bg-pink-100/50 hover:border-pink-200/70'
+      },
+      yellow: {
+        subtle: darkMode ? 'bg-yellow-950/20 text-gray-200 border-yellow-900/30' : 'bg-yellow-50/30 text-gray-700 border-yellow-100/50',
+        selected: darkMode ? 'bg-yellow-700 text-white border-yellow-500 shadow-lg' : 'bg-yellow-700 text-white border-yellow-600 shadow-lg',
+        hover: darkMode ? 'hover:bg-yellow-900/40 hover:border-yellow-700/50' : 'hover:bg-yellow-100/50 hover:border-yellow-200/70'
+      },
+      purple: {
+        subtle: darkMode ? 'bg-purple-950/20 text-gray-200 border-purple-900/30' : 'bg-purple-50/30 text-gray-700 border-purple-100/50',
+        selected: darkMode ? 'bg-purple-700 text-white border-purple-500 shadow-lg' : 'bg-purple-700 text-white border-purple-600 shadow-lg',
+        hover: darkMode ? 'hover:bg-purple-900/40 hover:border-purple-700/50' : 'hover:bg-purple-100/50 hover:border-purple-200/70'
+      }
+    };
+
+    const colorScheme = groupColorMap[color] || groupColorMap.blue;
+    
+    return isSelected 
+      ? colorScheme.selected
+      : `${colorScheme.subtle} ${colorScheme.hover}`;
+  };
+
+  const getFilteredGroups = () => {
+    if (!selectedStage) return [];
+    
+    return Object.keys(teacherAssignments).filter(group => 
+      teacherAssignments[group].stage === selectedStage
+    );
+  };
+
+  const getTeacherInfo = (group) => {
+    const assignment = teacherAssignments[group];
+    if (!assignment) return null;
+
+    let activityData;
+    if (assignment.stage === 'Stage 2') {
+      // Use JSON data for Stage 2
+      const activity = activitiesJsonData.find(item => 
+        item.Week === selectedWeek && 
+        item.Stage === 2 && 
+        item.Section === assignment.station
+      );
+      
+      if (activity) {
+        activityData = {
+          activity: activity['Skill Type'].join(', '),
+          game: activity['Activity Name'],
+          description: activity.Description,
+          equipment: activity.Equipment
+        };
+      }
+    } else {
+      // Use legacy data for Stage 3
+      const fieldKey = assignment.field.toLowerCase().replace(' ', '');
+      const stageKey = assignment.stage.toLowerCase().replace(' ', '');
+      
+      if (stageKey === 'stage3') {
+        activityData = weeklyActivities.stage3[fieldKey]?.[assignment.station];
+      }
+    }
+
+    return {
+      ...assignment,
+      activityData
+    };
+  };
+
+  const teacherInfo = selectedGroup ? getTeacherInfo(selectedGroup) : null;
+
+  const themeClasses = {
+    bg: darkMode ? 'bg-gray-900' : 'bg-gradient-to-br from-slate-50 to-blue-50',
+    card: darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200',
+    text: {
+      primary: darkMode ? 'text-white' : 'text-gray-900',
+      secondary: darkMode ? 'text-gray-300' : 'text-gray-600',
+      accent: darkMode ? 'text-blue-400' : 'text-blue-600'
+    },
+    accent: {
+      blue: darkMode ? 'bg-blue-800 border-blue-600' : 'bg-blue-50 border-blue-200',
+      green: darkMode ? 'bg-green-800 border-green-600' : 'bg-green-50 border-green-200',
+      gray: darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'
+    }
+  };
+
+  return (
+    <div className={`min-h-screen ${themeClasses.bg} transition-colors duration-300 p-4`}>
+      <div className="max-w-2xl mx-auto">
+        {/* Header with Dark Mode Toggle */}
+        <div className="flex justify-between items-start mb-6">
+          <div className="flex-1 pr-4">
+            <h1 className={`text-2xl sm:text-3xl md:text-4xl font-bold ${themeClasses.text.primary} mb-2 leading-tight`}>
+              Sport Rotation Tracker
+            </h1>
+            <p className={`${themeClasses.text.secondary} text-sm sm:text-base`}>
+              Teachers stay at assigned stations - Week {selectedWeek}
+            </p>
+          </div>
+          
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className={`p-3 rounded-xl transition-all duration-300 flex-shrink-0 ${
+              darkMode 
+                ? 'bg-gray-700 hover:bg-gray-600 text-yellow-400' 
+                : 'bg-white hover:bg-gray-50 text-gray-700 shadow-sm'
+            } border ${darkMode ? 'border-gray-600' : 'border-gray-200'}`}
+          >
+            {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
+        </div>
+
+        {/* Week Selection */}
+        <Card className={`${themeClasses.card} mb-4 shadow-lg border transition-colors duration-300`}>
+          <CardHeader className="pb-3">
+            <CardTitle className={`text-lg ${themeClasses.text.primary}`}>Select Week</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <select
+              value={selectedWeek}
+              onChange={(e) => {
+                setSelectedWeek(Number(e.target.value));
+                setSelectedGroup(''); // Reset group selection when week changes
+              }}
+              className={`w-full p-3 rounded-xl border-2 font-medium transition-all duration-200 ${
+                darkMode
+                  ? 'bg-gray-700 text-gray-200 border-gray-600 focus:border-blue-400'
+                  : 'bg-white text-gray-700 border-gray-200 focus:border-blue-300'
+              }`}
+            >
+              {[...Array(10)].map((_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  Week {i + 1}
+                </option>
+              ))}
+            </select>
+          </CardContent>
+        </Card>
+
+        {/* Stage Selection */}
+        <Card className={`${themeClasses.card} mb-4 shadow-lg border transition-colors duration-300`}>
+          <CardHeader className="pb-3">
+            <CardTitle className={`text-lg ${themeClasses.text.primary}`}>Select Stage</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 gap-3">
+              {['Stage 2', 'Stage 3'].map((stage) => (
+                <button
+                  key={stage}
+                  onClick={() => {
+                    setSelectedStage(stage);
+                    setSelectedGroup('');
+                  }}
+                  className={`p-4 rounded-xl border-2 font-medium transition-all duration-200 ${
+                    selectedStage === stage
+                      ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white border-blue-500 shadow-lg'
+                      : darkMode
+                        ? 'bg-gray-700 text-gray-200 border-gray-600 hover:border-blue-400 hover:bg-gray-600'
+                        : 'bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:bg-blue-50 shadow-sm'
+                  }`}
+                >
+                  {stage}
+                </button>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Group Selection */}
+        {selectedStage && (
+          <Card className={`${themeClasses.card} mb-4 shadow-lg border transition-colors duration-300`}>
+            <CardHeader className="pb-3">
+              <CardTitle className={`text-lg ${themeClasses.text.primary}`}>Select Your Group</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 gap-3">
+                {/* Year 3 groups on left */}
+                {getFilteredGroups().filter(group => teacherAssignments[group].field === 'Year 3').map((group) => (
+                  <button
+                    key={group}
+                    onClick={() => setSelectedGroup(group)}
+                    className={`p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 ${getGroupButtonColor(group, selectedGroup === group)}`}
+                  >
+                    {group}
+                  </button>
+                ))}
+                {/* Year 4 groups on right */}
+                {getFilteredGroups().filter(group => teacherAssignments[group].field === 'Year 4').map((group) => (
+                  <button
+                    key={group}
+                    onClick={() => setSelectedGroup(group)}
+                    className={`p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 ${getGroupButtonColor(group, selectedGroup === group)}`}
+                  >
+                    {group}
+                  </button>
+                ))}
+                {/* Stage 3 groups (if selected) */}
+                {selectedStage === 'Stage 3' && getFilteredGroups().filter(group => !teacherAssignments[group].field.startsWith('Year')).map((group) => (
+                  <button
+                    key={group}
+                    onClick={() => setSelectedGroup(group)}
+                    className={`p-4 rounded-xl border-2 text-center font-medium transition-all duration-200 ${getGroupButtonColor(group, selectedGroup === group)}`}
+                  >
+                    {group}
+                  </button>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Combined Station & Activity Information */}
+        {teacherInfo && (
+          <>
+            <Card className={`${themeClasses.card} mb-4 shadow-lg border transition-colors duration-300`}>
+              <CardHeader className="pb-3">
+                <CardTitle className={`flex items-center gap-2 text-lg ${themeClasses.text.primary}`}>
+                  <Target className="w-5 h-5" />
+                  You are teaching: {teacherInfo.activityData?.game}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {/* Field and Duration - Side by Side */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className={`flex items-center gap-2 p-3 rounded-lg border ${themeClasses.accent.blue}`}>
+                    <MapPin className={`w-4 h-4 ${themeClasses.text.accent} flex-shrink-0`} />
+                    <div className="min-w-0">
+                      <p className={`font-medium text-sm ${themeClasses.text.primary}`}>{teacherInfo.field}</p>
+                      <p className={`text-xs ${themeClasses.text.secondary}`}>{teacherInfo.station}</p>
+                    </div>
+                  </div>
+                  
+                  <div className={`flex items-center gap-2 p-3 rounded-lg border ${themeClasses.accent.green}`}>
+                    <Clock className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <div className="min-w-0">
+                      <p className={`font-medium text-sm ${themeClasses.text.primary}`}>~20 minutes</p>
+                      <p className={`text-xs ${themeClasses.text.secondary}`}>Groups rotate to you</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Activity Details - Full Width */}
+                <div className={`p-4 rounded-lg border ${themeClasses.accent.gray}`}>
+                  <h3 className={`font-semibold text-lg mb-2 ${themeClasses.text.primary}`}>
+                    {teacherInfo.activityData?.game}
+                  </h3>
+                  
+                  {/* Description with bullet points */}
+                  {teacherInfo.activityData?.description && (
+                    <div className={`${themeClasses.text.secondary} mb-3`}>
+                      {Array.isArray(teacherInfo.activityData.description) ? (
+                        <ul className="list-disc list-inside space-y-1">
+                          {teacherInfo.activityData.description.map((item, index) => (
+                            <li key={index}>{item}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p>{teacherInfo.activityData.description}</p>
+                      )}
+                    </div>
+                  )}
+                  
+                  <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-white'} border-l-4 border-blue-500 space-y-1`}>
+                    <p className={`text-sm ${themeClasses.text.secondary}`}>
+                      <strong className={themeClasses.text.primary}>Activity Type:</strong> {teacherInfo.activityData?.activity}
+                    </p>
+                    {teacherInfo.activityData?.equipment && (
+                      <p className={`text-sm ${themeClasses.text.secondary}`}>
+                        <strong className={themeClasses.text.primary}>Equipment:</strong> {teacherInfo.activityData.equipment}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Field Layout */}
+            <Card className={`${themeClasses.card} shadow-lg border transition-colors duration-300`}>
+              <CardHeader className="pb-3">
+                <CardTitle className={`text-lg ${themeClasses.text.primary}`}>
+                  {selectedStage === 'Stage 3' 
+                    ? 'Stage 3 Fields' 
+                    : `${selectedStage} Fields - Your station is highlighted`
+                  }
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <StageFieldsLayout 
+                  stage={selectedStage}
+                  highlightField={teacherInfo.field} 
+                  highlightStation={teacherInfo.station}
+                  teacherColor={teacherInfo.color}
+                />
+                <p className={`text-center mt-4 text-xs ${themeClasses.text.secondary}`}>
+                  {selectedStage === 'Stage 3' 
+                    ? 'Teachers move with groups: Skill 1 → Skill 2 → Game'
+                    : 'Groups rotate every ~20 minutes'
+                  }
+                </p>
+              </CardContent>
+            </Card>
+          </>
+        )}
+
+        {/* Welcome Message */}
+        {!selectedStage && (
+          <Card className={`${themeClasses.card} shadow-lg border transition-colors duration-300`}>
+            <CardContent className="text-center py-12">
+              <Users className={`w-16 h-16 ${darkMode ? 'text-gray-600' : 'text-gray-400'} mx-auto mb-4`} />
+              <h3 className={`text-xl font-semibold ${themeClasses.text.primary} mb-3`}>
+                Welcome Teachers!
+              </h3>
+              <p className={`${themeClasses.text.secondary} mb-4`}>
+                Start by selecting a week, then your stage and group to see your assigned station and activity.
+              </p>
+              <div className={`p-4 rounded-lg border ${themeClasses.accent.blue} text-sm`}>
+                <p className={themeClasses.text.primary}>
+                  <strong>Remember:</strong> You stay at your assigned station while student groups rotate to you every ~20 minutes.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default SportRotationApp;
+            
