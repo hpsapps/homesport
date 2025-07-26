@@ -4,26 +4,29 @@
     <meta charset="UTF-8" />
     <title>Sport Rotation Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Optional: Heroicons for icons -->
-    <script src="https://unpkg.com/@heroicons/vue@2.0.13/20/solid/index.js"></script>
   </head>
   <body class="bg-gray-100 text-gray-900 p-4">
     <div class="max-w-5xl mx-auto">
       <h1 class="text-3xl font-bold mb-6">🏃‍♂️ Sport Rotation Tracker</h1>
 
-      <!-- Stage 2 Section -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4 text-blue-600">Stage 2</h2>
-        <div id="stage2-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-      </section>
+      <!-- Stage toggle -->
+      <div class="flex gap-4 mb-4">
+        <button id="btn-stage2" class="px-4 py-2 rounded-xl bg-blue-500 text-white hover:bg-blue-600">
+          Stage 2
+        </button>
+        <button id="btn-stage3" class="px-4 py-2 rounded-xl bg-green-500 text-white hover:bg-green-600">
+          Stage 3
+        </button>
 
-      <!-- Stage 3 Section -->
-      <section>
-        <h2 class="text-2xl font-semibold mb-4 text-green-600">Stage 3</h2>
-        <div id="stage3-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-      </section>
+        <!-- Week selector -->
+        <select id="week-select" class="ml-auto px-3 py-2 rounded-xl border border-gray-300">
+          <option value="All">All Weeks</option>
+        </select>
+      </div>
+
+      <!-- Activities Grid -->
+      <div id="activities-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </div>
 
     <script src="main.js"></script>
