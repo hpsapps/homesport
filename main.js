@@ -10,15 +10,22 @@ async function loadData() {
 
 function renderStage(data, containerId) {
   const container = document.getElementById(containerId);
+  container.innerHTML = ''; // clear before render
+
   data.forEach(activity => {
     const card = document.createElement('div');
-    card.className = 'card';
+    card.className =
+      'bg-white rounded-2xl shadow-md p-4 border border-gray-200 hover:shadow-lg transition';
+
     card.innerHTML = `
-      <strong>${activity.ActivityName}</strong>
-      <p><em>Week ${activity.Week}</em></p>
-      <p>${activity.Description.join('<br>')}</p>
-      <p><strong>Equipment:</strong> ${activity.Equipment}</p>
+      <h3 class="text-xl font-semibold mb-2">${activity.ActivityName}</h3>
+      <p class="text-sm text-gray-500 mb-1">Week ${activity.Week}</p>
+      <ul class="text-sm mb-2 list-disc pl-5">
+        ${activity.Description.map(line => `<li>${line}</li>`).join('')}
+      </ul>
+      <p class="text-sm text-gray-700"><span class="font-medium">Equipment:</span> ${activity.Equipment}</p>
     `;
+
     container.appendChild(card);
   });
 }
