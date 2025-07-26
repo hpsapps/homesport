@@ -21,6 +21,12 @@
             darkMode: 'class',
         }
     </script>
+    <script>
+        // Set initial dark mode to prevent FOUC
+        if (localStorage.getItem('darkMode') === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
 </head>
 <body class="transition-colors duration-300">
 
@@ -30,7 +36,7 @@
             <header class="flex justify-between items-start mb-6">
                 <div class="flex-1 pr-4">
                     <h1 id="main-title" class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight">
-                        Sport Rotation Tracker
+                        Home Sport Rotations
                     </h1>
                 </div>
                 
@@ -43,9 +49,9 @@
             </header>
 
             <!-- Week Selection Card -->
-            <div id="week-card" class="bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300">
+            <div id="week-card" class="bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300">
                 <div class="p-4 pb-3">
-                    <h2 class="text-lg font-semibold text-gray-900">What Week Do You Want?</h2>
+                    <h2 class="text-lg font-semibold text-gray-900">Pick a week</h2>
                 </div>
                 <div class="p-4 pt-0">
                     <select id="week-selector" class="w-full p-3 rounded-xl border-2 font-medium transition-all duration-200 bg-white text-gray-700 border-gray-200 focus:border-blue-300">
@@ -57,10 +63,10 @@
             <!-- Stage Selection Card -->
             <div id="stage-card" class="bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300">
                 <div class="p-4 pb-3">
-                    <h2 class="text-lg font-semibold text-gray-900">What Stage Are You On?</h2>
+                    <h2 class="text-lg font-semibold text-gray-900">Choose your stage</h2>
                 </div>
                 <div id="stage-selector" class="p-4 pt-0 grid grid-cols-2 gap-3">
-                    <button data-stage="Stage 2" class="stage-btn p-4 rounded-xl border-2 font-medium transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:bg-blue-50 shadow-sm">Stage 2</button>
+                    <button data-stage="Stage 2" class="stage-btn p-4 rounded-xl border-2 font-medium transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:border-red-300 hover:bg-red-50 shadow-sm">Stage 2</button>
                     <button data-stage="Stage 3" class="stage-btn p-4 rounded-xl border-2 font-medium transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:bg-blue-50 shadow-sm">Stage 3</button>
                 </div>
             </div>
@@ -104,7 +110,11 @@
                 selectedWeek: null, // Will be determined dynamically
                 selectedStage: '',
                 selectedGroup: '',
-                darkMode: false,
+                darkMode: (() => {
+                    const savedMode = localStorage.getItem('darkMode');
+                    if (savedMode !== null) return savedMode === 'true';
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+                })(),
                 stage3ShowGame: false,
             };
 
@@ -222,7 +232,7 @@
                 }
                 dom.weekSelector.value = state.selectedWeek;
                 
-                dom.weekCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
+                dom.weekCard.className = state.darkMode ? 'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300';
                 dom.weekCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
                 dom.weekSelector.className = `w-full p-3 rounded-xl border-2 font-medium transition-all duration-200 ${
                     state.darkMode
@@ -232,7 +242,7 @@
             };
             
             const renderStageSelector = () => {
-                dom.stageCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
+                dom.stageCard.className = state.darkMode ? 'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300';
                 dom.stageCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
 
                 const buttons = dom.stageSelector.querySelectorAll('.stage-btn');
@@ -241,10 +251,10 @@
                     const isSelected = state.selectedStage === stage;
                     button.className = `stage-btn p-4 rounded-xl border-2 font-medium transition-all duration-200 ${
                         isSelected
-                            ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white border-blue-500 shadow-lg'
+                            ? 'bg-[#78013D] text-white border-[#78013D] shadow-lg'
                             : state.darkMode
-                                ? 'bg-gray-700 text-gray-200 border-gray-600 hover:border-blue-400 hover:bg-gray-600'
-                                : 'bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:bg-blue-50 shadow-sm'
+                                ? 'bg-gray-700 text-gray-200 border-gray-600 hover:border-[#8a1a50] hover:bg-[#78013D]/20'
+                                : 'bg-white text-gray-700 border-gray-200 hover:border-[#8a1a50] hover:bg-[#78013D]/10 shadow-sm'
                     }`;
                 });
             };
@@ -256,7 +266,7 @@
                 }
 
                 dom.groupCard.classList.remove('hidden');
-                dom.groupCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
+                dom.groupCard.className = state.darkMode ? 'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300';
                 dom.groupCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
                 
                 dom.groupSelector.innerHTML = ''; // Clear previous content
@@ -381,7 +391,7 @@
                 
                 dom.infoContainer.classList.remove('hidden');
 
-                dom.teacherInfoCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
+                dom.teacherInfoCard.className = state.darkMode ? 'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300';
                 const descriptionHtml = Array.isArray(activityData.description) 
                     ? `<ul>${activityData.description.map(d => `<li class="ml-4 list-disc">${d}</li>`).join('')}</ul>`
                     : `<p>${activityData.description}</p>`;
@@ -398,14 +408,16 @@
                 const textAccent = state.darkMode ? 'text-blue-400' : 'text-blue-600';
 
                 const gameButtonHtml = state.selectedStage === 'Stage 3' ? `
-                    <div class="sm:col-span-2 md:col-span-1 flex items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 
-                    ${state.darkMode 
-                    ? 'bg-gray-700 text-gray-200 border-gray-500 hover:bg-gray-600' 
-                    : 'bg-gray-100 text-gray-700 border-gray-400 hover:bg-gray-200'}">
-                            <button id="stage3-game-toggle" class="w-full text-sm font-bold text-center">
-                                ${state.stage3ShowGame ? 'SHOW SKILL' : 'SHOW GAME'}
-                            </button>
-                    </div>
+                    <div class="sm:col-span-2 md:col-span-1 flex items-center justify-center p-3 rounded-lg border-2 transition-all duration-200
+    ${state.darkMode 
+    ? 'bg-[#4e0029] text-gray-100 border-[#5e0030] hover:bg-[#5e0030]' 
+    : 'bg-[#78013D] text-white border-[#78013D] hover:bg-[#8a1a50]'}">
+    
+    <button id="stage3-game-toggle" class="w-full text-sm font-bold text-center">
+        ${state.stage3ShowGame ? 'SHOW SKILL' : 'SHOW GAME'}
+    </button>
+</div>
+
                 ` : '';
 
                 dom.teacherInfoCard.innerHTML = `
@@ -425,10 +437,20 @@
                             </div>
                             <div class="flex items-center gap-3 p-3 rounded-lg border ${accentGreen}">
                                 ${icons.clock}
-                                <div class="min-w-0">
-                                    <p class="font-medium text-sm ${textPrimary}">~20 minutes</p>
-                                    <p class="text-xs ${textSecondary}">Groups rotate to you</p>
-                                </div>
+                                ${ state.selectedStage === 'Stage 3'
+                                    ? `
+                                    <div class="min-w-0">
+                                        <p class="font-medium text-sm ${textPrimary}">Session Plan</p>
+                                        <p class="text-xs ${textSecondary}">Teach two skills, then the game.</p>
+                                    </div>
+                                    `
+                                    : `
+                                    <div class="min-w-0">
+                                        <p class="font-medium text-sm ${textPrimary}">~15 minutes</p>
+                                        <p class="text-xs ${textSecondary}">Groups rotate to you</p>
+                                    </div>
+                                    `
+                                }
                             </div>
                         </div>
                         ${gameButtonHtml ? `<div class="pt-2">${gameButtonHtml}</div>` : ''}
@@ -449,7 +471,7 @@
                 const teacherInfo = getTeacherInfo(state.selectedGroup);
                 if (!teacherInfo) return;
 
-                dom.fieldLayoutCard.className = state.darkMode ? 'bg-gray-800 border-gray-700 mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300';
+                dom.fieldLayoutCard.className = state.darkMode ? 'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300';
                 dom.fieldLayoutCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
 
                 const fieldsToShow = state.selectedStage === 'Stage 2' ? ['Year 4', 'Year 3'] : ['Year 6', 'Year 5'];
@@ -561,6 +583,7 @@
             // --- EVENT LISTENERS ---
             dom.darkModeToggle.addEventListener('click', () => {
                 state.darkMode = !state.darkMode;
+                localStorage.setItem('darkMode', state.darkMode);
                 render();
             });
 
