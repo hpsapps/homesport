@@ -1,0 +1,29 @@
+{
+  "layout": [
+    "+---------+---------+--------------+",
+    "| Skill 1 | Skill 2 |   Game Area  |",
+    "+---------+---------+--------------+"
+  ].join("\n"),
+  "activities": [
+    {
+      "Week": 1,
+      "Stage": 3,
+      "ActivityName": "Target Throw",
+      "Description": [
+        "Students aim bean bags at target zones.",
+        "Different zones = different points."
+      ],
+      "Equipment": "Bean bags, targets"
+    },
+    {
+      "Week": 2,
+      "Stage": 3,
+      "ActivityName": "Mini Footy Game",
+      "Description": [
+        "5v5 modified footy match.",
+        "Rotate teams every 5 minutes."
+      ],
+      "Equipment": "Footy balls, cones"
+    }
+  ]
+}
