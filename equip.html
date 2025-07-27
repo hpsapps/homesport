@@ -263,10 +263,9 @@
                         layoutHtml += `
                             <div class="p-4 rounded-lg border transition-all ${stationColorClass}">
                                 <div class="flex justify-between items-center mb-2 flex-wrap">
-                                    <div class="font-semibold text-sm">${station}</div>
+                                    <div class="font-semibold text-sm">${activity.name || 'No activity'}</div>
                                     <div class="flex space-x-2">${checkboxesHtml}</div>
                                 </div>
-                                <div class="text-xs opacity-90 mb-2">${activity.name || 'No activity'}</div>
                                 <div class="text-xs font-medium">Equipment:</div>
                                 <div class="text-xs opacity-80">${activity.equipment || 'None specified'}</div>
                             </div>

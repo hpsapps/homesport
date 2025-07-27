@@ -591,6 +591,7 @@
 
             dom.weekSelector.addEventListener('change', (e) => {
                 state.selectedWeek = Number(e.target.value);
+                localStorage.setItem('selectedWeek', state.selectedWeek);
                 state.selectedGroup = ''; 
                 render();
             });
@@ -624,8 +625,9 @@
             // --- INITIALIZATION ---
             const initialize = async () => {
                 try {
-                    // Set the initial week based on the current date
-                    state.selectedWeek = getWeekByDate();
+                    // Set the initial week based on localStorage or the current date
+                    const savedWeek = localStorage.getItem('selectedWeek');
+                    state.selectedWeek = savedWeek ? Number(savedWeek) : getWeekByDate();
 
                     const [stage2Res, stage3Res] = await Promise.all([
                         fetch('stage2.json'),
