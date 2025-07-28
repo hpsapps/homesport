@@ -388,8 +388,8 @@
                     state.selectedWeek = getWeekByDate();
 
                     const [stage2Res, stage3Res] = await Promise.all([
-                        fetch('stage2.json'),
-                        fetch('stage3.json')
+                        fetch('data/stage2.json'),
+                        fetch('data/stage3.json')
                     ]);
 
                     if (!stage2Res.ok || !stage3Res.ok) {

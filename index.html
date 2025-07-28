@@ -602,6 +602,10 @@
                     state.selectedStage = button.dataset.stage;
                     state.selectedGroup = '';
                     render();
+                    // Scroll to the group card after a short delay to ensure it's rendered
+                    setTimeout(() => {
+                        dom.groupCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
                 }
             });
 
@@ -611,6 +615,10 @@
                     state.selectedGroup = button.dataset.group;
                     state.stage3ShowGame = false; // Reset game view on group change
                     render();
+                    // Scroll to the teacher info card after a short delay to ensure it's rendered
+                    setTimeout(() => {
+                        dom.teacherInfoCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
                 }
             });
 
@@ -630,8 +638,8 @@
                     state.selectedWeek = savedWeek ? Number(savedWeek) : getWeekByDate();
 
                     const [stage2Res, stage3Res] = await Promise.all([
-                        fetch('stage2.json'),
-                        fetch('stage3.json')
+                        fetch('data/stage2.json'),
+                        fetch('data/stage3.json')
                     ]);
                     if (!stage2Res.ok || !stage3Res.ok) {
                         throw new Error('Failed to fetch data');
