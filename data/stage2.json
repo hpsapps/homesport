@@ -200,18 +200,6 @@
       "Week": 7,
       "Stage": 2,
       "Section": "Skill 2",
-      "Type": ["Passing"],
-      "Activity Name": "Pass and Move",
-      "Description": [
-        "In pairs: pass short distances.",
-        "After passing, sprint to a new position."
-      ],
-      "Equipment": "Balls (soccer or tennis), cones"
-    },
-    {
-      "Week": 8,
-      "Stage": 2,
-      "Section": "Skill 2",
       "Type": ["Striking"],
       "Activity Name": "Bean Bag Baseball",
       "Description": [
@@ -223,7 +211,31 @@
       "Equipment": "Bean bags, bats (if striking), cones"
     },
     {
+      "Week": 8,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Type": ["Passing"],
+      "Activity Name": "Pass and Move",
+      "Description": [
+        "In pairs: pass short distances.",
+        "After passing, sprint to a new position."
+      ],
+      "Equipment": "Balls (soccer or tennis), cones"
+    },
+    {
       "Week": 9,
+      "Stage": 2,
+      "Section": "Skill 2",
+      "Type": ["Dribbling", "Shooting"],
+      "Activity Name": "Cone Goal Knockout",
+      "Description": [
+        "Dribble and shoot to knock over cone \"goals\".",
+        "First team to knock over all wins."
+      ],
+      "Equipment": "Soccer balls, cones"
+    },
+    {
+      "Week": 10,
       "Stage": 2,
       "Section": "Skill 2",
       "Type": ["Rolling"],
@@ -236,31 +248,7 @@
       "Equipment": "Balls"
     },
     {
-      "Week": 10,
-      "Stage": 2,
-      "Section": "Skill 2",
-      "Type": ["Dribbling", "Shooting"],
-      "Activity Name": "Cone Goal Knockout",
-      "Description": [
-        "Dribble and shoot to knock over cone \"goals\".",
-        "First team to knock over all wins."
-      ],
-      "Equipment": "Soccer balls, cones"
-    },
-    {
       "Week": 1,
-      "Stage": 2,
-      "Section": "Game",
-      "Type": ["Game"],
-      "Activity Name": "Capture the Flag",
-      "Description": [
-        "Two teams protect their flag.",
-        "Try to steal the opponent's flag and return to base without being tagged."
-      ],
-      "Equipment": "Cones, flags or tags"
-    },
-    {
-      "Week": 2,
       "Stage": 2,
       "Section": "Game",
       "Type": ["Game"],
@@ -272,6 +260,18 @@
         "No headshots."
       ],
       "Equipment": "Dodgeballs"
+    },
+    {
+      "Week": 2,
+      "Stage": 2,
+      "Section": "Game",
+      "Type": ["Game"],
+      "Activity Name": "Capture the Flag",
+      "Description": [
+        "Two teams protect their flag.",
+        "Try to steal the opponent's flag and return to base without being tagged."
+      ],
+      "Equipment": "Cones, flags or tags"
     },
     {
       "Week": 3,
@@ -308,7 +308,7 @@
         "Fewest balls on your side after 3 minutes wins.",
         "Overthrows don't count, must be on the field."
       ],
-      "Equipment": "Dodgeballs"
+      "Equipment": "Footballs"
     },
     {
       "Week": 6,
@@ -329,12 +329,13 @@
       "Type": ["Game"],
       "Activity Name": "Sinking Islands",
       "Description": [
-        "\"Sharks\" tip \"sailors.\" Tipped players become sharks.",
+        "\"Sharks\" (with hands up as fin on head) tip \"sailors.\"",
+        "Tipped players become sharks.",
         "Sailors safe in hoops but can't stay longer than 5 sec.",
         "Teacher removes hoop after 5 sec.",
         "Final sailors get to \"level up\" and tag sharks."
       ],
-      "Equipment": "Hoops, cones (for boundaries), pinnies or belts (optional)"
+      "Equipment": "Hoops, cones, pinnies or belts (optional)"
     },
     {
       "Week": 8,
@@ -344,12 +345,12 @@
       "Activity Name": "Bucket Freeze",
       "Description": [
         "Team A: stands behind throw line, tries to throw ball into bucket",
-        "Team B: sends one runner at a time around a cone circuit",
+        "Team B: sends one runner at a time around a circuit",
         "If Team A gets a ball in the bucket, the runner freezes",
-        "Next runner starts and can free any frozen runners by tagging them",
+        "Next runner starts and can free any frozen runner (1) by tagging them",
         "Team with most players who finish a lap wins"
       ],
-      "Equipment": "Cones, optional balls"
+      "Equipment": "Cones, balls, bucket"
     },
     {
       "Week": 9,

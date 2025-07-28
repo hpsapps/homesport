@@ -4,24 +4,25 @@
       "Stage": 3,
       "Section": "Skill 1",
       "Type": ["Throwing"],
-      "Activity Name": "Vortex Launch",
-      "Description": [
-        "Take turns launching vortexes as far as possible.",
-        "Use cones to mark distances."
-      ],
-      "Equipment": "Vortexes, cones"
-    },
-    {
-      "Week": 2,
-      "Stage": 3,
-      "Section": "Skill 1",
-      "Type": ["Throwing"],
       "Activity Name": "Hoop Toss Challenge",
       "Description": [
         "Throw bean bags into 3 hoops at increasing distances.",
         "Further hoop is more points."
       ],
       "Equipment": "Bean bags, hoops"
+
+    },
+    {
+      "Week": 2,
+      "Stage": 3,
+      "Section": "Skill 1",
+      "Type": ["Throwing"],
+      "Activity Name": "Vortex Launch",
+      "Description": [
+        "Take turns launching vortexes as far as possible.",
+        "Use cones to mark distances."
+      ],
+      "Equipment": "Vortexes, cones"
     },
     {
       "Week": 3,
@@ -130,12 +131,13 @@
       "Stage": 3,
       "Section": "Skill 2",
       "Type": ["Striking"],
-      "Activity Name": "Target Strike Cricket",
+      "Type": ["Dribbling", "Shooting"],
+      "Activity Name": "Hockey Cone Slalom",
       "Description": [
-        "Hit a stationary ball off a tee through two cones or marker posts.",
-        "Through is 3 points, successful hit but miss is 1"
+        "Dribble with a foam bat around cones.",
+        "Finish by shooting into a goal."
       ],
-      "Equipment": "Cricket bats, tees, tennis balls, cones"
+      "Equipment": "Foam bats, balls, cones, mini goals"
     },
     {
       "Week": 2,
@@ -214,13 +216,12 @@
       "Week": 8,
       "Stage": 3,
       "Section": "Skill 2",
-      "Type": ["Dribbling", "Shooting"],
-      "Activity Name": "Hockey Cone Slalom",
+      "Activity Name": "Target Strike Cricket",
       "Description": [
-        "Dribble with a foam bat around cones.",
-        "Finish by shooting into a goal."
+        "Hit a stationary ball off a tee through two cones or marker posts.",
+        "Through is 3 points, successful hit but miss is 1"
       ],
-      "Equipment": "Foam bats, balls, cones, mini goals"
+      "Equipment": "Cricket bats, tees, tennis balls, cones"
     },
     {
       "Week": 9,
@@ -320,7 +321,7 @@
         "Fewest balls on your side after 3 minutes wins.",
         "Overthrows don't count, must be on the field."
       ],
-      "Equipment": "Dodgeballs"
+      "Equipment": "Footballs"
     },
     {
       "Week": 7,
@@ -330,12 +331,12 @@
       "Activity Name": "Bucket Freeze",
       "Description": [
         "Team A: stands behind throw line, tries to throw ball into bucket",
-        "Team B: sends one runner at a time around a cone circuit",
+        "Team B: sends one runner at a time around a circuit",
         "If Team A gets a ball in the bucket, the runner freezes",
-        "Next runner starts and can free any frozen runners by tagging them",
+        "Next runner starts and can free any frozen runner (1) by tagging them",
         "Team with most players who finish a lap wins"
       ],
-      "Equipment": "Cones, optional balls"
+      "Equipment": "Cones, balls, bucket"
     },
     {
       "Week": 8,
@@ -344,12 +345,13 @@
       "Type": ["Game"],
       "Activity Name": "Sinking Islands",
       "Description": [
-        "\"Sharks\" tip \"sailors.\" Tipped players become sharks.",
+        "\"Sharks\" (with hands up as fin on head) tip \"sailors.\"",
+        "Tipped players become sharks.",
         "Sailors safe in hoops but can't stay longer than 5 sec.",
         "Teacher removes hoop after 5 sec.",
         "Final sailors get to \"level up\" and tag sharks."
       ],
-      "Equipment": "Hoops, cones (for boundaries), pinnies or belts (optional)"
+      "Equipment": "Hoops, cones, pinnies or belts (optional)"
     },
     {
       "Week": 9,
