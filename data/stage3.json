@@ -130,8 +130,7 @@
       "Week": 1,
       "Stage": 3,
       "Section": "Skill 2",
-      "Type": ["Striking"],
-      "Type": ["Dribbling", "Shooting"],
+      "Type": ["Dribbling", "Striking"],
       "Activity Name": "Hockey Cone Slalom",
       "Description": [
         "Dribble with a foam bat around cones.",
