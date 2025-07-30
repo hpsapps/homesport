@@ -195,6 +195,7 @@ const renderActivityContent = () => {
     if (weekData.Skills && Array.isArray(weekData.Skills)) {
         contentHtml += `
             <div class="border-b pb-3 ${state.darkMode ? 'border-gray-600' : 'border-gray-200'}">
+                <h3 class="text-xl font-bold ${state.darkMode ? 'text-white' : 'text-gray-900'}">Week ${weekData.Week} - Stage ${weekData.Stage}</h3>
                 <p class="${state.darkMode ? 'text-gray-400' : 'text-gray-600'} mb-4"><strong>Outcome:</strong> ${weekData.OutcomeCode}</p>
             </div>
         `;
@@ -202,7 +203,7 @@ const renderActivityContent = () => {
         weekData.Skills.forEach((skill, i) => {
             contentHtml += `
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold mb-2 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">${skill.Skill}</h3>
+                    <h4 class="text-lg font-semibold mb-2 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">${skill.Skill}</h4>
                     <p class="mb-3 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}">${skill.Description}</p>
 
                     <p class="mb-2 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}"><strong>Set Up:</strong>
