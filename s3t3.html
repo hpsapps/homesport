@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Program</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script>
+        // Configuration for Tailwind CSS dark mode
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <script>
+        // Set initial dark mode to prevent FOUC
+        const savedDarkMode = JSON.parse(localStorage.getItem('darkMode') || 'null');
+        if (savedDarkMode === true || (savedDarkMode === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+
+<body class="transition-colors duration-300">
+
+    <div id="app-container" class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div id="header-placeholder" data-show-home-icon="true"></div>
+
+            <!-- Stage Selection Card -->
+            <div id="stage-selector-card"
+                class="bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300">
+                <div class="p-4 pb-3">
+                    <h2 class="text-lg font-semibold text-gray-900">Select Stage</h2>
+                </div>
+                <div id="stage-selector-container" class="p-4 pt-0 grid grid-cols-3 gap-3">
+                    <button id="stage-1-btn" data-stage="Stage 1" class="stage-btn p-4 rounded-xl border-2 font-medium transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:border-red-300 hover:bg-red-50 shadow-sm">
+                        Stage 1
+                    </button>
+                    <button id="stage-2-btn" data-stage="Stage 2" class="stage-btn p-4 rounded-xl border-2 font-medium transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:bg-blue-50 shadow-sm">
+                        Stage 2
+                    </button>
+                    <button id="stage-3-btn" data-stage="Stage 3" class="stage-btn p-4 rounded-xl border-2 font-medium transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:border-green-300 hover:bg-green-50 shadow-sm">
+                        Stage 3
+                    </button>
+                </div>
+            </div>
+
+            <!-- Week Selection Card -->
+            <div id="week-selector-placeholder"></div>
+
+            <!-- Activity Content Card -->
+            <div id="activity-content-card"
+                class="bg-white border-gray-200 mb-4 shadow-lg border rounded-lg transition-colors duration-300">
+                <div class="p-4 pb-3">
+                    <h2 class="text-lg font-semibold text-gray-900">Activity Details</h2>
+                </div>
+                <div id="activity-content-container" class="p-4 pt-0">
+                    <div class="text-center text-gray-500 py-8">
+                        <p>Select a stage and week to view activity details</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Wait for the DOM to be fully loaded before running the script
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- STATE MANAGEMENT ---
+            window.state = {
+                selectedStage: null,
+                selectedWeek: null,
+                darkMode: (() => {
+                    const savedMode = JSON.parse(localStorage.getItem('darkMode') || 'null');
+                    if (savedMode !== null) return savedMode;
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+                })(),
+                availableWeeks: []
+            };
+
+            // --- DATA ---
+            let stageData = {};
+
+            // --- DOM ELEMENT REFERENCES ---
+            const dom = {
+                html: document.documentElement,
+                appContainer: document.getElementById('app-container'),
+                stageSelectorCard: document.getElementById('stage-selector-card'),
+                stageSelectorContainer: document.getElementById('stage-selector-container'),
+                activityContentCard: document.getElementById('activity-content-card'),
+                activityContentContainer: document.getElementById('activity-content-container'),
+                stage1Btn: document.getElementById('stage-1-btn'),
+                stage2Btn: document.getElementById('stage-2-btn'),
+                stage3Btn: document.getElementById('stage-3-btn'),
+            };
+
+            // --- RENDER FUNCTIONS ---
+            window.render = () => {
+                // Update theme first
+                dom.html.classList.toggle('dark', state.darkMode);
+                dom.appContainer.className = state.darkMode ? 'min-h-screen bg-gray-900 p-4' : 'min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4';
+
+                // Update localStorage
+                localStorage.setItem('darkMode', JSON.stringify(state.darkMode));
+
+                // Render all components
+                renderStageSelector();
+                renderActivityContent();
+
+                // Also render the header, if it exists
+                updateHeaderTheme();
+            };
+
+            const updateHeaderTheme = () => {
+                const mainTitle = document.getElementById('main-title');
+                const darkModeToggle = document.getElementById('dark-mode-toggle');
+                const moonIcon = document.getElementById('moon-icon');
+                const sunIcon = document.getElementById('sun-icon');
+
+                if (mainTitle && darkModeToggle && moonIcon && sunIcon) {
+                    mainTitle.className = state.darkMode ? 'text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight' : 'text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight';
+                    moonIcon.classList.toggle('hidden', state.darkMode);
+                    sunIcon.classList.toggle('hidden', !state.darkMode);
+                    darkModeToggle.className = `p-3 rounded-xl transition-all duration-300 flex-shrink-0 border ${state.darkMode
+                        ? 'bg-gray-700 hover:bg-gray-600 text-yellow-400 border-gray-600'
+                        : 'bg-white hover:bg-gray-50 text-gray-700 shadow-sm border-gray-200'
+                        }`;
+                }
+            };
+
+            const renderStageSelector = () => {
+                dom.stageSelectorCard.className = state.darkMode ? 'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300';
+                dom.stageSelectorCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
+
+                const buttons = dom.stageSelectorContainer.querySelectorAll('.stage-btn');
+                buttons.forEach(button => {
+                    const stageNum = parseInt(button.dataset.stage.replace('Stage ', ''));
+                    const isSelected = state.selectedStage === stageNum;
+                    button.className = `stage-btn p-4 rounded-xl border-2 font-medium transition-all duration-200 ${
+                        isSelected
+                            ? 'bg-[#78013D] text-white border-[#78013D] shadow-lg'
+                            : state.darkMode
+                                ? 'bg-gray-700 text-gray-200 border-gray-600 hover:border-[#8a1a50] hover:bg-[#78013D]/20'
+                                : 'bg-white text-gray-700 border-gray-200 hover:border-[#8a1a50] hover:bg-[#78013D]/10 shadow-sm'
+                    }`;
+                });
+            };
+
+            const renderActivityContent = () => {
+                // Update card theme
+                dom.activityContentCard.className = state.darkMode ? 'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300';
+                dom.activityContentCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
+
+                if (!state.selectedStage || !state.selectedWeek || !stageData[state.selectedStage]) {
+                    dom.activityContentContainer.innerHTML = `
+            <div class="text-center py-8 ${state.darkMode ? 'text-gray-400' : 'text-gray-500'}">
+                <p>Select a stage and week to view activity details</p>
+            </div>
+        `;
+                    return;
+                }
+
+                const weekData = stageData[state.selectedStage].find(item => item.Week === state.selectedWeek);
+
+                if (!weekData) {
+                    dom.activityContentContainer.innerHTML = `
+            <div class="text-center py-8 ${state.darkMode ? 'text-gray-400' : 'text-gray-500'}">
+                <p>No data found for Week ${state.selectedWeek}</p>
+            </div>
+        `;
+                    return;
+                }
+
+                let contentHtml = `
+        <div class="space-y-6">
+            <!-- Skill Header -->
+            <div class="border-b pb-3 ${state.darkMode ? 'border-gray-600' : 'border-gray-200'}">
+                <h3 class="text-xl font-bold ${state.darkMode ? 'text-white' : 'text-gray-900'}">${weekData.Skill}</h3>
+                <p class="text-sm ${state.darkMode ? 'text-gray-400' : 'text-gray-600'}">Week ${weekData.Week} - Stage ${weekData.Stage}</p>
+            </div>
+
+            <!-- Practice Activities -->
+            <div>
+                <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">Practice Activities</h4>
+                <div class="space-y-4">
+    `;
+
+                // Handle Practice array properly
+                if (weekData.Practice && Array.isArray(weekData.Practice)) {
+                    weekData.Practice.forEach((activity, index) => {
+                        contentHtml += `
+                <div class="p-4 rounded-lg ${state.darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}">
+                    <h5 class="font-medium mb-2 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">${activity['Activity Name']}</h5>
+                    <p class="text-sm ${state.darkMode ? 'text-gray-300' : 'text-gray-600'}">${activity.Description}</p>
+                </div>
+            `;
+                    });
+                } else {
+                    contentHtml += `
+            <div class="p-4 rounded-lg ${state.darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}">
+                <p class="text-sm ${state.darkMode ? 'text-gray-300' : 'text-gray-600'}">No practice activities found</p>
+            </div>
+        `;
+                }
+
+                contentHtml += `
+                </div>
+            </div>
+
+            <!-- Game -->
+            <div>
+                <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">Game</h4>
+                <div class="p-4 rounded-lg ${state.darkMode ? 'bg-blue-900/20 border-blue-800' : 'bg-blue-50 border-blue-200'} border">
+                    <h5 class="font-medium mb-3 ${state.darkMode ? 'text-blue-200' : 'text-blue-800'}">${weekData.Game['Activity Name']}</h5>
+                    <div class="space-y-2">
+    `;
+
+                // Handle Game description properly (can be array or string)
+                if (Array.isArray(weekData.Game.Description)) {
+                    weekData.Game.Description.forEach(desc => {
+                        contentHtml += `<p class="text-sm ${state.darkMode ? 'text-blue-100' : 'text-blue-700'}">${desc}</p>`;
+                    });
+                } else {
+                    contentHtml += `<p class="text-sm ${state.darkMode ? 'text-blue-100' : 'text-blue-700'}">${weekData.Game.Description}</p>`;
+                }
+
+                contentHtml += `
+                    </div>
+                </div>
+            </div>
+
+            <!-- Equipment -->
+            <div>
+                <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">Equipment Required</h4>
+                <div class="p-4 rounded-lg ${state.darkMode ? 'bg-green-900/20 border-green-800' : 'bg-green-50 border-green-200'} border">
+    `;
+
+                if (weekData.Equipment) {
+                    const equipmentItems = weekData.Equipment.split(',').map(item => item.trim());
+                    contentHtml += `<ul class="space-y-1 ${state.darkMode ? 'text-green-100' : 'text-green-700'}">`;
+                    equipmentItems.forEach(item => {
+                        contentHtml += `<li class="flex items-start"><span class="mr-2 mt-1">•</span><span class="text-sm">${item}</span></li>`;
+                    });
+                    contentHtml += `</ul>`;
+                } else {
+                    contentHtml += `<p class="text-sm ${state.darkMode ? 'text-green-100' : 'text-green-700'}">No equipment specified</p>`;
+                }
+
+                contentHtml += `
+                </div>
+            </div>
+        </div>
+    `;
+
+                dom.activityContentContainer.innerHTML = contentHtml;
+            };
+            // --- EVENT HANDLERS ---
+            const handleStageSelection = async (stage) => {
+                if (state.selectedStage === stage) return;
+
+                state.selectedStage = stage;
+
+                // Load data for the selected stage
+                await loadStageData(stage);
+
+                // Update available weeks and trigger week selector update
+                if (stageData[stage]) {
+                    state.availableWeeks = [...new Set(stageData[stage].map(item => item.Week))].sort((a, b) => a - b);
+                    // Dispatch event to update week selector
+                    document.dispatchEvent(new CustomEvent('stageChanged', {
+                        detail: { stage, availableWeeks: state.availableWeeks }
+                    }));
+
+                }
+
+                render();
+            };
+
+            const loadStageData = async (stage) => {
+                if (stageData[stage]) return; // Already loaded
+
+                try {
+                    const filename = `s${stage}t3.json`;
+                    console.log(`Attempting to load: data/${filename}`);
+
+                    const response = await fetch(`data/${filename}`);
+                    console.log(`Response status: ${response.status}, Content-Type: ${response.headers.get('content-type')}`);
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: Failed to fetch ${filename}`);
+                    }
+
+                    // Try the standard JSON parsing first
+                    try {
+                        const data = await response.clone().json();
+                        stageData[stage] = data;
+                        console.log(`Successfully loaded stage ${stage} data with ${data.length} weeks`);
+                        return;
+                    } catch (jsonError) {
+                        console.log('Standard JSON parsing failed, trying text extraction:', jsonError.message);
+                    }
+
+                    // Fallback: extract JSON from text
+                    const responseText = await response.text();
+                    console.log(`Response text length: ${responseText.length}, starts with: ${responseText.substring(0, 100)}`);
+
+                    // Look for JSON array
+                    const jsonStart = responseText.indexOf('[');
+                    const jsonEnd = responseText.lastIndexOf(']');
+
+                    if (jsonStart === -1 || jsonEnd === -1 || jsonEnd <= jsonStart) {
+                        throw new Error('No valid JSON array found in response');
+                    }
+
+                    const jsonText = responseText.substring(jsonStart, jsonEnd + 1);
+                    console.log(`Extracted JSON length: ${jsonText.length}`);
+
+                    const data = JSON.parse(jsonText);
+                    stageData[stage] = data;
+                    console.log(`Successfully loaded stage ${stage} data with ${data.length} weeks (after extraction)`);
+
+                } catch (error) {
+                    console.error(`Error loading stage ${stage} data:`, error);
+                    stageData[stage] = [];
+                }
+            };
+
+            // --- EVENT LISTENERS ---
+            dom.stage1Btn.addEventListener('click', () => handleStageSelection(1));
+            dom.stage2Btn.addEventListener('click', () => handleStageSelection(2));
+            dom.stage3Btn.addEventListener('click', () => handleStageSelection(3));
+
+            document.addEventListener('weekChanged', (e) => {
+                state.selectedWeek = e.detail.week;
+                render();
+            });
+
+            document.addEventListener('darkModeToggled', (e) => {
+                state.darkMode = e.detail.darkMode;
+                render();
+            });
+
+            // --- INITIALIZATION ---
+            const initialize = () => {
+                render();
+            };
+
+            initialize();
+        });
+    </script>
+    <script src="components/week-selector.js"></script>
+    <script src="components/header.js"></script>
+</body>
+
+</html>
