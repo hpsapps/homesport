@@ -1,0 +1,352 @@
+[
+  {
+    "Week": 1,
+    "Stage": 3,
+    "Skill": "Balancing",
+    "Practice": [
+      {
+        "Activity Name": "Yoga-Inspired Balances",
+        "Description": "Practice simple yoga poses that require balance, such as Tree Pose (standing on one leg, foot on inner thigh/calf) or Warrior III (balancing on one leg, body T-shaped, reaching forward)."
+      },
+      {
+        "Activity Name": "Single-Leg Squats/Reaches",
+        "Description": "Balance on one leg while performing a small squat or reaching down to touch a cone placed beside them, then returning to standing."
+      },
+      {
+        "Activity Name": "Wobble Board/Balance Disc Challenge",
+        "Description": "Use a wobble board or balance disc for balancing on two feet, then progressing to one foot. Try catching and throwing a ball while balancing."
+      },
+      {
+        "Activity Name": "Bosu Ball Balance",
+        "Description": "Balance on the flat side, then the dome side of a Bosu ball, trying different stances (e.g., wide, narrow, single-leg)."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Balance Zone Challenge",
+      "Description": [
+        "Setup: Designate several 'balance zones' using various equipment or marked areas (e.g., a low beam, balance discs, a Bosu ball, a slackline if available, or even just marked spots on the ground for single-leg balance). Each zone has a specific balance task.",
+        "Gameplay: Students rotate through the zones, attempting to complete the challenge at each. For example:",
+        "Zone 1: Balance on the beam for 10 seconds while turning your head left and right.",
+        "Zone 2: Perform 3 single-leg squats on the balance disc without touching the ground.",
+        "Zone 3: One leg balance, toe tap North, South, East, West.",
+        "Zone 4: Balance on one foot on a Bosu ball while catching a thrown ball.",
+        "Students can be timed or scored based on successful completion of each zone. The emphasis is on control, precision, and smooth transitions between movements within and between zones."
+      ]
+    },
+    "Equipment": "Low beams, balance discs, Bosu balls, slackline (optional), balls, cones, marked areas, yoga mats (optional), wobble boards"
+  },
+  {
+    "Week": 2,
+    "Stage": 3,
+    "Skill": "Running",
+    "Practice": [
+      {
+        "Activity Name": "Sprint to Stop",
+        "Description": "Students sprint for a short distance and then quickly decelerate to a complete stop on command."
+      },
+      {
+        "Activity Name": "Change of Direction Drills",
+        "Description": "Set up cones in a zigzag or square pattern. Students sprint between cones, practicing sharp turns and quick changes in direction."
+      },
+      {
+        "Activity Name": "Timed Laps",
+        "Description": "Run laps around a designated area, aiming to maintain a consistent pace for a set time or number of laps."
+      },
+      {
+        "Activity Name": "Fartlek Runs",
+        "Description": "Incorporate periods of fast running (sprints) interspersed with slower jogging or walking, mimicking game scenarios."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Strategic Relay Challenge",
+      "Description": [
+        "Setup: Divide students into teams. Design a relay course that requires different running strategies: A straight sprint leg, a section requiring weaving through obstacles, a segment where players must run backward or sideways, a 'pacing' leg where they must maintain a steady jog for a longer distance before a final sprint.",
+        "Gameplay: Teams compete to complete the relay, passing a baton or tagging the next teammate. Emphasise not just speed, but also effective transitions, strategic pacing, and communication within the team. Discuss how different parts of the course require different running approaches."
+      ]
+    },
+    "Equipment": "Markers/cones for distance, cones, stopwatch, markers for lap boundaries, batons, obstacles, markers for course sections"
+  },
+  {
+    "Week": 3,
+    "Stage": 3,
+    "Skill": "Throwing",
+    "Practice": [
+      {
+        "Activity Name": "Distance Challenge",
+        "Description": "Practice throwing objects (e.g., tennis balls, foam javelins) for maximum distance, focusing on power generation."
+      },
+      {
+        "Activity Name": "Force Control",
+        "Description": "Throw objects at targets that require different levels of force (e.g., a soft toss into a basket, a firm throw to knock over a cone)."
+      },
+      {
+        "Activity Name": "Moving Targets",
+        "Description": "Partners throw to each other while one partner is moving, requiring anticipation and leading the throw."
+      },
+      {
+        "Activity Name": "Obstacle Throws",
+        "Description": "Throwing over or around low obstacles to a partner or target, requiring adjustments in trajectory and force."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Strategic Throwing Gauntlet",
+      "Description": [
+        "Setup: Design a 'gauntlet' course with multiple throwing stations, each presenting a different strategic challenge:",
+        "Accuracy Zone: Throwing at small, precise targets (e.g., small buckets, specific wall markings).",
+        "Distance Zone: Throwing for maximum distance into a marked landing area.",
+        "Moving Target Zone: Throwing at a rolling hoop or a teammate who is jogging.",
+        "Obstacle Zone: Throwing over a low hurdle or through a hanging hoop.",
+        "Gameplay: Students move through the stations, attempting to complete the throwing task at each. They might earn points for successful throws, or be timed on how quickly they can complete all stations. The game encourages students to analyse the situation, choose the appropriate throwing technique and force, and adapt their throw to achieve the strategic goal."
+      ]
+    },
+    "Equipment": "Tennis balls, foam javelins, markers for distance measurement, various balls, baskets, cones, targets, low obstacles/hurdles, small buckets, wall markings, rolling hoops, hanging hoops"
+  },
+  {
+    "Week": 4,
+    "Stage": 3,
+    "Skill": "Twisting and Bending",
+    "Practice": [
+      {
+        "Activity Name": "Lunge with Twist",
+        "Description": "Perform a lunge, and at the bottom of the lunge, twist the torso towards the front leg."
+      },
+      {
+        "Activity Name": "Windmills",
+        "Description": "Stand with feet wide, arms out to the sides. Bend at the waist and reach one hand towards the opposite foot, keeping arms straight and twisting the torso."
+      },
+      {
+        "Activity Name": "Yoga Flow",
+        "Description": "Practice a short sequence of yoga poses that involve continuous twisting and bending (e.g., Cat-Cow, Spinal Twists, Sun Salutation variations)."
+      },
+      {
+        "Activity Name": "Obstacle Manoeuvres",
+        "Description": "Practice twisting and bending to navigate through a series of increasingly complex obstacles (e.g., low hurdles to crawl under, ropes to step over while twisting)."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Agility Maze with Flex Challenges",
+      "Description": [
+        "Setup: Design an agility maze using cones, low hurdles, and ropes. Integrate specific 'flex challenges' throughout the maze.",
+        "Start: Sprint to the first zone.",
+        "Zone A (Twist Gate): Twist through a narrow 'gate' (two cones close together) without touching them.",
+        "Zone B (Bend & Retrieve): Bend down to pick up a small object, then stand up and place it on a higher cone. Repeat 3 times.",
+        "Zone C (Dynamic Twist): Perform 5 quick torso twists jogging in place.",
+        "Zone D (Low Crawl): Crawl under a low barrier, requiring significant bending and core control.",
+        "Zone E (Full Body Bend): Perform a full forward bend to touch the ground, then reach high overhead.",
+        "Gameplay: Students navigate the maze, completing each challenge as quickly and precisely as possible. They can be timed individually or compete in teams. The game emphasises fluid integration of twisting and bending with locomotor movements, and executing these actions with precision."
+      ]
+    },
+    "Equipment": "Yoga mats (optional), low hurdles, ropes, various obstacles, cones, small objects, low barriers"
+  },
+  {
+    "Week": 5,
+    "Stage": 3,
+    "Skill": "Jumping",
+    "Practice": [
+      {
+        "Activity Name": "Box Jumps",
+        "Description": "Jump onto and off a low box or step, focusing on soft landings and controlled take-offs."
+      },
+      {
+        "Activity Name": "Broad Jumps",
+        "Description": "Practice jumping for maximum horizontal distance, emphasising arm swing and landing technique."
+      },
+      {
+        "Activity Name": "Consecutive Jumps",
+        "Description": "Perform a series of jumps (e.g., five consecutive two-footed jumps, then five consecutive hops on one leg)."
+      },
+      {
+        "Activity Name": "Mini-Hurdle Drills",
+        "Description": "Jump over a series of low hurdles, focusing on rhythm and clearance."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Jump Zone Challenge",
+      "Description": [
+        "Setup: Design a multi-zone jumping course. Each zone presents a different type of jumping challenge:",
+        "Zone 1 (Vertical Power): Jump to touch a target (e.g., a handprint on a wall, a hanging object) as high as possible.",
+        "Zone 2 (Broad Leap): Perform a broad jump from a marked line, aiming to land in a designated 'landing zone.'",
+        "Zone 3 (Hurdle Hop): Jump over a series of 3-5 mini-hurdles or cones placed in a line.",
+        "Zone 4 (Agility Grid): Jump forwards, backwards, and sideways within a small grid marked on the ground.",
+        "Zone 5 (Single-Leg Endurance): Hop on one leg for a short, marked distance.",
+        "Gameplay: Students move through the zones, attempting to successfully complete each jumping task. They can be timed for the entire circuit or scored based on successful attempts in each zone. The game emphasises controlled execution of various jumping techniques, adapting to different jump requirements, and performing jumps in sequence."
+      ]
+    },
+    "Equipment": "Low boxes/steps, markers for distance measurement, mini-hurdles, wall targets/hanging objects, markers for landing zones, cones, grid markings"
+  },
+  {
+    "Week": 6,
+    "Stage": 3,
+    "Skill": "Catching",
+    "Practice": [
+      {
+        "Activity Name": "Fast/Slow Catches",
+        "Description": "Partners practice throwing and catching balls at different speeds (e.g., a fast throw, then a slow lob)."
+      },
+      {
+        "Activity Name": "High/Low Catches",
+        "Description": "Practice catching balls thrown at different heights (e.g., overhead, chest height, ground level)."
+      },
+      {
+        "Activity Name": "Moving Receiver",
+        "Description": "One partner throws while the other moves to receive the ball (e.g., running to an open space, dodging a cone)."
+      },
+      {
+        "Activity Name": "Defended Catch",
+        "Description": "Introduce a 'soft' defender (another student who tries to block the view without touching) to practice catching under pressure."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Strategic Catching Grid",
+      "Description": [
+        "Setup: Create a grid using cones or lines. Divide students into small teams. Each team has a ball. Designate 'scoring zones' within the grid.",
+        "Gameplay: Teams try to complete a certain number of successful passes and catches within their team to score a point, or to move the ball into a designated scoring zone through passes. Introduce rules that require strategic catching:",
+        "'Must catch on the run.'",
+        "'Must catch a bounce pass.'",
+        "'Must catch a pass thrown over an obstacle (e.g., a low hurdle).'",
+        "'Defenders can intercept passes (no contact).'",
+        "The game encourages students to anticipate where the ball will go, adjust their body position, communicate with teammates, and make strategic decisions about where to pass and how to receive the ball under varying conditions."
+      ]
+    },
+    "Equipment": "Balls, cones, lines for grid, low hurdles (optional)"
+  },
+  {
+    "Week": 7,
+    "Stage": 3,
+    "Skill": "Striking",
+    "Practice": [
+      {
+        "Activity Name": "Gate Striking",
+        "Description": "Set up 'gates' (two cones) at various angles and distances. Students strike a ball through the gates, practicing directional control."
+      },
+      {
+        "Activity Name": "Power & Soft Strike",
+        "Description": "Practice striking a ball with different forces – a powerful hit for distance, and a soft tap for precision."
+      },
+      {
+        "Activity Name": "Baseball Style Striking",
+        "Description": "Practice striking a pitched (softly thrown) ball, focusing on timing and contact."
+      },
+      {
+        "Activity Name": "Badminton/Volleying",
+        "Description": "Use racquets or hands to strike a shuttlecock or balloon over a low net, aiming for specific areas."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Strategic Strike Zone Battle",
+      "Description": [
+        "Setup: Divide the playing area into different 'strike zones' or 'scoring areas' using cones or lines. Each zone might have different point values or require a specific type of strike (e.g., a high lob, a powerful drive, a precise tap). Use various striking implements (e.g., plastic bats, racquets, feet).",
+        "Gameplay: Students work in teams or individually. One player strikes a ball from a central point, aiming to land it in a specific scoring zone or to hit a target within a zone. Opposing players (if in teams) might try to 'defend' zones or retrieve balls. Rules can be added, such as 'must strike the ball over a low obstacle' or 'must use a specific type of strike (e.g., forehand, backhand, kick).' The game requires students to assess the field, choose the appropriate striking technique and force, and execute strikes with strategic intent to score points or achieve objectives."
+      ]
+    },
+    "Equipment": "Cones, balls, striking implements, plastic bats, racquets, shuttlecocks/balloons, low net, low obstacles, targets"
+  },
+  {
+    "Week": 8,
+    "Stage": 3,
+    "Skill": "Skipping",
+    "Practice": [
+      {
+        "Activity Name": "Varied Arm Movements",
+        "Description": "Skip while performing different arm actions (e.g., arm circles, high fives with a partner)."
+      },
+      {
+        "Activity Name": "Skipping with Objects",
+        "Description": "Skip while dribbling a ball (if appropriate for the skill level) or carrying a beanbag on their head."
+      },
+      {
+        "Activity Name": "Grid Skipping",
+        "Description": "Skip through a grid of cones, following a specific pattern (e.g., diagonal, zigzag, figure-eight)."
+      },
+      {
+        "Activity Name": "Rope Skipping",
+        "Description": "Practice individual rope skipping, then progress to long rope skipping with partners or in a group."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Advanced Skip Circuit",
+      "Description": [
+        "Setup: Design a circuit with multiple stations, each focusing on a different advanced skipping challenge:",
+        "Station 1 (Speed Skip): Skip as fast as possible for a short, marked distance.",
+        "Station 2 (Pattern Skip): Skip through a pre-set cone pattern (e.g., a tight figure-eight).",
+        "Station 3 (Skill Skip): Skip while performing a specific skill (e.g., a crossover skip, a backward skip).",
+        "Station 4 (Obstacle Skip): Skip over a series of very low obstacles (e.g., flat markers, ropes on the ground).",
+        "Station 5 (Rope Skip): Perform 10 consecutive individual rope skips.",
+        "Gameplay: Students rotate through the stations, attempting to complete each skipping task. They can be timed for the entire circuit or scored based on successful completion of each station. The game encourages students to apply skipping in complex patterns, combine it with other movements, and maintain control under various conditions."
+      ]
+    },
+    "Equipment": "Balls, beanbags, cones, individual skipping ropes, long ropes, markers for distance, flat markers, ropes for obstacles"
+  },
+  {
+    "Week": 9,
+    "Stage": 3,
+    "Skill": "Kicking",
+    "Practice": [
+      {
+        "Activity Name": "Power Kicking",
+        "Description": "Practice kicking a ball for maximum distance, focusing on a strong follow-through."
+      },
+      {
+        "Activity Name": "Precision Passing",
+        "Description": "Practice kicking a ball accurately to a moving target or into a small designated area from various distances."
+      },
+      {
+        "Activity Name": "Target Gates",
+        "Description": "Set up 'gates' (two cones) at various angles and distances. Students kick through the gates, practicing directional control."
+      },
+      {
+        "Activity Name": "Pass to Space",
+        "Description": "Students practice kicking a ball into an open space for a teammate to run onto, rather than directly to them."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Kicking Strategy Grid",
+      "Description": [
+        "Setup: Create a grid or field with various 'scoring zones' and 'target areas' marked. Some zones might be 'high value' (small, difficult to hit), while others are 'low value' (large, easy to hit). Designate a kicking line.",
+        "Gameplay: Students work individually or in teams. From the kicking line, they take turns kicking a ball, aiming for specific zones or targets. Introduce rules like:",
+        "'Must kick the ball with your non-dominant foot.'",
+        "'Must kick the ball over a low obstacle into a zone.'",
+        "'Must kick the ball to a teammate who is moving into an open space.'",
+        "'Defenders (if in teams) can try to block kicks or intercept passes (no contact).'",
+        "The game encourages students to analyse the field, choose the appropriate kicking technique (e.g., instep, laces, chip kick), and execute kicks with strategic intent for placement and force in complex scenarios."
+      ]
+    },
+    "Equipment": "Balls, markers for distance, targets, cones, markers for spaces, low obstacles, kicking line marker"
+  },
+  {
+    "Week": 10,
+    "Stage": 3,
+    "Skill": "Bouncing and Dribbling",
+    "Practice": [
+      {
+        "Activity Name": "Cone Weaving",
+        "Description": "Dribble a ball (e.g., basketball, soccer ball) through a line of cones, alternating sides."
+      },
+      {
+        "Activity Name": "Directional Dribbling",
+        "Description": "Practice dribbling forward, then turning and dribbling backward, or changing direction quickly on command."
+      },
+      {
+        "Activity Name": "Shadow Dribbling",
+        "Description": "One student dribbles while another 'shadows' them (stays close without touching), creating mild pressure."
+      },
+      {
+        "Activity Name": "Dribble & Pass",
+        "Description": "Dribble to a designated spot, then execute a precise pass to a teammate or target."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Dribble Challenge Course",
+      "Description": [
+        "Setup: Design a challenging dribbling course with various obstacles and requirements.",
+        "Section 1 (Speed Dribble): Dribble as fast as possible for a short distance.",
+        "Section 2 (Precision Dribble): Dribble through a tight maze of cones.",
+        "Section 3 (Direction Change): Dribble to a marker, perform a specific turn (e.g., pivot, spin), and dribble back.",
+        "Section 4 (Obstacle Dribble): Dribble while stepping over low hurdles or crawling under a barrier.",
+        "Section 5 (Target Dribble): Dribble to a designated spot and then shoot or pass the ball into a small target.",
+        "Gameplay: Students navigate the course individually or in teams, attempting to complete each dribbling task. They can be timed for the entire circuit or scored based on successful completion of each section (e.g., no lost balls, accurate shots). The game emphasises maintaining control of the ball, adapting dribbling techniques to different scenarios, and executing precise movements under dynamic conditions."
+      ]
+    },
+    "Equipment": "Basketballs/soccer balls, cones, markers, low hurdles, barriers, small targets"
+  }
+]

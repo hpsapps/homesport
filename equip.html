@@ -35,53 +35,10 @@
     <div id="app-container" class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
         <div class="max-w-4xl mx-auto">
             <!-- Header -->
-            <header class="flex justify-between items-start mb-6">
-                <div class="flex-1 pr-4">
-                    <a href="index.html">
-                        <h1 id="main-title"
-                            class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight hover:underline cursor-pointer">
-                            Sport Equipment Tracker
-                        </h1>
-                    </a>
-
-                </div>
-
-                <button id="dark-mode-toggle"
-                    class="p-3 rounded-xl transition-all duration-300 flex-shrink-0 bg-white hover:bg-gray-50 text-gray-700 shadow-sm border border-gray-200">
-                    <!-- Moon Icon -->
-                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="">
-                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-                    </svg>
-                    <!-- Sun Icon (hidden by default) -->
-                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="hidden">
-                        <circle cx="12" cy="12" r="4"></circle>
-                        <path d="M12 2v2"></path>
-                        <path d="M12 20v2"></path>
-                        <path d="m4.93 4.93 1.41 1.41"></path>
-                        <path d="m17.66 17.66 1.41 1.41"></path>
-                        <path d="M2 12h2"></path>
-                        <path d="M20 12h2"></path>
-                        <path d="m6.34 17.66-1.41 1.41"></path>
-                        <path d="m19.07 4.93-1.41 1.41"></path>
-                    </svg>
-                </button>
-            </header>
+            <div id="header-placeholder"></div>
 
             <!-- Week Selection Card -->
-            <div id="week-card" class="bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300">
-                <div class="p-4 pb-3">
-                    <h2 class="text-lg font-semibold text-gray-900">Pick a week</h2>
-                </div>
-                <div class="p-4 pt-0">
-                    <select id="week-selector" class="w-full p-3 rounded-xl border-2 font-medium transition-all duration-200 bg-white text-gray-700 border-gray-200 focus:border-blue-300">
-                        <!-- Options will be populated by JS -->
-                    </select>
-                </div>
-            </div>
+            <div id="week-selector-placeholder"></div>
 
             <!-- Field Layout Card -->
             <div id="field-layout-card"
@@ -113,7 +70,7 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             // --- STATE MANAGEMENT ---
-            let state = {
+            window.state = {
                 selectedWeek: null,
                 darkMode: (() => {
                     const savedMode = localStorage.getItem('darkMode');
@@ -136,93 +93,37 @@
             const dom = {
                 html: document.documentElement,
                 appContainer: document.getElementById('app-container'),
-                mainTitle: document.getElementById('main-title'),
-                weekSelector: document.getElementById('week-selector'),
-                darkModeToggle: document.getElementById('dark-mode-toggle'),
-                moonIcon: document.getElementById('moon-icon'),
-                sunIcon: document.getElementById('sun-icon'),
-                weekCard: document.getElementById('week-card'),
                 fieldLayoutCard: document.getElementById('field-layout-card'),
                 fieldLayoutContainer: document.getElementById('field-layout-container'),
                 equipmentSummaryCard: document.getElementById('equipment-summary-card'),
                 equipmentSummaryContainer: document.getElementById('equipment-summary-container'),
             };
 
-            const getWeekByDate = () => {
-                const now = new Date();
-                // Define the start date of each week (Monday)
-                const weekStartDates = [
-                    new Date('2025-07-21'), // Week 1
-                    new Date('2025-07-28'), // Week 2
-                    new Date('2025-08-04'), // Week 3
-                    new Date('2025-08-11'), // Week 4
-                    new Date('2025-08-18'), // Week 5
-                    new Date('2025-08-25'), // Week 6
-                    new Date('2025-09-01'), // Week 7
-                    new Date('2025-09-08'), // Week 8
-                    new Date('2025-09-15'), // Week 9
-                    new Date('2025-09-22'), // Week 10
-                ];
-
-                // Find the current week
-                let currentWeek = 1; // Default to week 1
-                for (let i = weekStartDates.length - 1; i >= 0; i--) {
-                    if (now >= weekStartDates[i]) {
-                        currentWeek = i + 1;
-                        break;
-                    }
-                }
-
-                // If the date is after the last week, default to the last week.
-                if (now >= new Date('2025-09-29')) {
-                    currentWeek = 10;
-                }
-
-                return currentWeek;
-            };
-
             // --- RENDER FUNCTIONS ---
-            const render = () => {
+            window.render = () => {
                 // Update theme first
                 dom.html.classList.toggle('dark', state.darkMode);
                 dom.appContainer.className = state.darkMode ? 'min-h-screen bg-gray-900 p-4' : 'min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4';
 
                 // Render all components
-                renderHeader();
-                renderWeekSelector();
                 renderFieldLayout();
                 renderEquipmentSummary();
-            };
 
-            const renderHeader = () => {
-                dom.mainTitle.className = state.darkMode ? 'text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight' : 'text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight';
-                
-                dom.moonIcon.classList.toggle('hidden', state.darkMode);
-                dom.sunIcon.classList.toggle('hidden', !state.darkMode);
-                dom.darkModeToggle.className = `p-3 rounded-xl transition-all duration-300 flex-shrink-0 border ${state.darkMode
-                        ? 'bg-gray-700 hover:bg-gray-600 text-yellow-400 border-gray-600'
-                        : 'bg-white hover:bg-gray-50 text-gray-700 shadow-sm border-gray-200'
-                    }`;
-            };
+                // Also render the header, if it exists
+                const mainTitle = document.getElementById('main-title');
+                const darkModeToggle = document.getElementById('dark-mode-toggle');
+                const moonIcon = document.getElementById('moon-icon');
+                const sunIcon = document.getElementById('sun-icon');
 
-            const renderWeekSelector = () => {
-                if(dom.weekSelector.options.length === 0) {
-                    for (let i = 1; i <= 10; i++) {
-                        const option = document.createElement('option');
-                        option.value = i;
-                        option.textContent = `Week ${i}`;
-                        dom.weekSelector.appendChild(option);
-                    }
+                if (mainTitle && darkModeToggle && moonIcon && sunIcon) {
+                    mainTitle.className = state.darkMode ? 'text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight' : 'text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight';
+                    moonIcon.classList.toggle('hidden', state.darkMode);
+                    sunIcon.classList.toggle('hidden', !state.darkMode);
+                    darkModeToggle.className = `p-3 rounded-xl transition-all duration-300 flex-shrink-0 border ${state.darkMode
+                            ? 'bg-gray-700 hover:bg-gray-600 text-yellow-400 border-gray-600'
+                            : 'bg-white hover:bg-gray-50 text-gray-700 shadow-sm border-gray-200'
+                        }`;
                 }
-                dom.weekSelector.value = state.selectedWeek;
-                
-                dom.weekCard.className = state.darkMode ? 'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300';
-                dom.weekCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
-                dom.weekSelector.className = `w-full p-3 rounded-xl border-2 font-medium transition-all duration-200 ${
-                    state.darkMode
-                        ? 'bg-gray-700 text-gray-200 border-gray-600 focus:border-blue-400'
-                        : 'bg-white text-gray-700 border-gray-200 focus:border-blue-300'
-                }`;
             };
 
             const renderFieldLayout = () => {
@@ -347,16 +248,10 @@
             };
 
             // --- EVENT LISTENERS ---
-            dom.darkModeToggle.addEventListener('click', () => {
-                state.darkMode = !state.darkMode;
-                localStorage.setItem('darkMode', state.darkMode);
-                render();
-            });
-
-            dom.weekSelector.addEventListener('change', (e) => {
-                state.selectedWeek = Number(e.target.value);
+            document.addEventListener('weekChanged', (e) => {
+                state.selectedWeek = e.detail.week;
                 // Reset collected state when week changes
-                state.collected = { 
+                state.collected = {
                     stage2: { 'Game': [], 'Skill 1': [], 'Skill 2': [] },
                     stage3: { 'Game': [], 'Skill 1': [], 'Skill 2': [] }
                 };
@@ -384,9 +279,6 @@
             // --- INITIALIZATION ---
             const initialize = async () => {
                 try {
-                    // Set the current week based on the current date
-                    state.selectedWeek = getWeekByDate();
-
                     const [stage2Res, stage3Res] = await Promise.all([
                         fetch('data/stage2.json'),
                         fetch('data/stage3.json')
@@ -419,7 +311,8 @@
             initialize();
         });
     </script>
-
+    <script src="components/week-selector.js"></script>
+    <script src="components/header.js"></script>
 </body>
 
 </html>
