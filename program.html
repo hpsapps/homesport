@@ -160,119 +160,164 @@
                 });
             };
 
-            const renderActivityContent = () => {
-                // Update card theme
-                dom.activityContentCard.className = state.darkMode ? 'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' : 'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300';
-                dom.activityContentCard.querySelector('h2').className = state.darkMode ? 'text-lg font-semibold text-white' : 'text-lg font-semibold text-gray-900';
+const renderActivityContent = () => {
+    // Update card theme
+    dom.activityContentCard.className = state.darkMode
+        ? 'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300'
+        : 'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300';
+    dom.activityContentCard.querySelector('h2').className = state.darkMode
+        ? 'text-lg font-semibold text-white'
+        : 'text-lg font-semibold text-gray-900';
 
-                if (!state.selectedStage || !state.selectedWeek || !stageData[state.selectedStage]) {
-                    dom.activityContentContainer.innerHTML = `
+    if (!state.selectedStage || !state.selectedWeek || !stageData[state.selectedStage]) {
+        dom.activityContentContainer.innerHTML = `
             <div class="text-center py-8 ${state.darkMode ? 'text-gray-400' : 'text-gray-500'}">
                 <p>Select a stage and week to view activity details</p>
             </div>
         `;
-                    return;
-                }
+        return;
+    }
 
-                const weekData = stageData[state.selectedStage].find(item => item.Week === state.selectedWeek);
+    const weekData = stageData[state.selectedStage].find(item => item.Week === state.selectedWeek);
 
-                if (!weekData) {
-                    dom.activityContentContainer.innerHTML = `
+    if (!weekData) {
+        dom.activityContentContainer.innerHTML = `
             <div class="text-center py-8 ${state.darkMode ? 'text-gray-400' : 'text-gray-500'}">
                 <p>No data found for Week ${state.selectedWeek}</p>
             </div>
         `;
-                    return;
-                }
+        return;
+    }
 
-                let contentHtml = `
-        <div class="space-y-6">
-            <!-- Skill Header -->
+    let contentHtml = `<div class="space-y-6">`;
+
+    // Handle Stage 1 format with Skills array
+    if (weekData.Skills && Array.isArray(weekData.Skills)) {
+        contentHtml += `
             <div class="border-b pb-3 ${state.darkMode ? 'border-gray-600' : 'border-gray-200'}">
-                <h3 class="text-xl font-bold ${state.darkMode ? 'text-white' : 'text-gray-900'}">${weekData.Skill}</h3>
+                <p class="${state.darkMode ? 'text-gray-400' : 'text-gray-600'} mb-4"><strong>Outcome:</strong> ${weekData.OutcomeCode}</p>
+            </div>
+        `;
+
+        weekData.Skills.forEach((skill, i) => {
+            contentHtml += `
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-2 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">${skill.Skill}</h3>
+                    <p class="mb-3 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}">${skill.Description}</p>
+
+                    <p class="mb-2 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}"><strong>Set Up:</strong>
+                        ${Array.isArray(skill.Activity['Set Up']) ? skill.Activity['Set Up'].join(' ') : 'No Set Up information available'}
+                    </p>
+                    <p class="mb-1 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}"><strong>Practice:</strong></p>
+                    <ul class="list-disc list-inside ml-5 mb-2 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}">
+                        ${Array.isArray(skill.Activity['Practice']) ? skill.Activity['Practice'].map(item => `<li>${item}</li>`).join('') : ''}
+                    </ul>
+                    <p class="mb-2 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}"><strong>Assessment:</strong>
+                        ${Array.isArray(skill.Activity['Assessment']) ? skill.Activity['Assessment'].join(' ') : ''}
+                    </p>
+
+                    <p class="${state.darkMode ? 'text-green-300' : 'text-green-700'}"><strong>Equipment:</strong> ${skill.Activity.Equipment}</p>
+                </div>
+            `;
+        });
+    }
+    // Handle Stage 2/3 format with Practice and Game properties
+    else if (weekData.Game || weekData.Practice) {
+        contentHtml += `
+            <div class="border-b pb-3 ${state.darkMode ? 'border-gray-600' : 'border-gray-200'}">
+                <h3 class="text-xl font-bold ${state.darkMode ? 'text-white' : 'text-gray-900'}">${weekData.Skill || 'Skill'}</h3>
                 <p class="text-sm ${state.darkMode ? 'text-gray-400' : 'text-gray-600'}">Week ${weekData.Week} - Stage ${weekData.Stage}</p>
             </div>
 
-            <!-- Practice Activities -->
             <div>
                 <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">Practice Activities</h4>
                 <div class="space-y-4">
-    `;
+        `;
 
-                // Handle Practice array properly
-                if (weekData.Practice && Array.isArray(weekData.Practice)) {
-                    weekData.Practice.forEach((activity, index) => {
-                        contentHtml += `
+        if (weekData.Practice && Array.isArray(weekData.Practice)) {
+            weekData.Practice.forEach((activity) => {
+                contentHtml += `
+                    <div class="p-4 rounded-lg ${state.darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}">
+                        <h5 class="font-medium mb-2 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">${activity['Activity Name']}</h5>
+                        <p class="${state.darkMode ? 'text-gray-300' : 'text-gray-600'}">${activity.Description}</p>
+                    </div>
+                `;
+            });
+        } else {
+            contentHtml += `
                 <div class="p-4 rounded-lg ${state.darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}">
-                    <h5 class="font-medium mb-2 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">${activity['Activity Name']}</h5>
-                    <p class="text-sm ${state.darkMode ? 'text-gray-300' : 'text-gray-600'}">${activity.Description}</p>
+                    <p class="${state.darkMode ? 'text-gray-300' : 'text-gray-600'}">No practice activities found</p>
                 </div>
             `;
-                    });
-                } else {
-                    contentHtml += `
-            <div class="p-4 rounded-lg ${state.darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}">
-                <p class="text-sm ${state.darkMode ? 'text-gray-300' : 'text-gray-600'}">No practice activities found</p>
-            </div>
-        `;
-                }
+        }
 
-                contentHtml += `
+        contentHtml += `
                 </div>
             </div>
 
-            <!-- Game -->
             <div>
                 <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">Game</h4>
                 <div class="p-4 rounded-lg ${state.darkMode ? 'bg-blue-900/20 border-blue-800' : 'bg-blue-50 border-blue-200'} border">
                     <h5 class="font-medium mb-3 ${state.darkMode ? 'text-blue-200' : 'text-blue-800'}">${weekData.Game['Activity Name']}</h5>
                     <div class="space-y-2">
-    `;
+        `;
 
-                // Handle Game description properly (can be array or string)
-                if (Array.isArray(weekData.Game.Description)) {
-                    weekData.Game.Description.forEach(desc => {
-                        contentHtml += `<p class="text-sm ${state.darkMode ? 'text-blue-100' : 'text-blue-700'}">${desc}</p>`;
-                    });
-                } else {
-                    contentHtml += `<p class="text-sm ${state.darkMode ? 'text-blue-100' : 'text-blue-700'}">${weekData.Game.Description}</p>`;
-                }
+        if (Array.isArray(weekData.Game.Description)) {
+            weekData.Game.Description.forEach(desc => {
+                contentHtml += `<p class="text-sm ${state.darkMode ? 'text-blue-100' : 'text-blue-700'}">${desc}</p>`;
+            });
+        } else {
+            contentHtml += `<p class="text-sm ${state.darkMode ? 'text-blue-100' : 'text-blue-700'}">${weekData.Game.Description}</p>`;
+        }
 
-                contentHtml += `
+        contentHtml += `
                     </div>
                 </div>
             </div>
 
-            <!-- Equipment -->
             <div>
                 <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">Equipment Required</h4>
                 <div class="p-4 rounded-lg ${state.darkMode ? 'bg-green-900/20 border-green-800' : 'bg-green-50 border-green-200'} border">
-    `;
+        `;
 
-                if (weekData.Equipment) {
-                    const equipmentItems = weekData.Equipment.split(',').map(item => item.trim());
-                    contentHtml += `<ul class="space-y-1 ${state.darkMode ? 'text-green-100' : 'text-green-700'}">`;
-                    equipmentItems.forEach(item => {
-                        contentHtml += `<li class="flex items-start"><span class="mr-2 mt-1">•</span><span class="text-sm">${item}</span></li>`;
-                    });
-                    contentHtml += `</ul>`;
-                } else {
-                    contentHtml += `<p class="text-sm ${state.darkMode ? 'text-green-100' : 'text-green-700'}">No equipment specified</p>`;
-                }
-
+        if (weekData.Equipment) {
+            const equipmentItems = weekData.Equipment.split(',').map(item => item.trim());
+            contentHtml += `<div class="space-y-2 ${state.darkMode ? 'text-green-100' : 'text-green-700'}">`;
+            equipmentItems.forEach((item, index) => {
                 contentHtml += `
+                    <div class="flex items-center">
+                        <input type="checkbox" id="equipment-${index}" class="form-checkbox h-4 w-4 text-green-600 transition duration-150 ease-in-out ${state.darkMode ? 'bg-gray-700 border-gray-600 checked:bg-green-500' : 'border-gray-300 focus:ring-green-500'}">
+                        <label for="equipment-${index}" class="ml-2 text-sm">${item}</label>
+                    </div>
+                `;
+            });
+            contentHtml += `</div>`;
+        } else {
+            contentHtml += `<p class="text-sm ${state.darkMode ? 'text-green-100' : 'text-green-700'}">No equipment specified</p>`;
+        }
+
+        contentHtml += `
                 </div>
             </div>
-        </div>
-    `;
+        `;
+    } else {
+        contentHtml += `
+            <div class="text-center py-8 ${state.darkMode ? 'text-gray-400' : 'text-gray-500'}">
+                <p>Data format not recognised for Week ${state.selectedWeek}</p>
+            </div>
+        `;
+    }
 
-                dom.activityContentContainer.innerHTML = contentHtml;
-            };
+    contentHtml += `</div>`;
+
+    dom.activityContentContainer.innerHTML = contentHtml;
+};
             // --- EVENT HANDLERS ---
             const handleStageSelection = async (stage) => {
                 if (state.selectedStage === stage) return;
 
                 state.selectedStage = stage;
+                console.log('handleStageSelection: selectedStage set to', state.selectedStage);
 
                 // Load data for the selected stage
                 await loadStageData(stage);
@@ -280,25 +325,31 @@
                 // Update available weeks and trigger week selector update
                 if (stageData[stage]) {
                     state.availableWeeks = [...new Set(stageData[stage].map(item => item.Week))].sort((a, b) => a - b);
+                    console.log('handleStageSelection: availableWeeks for stage', stage, ':', state.availableWeeks);
                     // Dispatch event to update week selector
                     document.dispatchEvent(new CustomEvent('stageChanged', {
                         detail: { stage, availableWeeks: state.availableWeeks }
                     }));
 
+                } else {
+                    console.warn('handleStageSelection: No data found for stage', stage);
                 }
 
                 render();
             };
 
             const loadStageData = async (stage) => {
-                if (stageData[stage]) return; // Already loaded
+                if (stageData[stage]) {
+                    console.log(`loadStageData: Stage ${stage} data already loaded.`);
+                    return;
+                }
 
                 try {
                     const filename = `s${stage}t3.json`;
-                    console.log(`Attempting to load: data/${filename}`);
+                    console.log(`loadStageData: Attempting to load: data/${filename}`);
 
                     const response = await fetch(`data/${filename}`);
-                    console.log(`Response status: ${response.status}, Content-Type: ${response.headers.get('content-type')}`);
+                    console.log(`loadStageData: Response status: ${response.status}, Content-Type: ${response.headers.get('content-type')}`);
 
                     if (!response.ok) {
                         throw new Error(`HTTP ${response.status}: Failed to fetch ${filename}`);
@@ -308,15 +359,15 @@
                     try {
                         const data = await response.clone().json();
                         stageData[stage] = data;
-                        console.log(`Successfully loaded stage ${stage} data with ${data.length} weeks`);
+                        console.log(`loadStageData: Successfully loaded stage ${stage} data with ${data.length} weeks`);
                         return;
                     } catch (jsonError) {
-                        console.log('Standard JSON parsing failed, trying text extraction:', jsonError.message);
+                        console.log('loadStageData: Standard JSON parsing failed, trying text extraction:', jsonError.message);
                     }
 
                     // Fallback: extract JSON from text
                     const responseText = await response.text();
-                    console.log(`Response text length: ${responseText.length}, starts with: ${responseText.substring(0, 100)}`);
+                    console.log(`loadStageData: Response text length: ${responseText.length}, starts with: ${responseText.substring(0, 100)}`);
 
                     // Look for JSON array
                     const jsonStart = responseText.indexOf('[');
@@ -327,14 +378,14 @@
                     }
 
                     const jsonText = responseText.substring(jsonStart, jsonEnd + 1);
-                    console.log(`Extracted JSON length: ${jsonText.length}`);
+                    console.log(`loadStageData: Extracted JSON length: ${jsonText.length}`);
 
                     const data = JSON.parse(jsonText);
                     stageData[stage] = data;
-                    console.log(`Successfully loaded stage ${stage} data with ${data.length} weeks (after extraction)`);
+                    console.log(`loadStageData: Successfully loaded stage ${stage} data with ${data.length} weeks (after extraction)`);
 
                 } catch (error) {
-                    console.error(`Error loading stage ${stage} data:`, error);
+                    console.error(`loadStageData: Error loading stage ${stage} data:`, error);
                     stageData[stage] = [];
                 }
             };

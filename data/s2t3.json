@@ -1,0 +1,69 @@
+[
+  {
+    "Week": 1,
+    "Stage": 2,
+    "Skill": "Wackadoo",
+    "Practice": [
+      {
+        "Activity Name": "Yoga-Inspired Balances",
+        "Description": "Practice simple yoga poses that require balance, such as Tree Pose (standing on one leg, foot on inner thigh/calf) or Warrior III (balancing on one leg, body T-shaped, reaching forward)."
+      },
+      {
+        "Activity Name": "Single-Leg Squats/Reaches",
+        "Description": "Balance on one leg while performing a small squat or reaching down to touch a cone placed beside them, then returning to standing."
+      },
+      {
+        "Activity Name": "Wobble Board/Balance Disc Challenge",
+        "Description": "Use a wobble board or balance disc for balancing on two feet, then progressing to one foot. Try catching and throwing a ball while balancing."
+      },
+      {
+        "Activity Name": "Bosu Ball Balance",
+        "Description": "Balance on the flat side, then the dome side of a Bosu ball, trying different stances (e.g., wide, narrow, single-leg)."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Balance Zone Challenge",
+      "Description": [
+        "Setup: Designate several 'balance zones' using various equipment or marked areas (e.g., a low beam, balance discs, a Bosu ball, a slackline if available, or even just marked spots on the ground for single-leg balance). Each zone has a specific balance task.",
+        "Gameplay: Students rotate through the zones, attempting to complete the challenge at each. For example:",
+        "Zone 1: Balance on the beam for 10 seconds while turning your head left and right.",
+        "Zone 2: Perform 3 single-leg squats on the balance disc without touching the ground.",
+        "Zone 3: One leg balance, toe tap North, South, East, West.",
+        "Zone 4: Balance on one foot on a Bosu ball while catching a thrown ball.",
+        "Students can be timed or scored based on successful completion of each zone. The emphasis is on control, precision, and smooth transitions between movements within and between zones."
+      ]
+    },
+    "Equipment": "Low beams, balance discs, Bosu balls, slackline (optional), balls, cones, marked areas, yoga mats (optional), wobble boards"
+  },
+  {
+    "Week": 2,
+    "Stage": 2,
+    "Skill": "FLIPPER",
+    "Practice": [
+      {
+        "Activity Name": "Sprint to Stop",
+        "Description": "Students sprint for a short distance and then quickly decelerate to a complete stop on command."
+      },
+      {
+        "Activity Name": "Change of Direction Drills",
+        "Description": "Set up cones in a zigzag or square pattern. Students sprint between cones, practicing sharp turns and quick changes in direction."
+      },
+      {
+        "Activity Name": "Timed Laps",
+        "Description": "Run laps around a designated area, aiming to maintain a consistent pace for a set time or number of laps."
+      },
+      {
+        "Activity Name": "Fartlek Runs",
+        "Description": "Incorporate periods of fast running (sprints) interspersed with slower jogging or walking, mimicking game scenarios."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Strategic Relay Challenge",
+      "Description": [
+        "Setup: Divide students into teams. Design a relay course that requires different running strategies: A straight sprint leg, a section requiring weaving through obstacles, a segment where players must run backward or sideways, a 'pacing' leg where they must maintain a steady jog for a longer distance before a final sprint.",
+        "Gameplay: Teams compete to complete the relay, passing a baton or tagging the next teammate. Emphasise not just speed, but also effective transitions, strategic pacing, and communication within the team. Discuss how different parts of the course require different running approaches."
+      ]
+    },
+    "Equipment": "Markers/cones for distance, cones, stopwatch, markers for lap boundaries, batons, obstacles, markers for course sections"
+  }
+]

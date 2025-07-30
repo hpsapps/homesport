@@ -1,0 +1,336 @@
+[
+  {
+    "Week": 1,
+    "Stage": 1,
+    "OutcomeCode": "Demonstrating throwing skills with objects of various shapes and sizes (overarm and underarm).",
+    "Skills": [
+      {
+        "Skill": "Javelin Throwing",
+        "Description": "Students learn to grip the javelin near the base using a handshake grip, aligning it with the arm and shoulder. Proper stance involves standing with feet shoulder-width apart, leading with the leg opposite the throwing arm. Focus on a smooth arm motion and release.",
+        "Activity": {
+          "Activity Name": "Javelin Throwing",
+          "Set Up": [
+            "Mark throwing lines using cones or markers spaced 3 to 5 meters apart to ensure safety."
+          ],
+          "Practice": [
+            "In pairs, students take turns performing throws, focusing on technique, aiming for distance while maintaining control and balance.",
+            "Use soft javelins for safety."
+          ],
+          "Assessment": [
+            "Observe students' grip and release action, checking for a straight strong follow-through and proper stance."
+          ],
+          "Equipment": "Soft javelins, cones or markers"
+        }
+      },
+      {
+        "Skill": "Shot-put Techniques",
+        "Description": "Students use a \"clean palm grip,\" holding the ball near the neck. Using a sideways positioning, they push the ball out through the arm extending straight and maintain a stable lower body.",
+        "Activity": {
+          "Activity Name": "Shot-put",
+          "Set Up": [
+            "Create a circle on the ground for shot-put activities with clear boundaries to ensure safety, about 2-meter in diameter."
+          ],
+          "Practice": [
+            "Students practice 'pushing' the ball from their neck area, focusing on leg and arm coordination.",
+            "Use bean bags or light stuffed balls to simulate shot-put for safety."
+          ],
+          "Assessment": [
+            "Check students' stance and release action, observing the follow-through and stability."
+          ],
+          "Equipment": "Bean bags or light balls, markers"
+        }
+      }
+    ]
+  },
+  {
+    "Week": 2,
+    "Stage": 1,
+    "OutcomeCode": "Static and dynamic balances; applying movement skills to active games.",
+    "Skills": [
+      {
+        "Skill": "Balancing Activities",
+        "Description": "Students practice balancing by standing on one foot and coordinating limb movements to maintain stability. They engage different balances using body shapes.",
+        "Activity": {
+          "Activity Name": "Balancing",
+          "Set Up": [
+            "Set up balancing beams or marked lines on the ground."
+          ],
+          "Practice": [
+            "Students walk forwards and backwards on the beam/line, maintaining balance without stepping off.",
+            "Using a wobble board, students practice keeping balance with two feet.",
+            "Students practice standing on one foot while doing a small bean bag throw and catch.",
+            "Balance transfer: students pass a bean bag around their body, even under one leg, while standing in place."
+          ],
+          "Assessment": [
+            "Observe students' ability to maintain balance on the beam and with the wobble board, noting posture and steadiness."
+          ],
+          "Equipment": "Balancing beams, wobble boards, bean bags"
+        }
+      },
+      {
+        "Skill": "Bean Bag Relay",
+        "Description": "Students participate in a relay race focused on teamwork and coordination, using bean bags instead of batons to challenge their running and coordination abilities.",
+        "Activity": {
+          "Activity Name": "Bean Bag Relay",
+          "Set Up": [
+            "Create four lanes using cones for each team.",
+            "Each team starts with a pile of bean bags on one side of the lane."
+          ],
+          "Practice": [
+            "Teams race to move all their bean bags from one side to the other.",
+            "Students take turns picking up one bean bag, running to the far end, placing it down, returning, and tagging the next teammate.",
+            "The first team to move all their bean bags wins."
+          ],
+          "Assessment": [
+            "Observe students' ability to coordinate and pace themselves effectively throughout the relay, focusing on smooth execution and teamwork."
+          ],
+          "Equipment": "Cones, bean bags"
+        }
+      }
+    ]
+  },
+  {
+    "Week": 3,
+    "Stage": 1,
+    "OutcomeCode": "Jumping vertically and horizontally with control; changing directions with control.",
+    "Skills": [
+      {
+        "Skill": "Vertical & Horizontal Jumping",
+        "Description": "Students practice jumping with control by bending the knees and swinging arms to gain height. Emphasis on safe landing with bent knees.",
+        "Activity": {
+          "Activity Name": "Jumping",
+          "Set Up": [
+            "Use ropes or small hurdles, spaced approximately a meter apart for students to jump over."
+          ],
+          "Practice": [
+            "Students practice both vertical and horizontal jumps over obstacles, emphasising knee bend and arm swing for height and distance."
+          ],
+          "Assessment": [
+            "Observe students' take-off power, control in the air, and balance on landing."
+          ],
+          "Equipment": "Ropes, small hurdles"
+        }
+      },
+      {
+        "Skill": "Dodge and Evade",
+        "Description": "Students practice dodging by lowering their center of gravity, changing direction swiftly, and using quick footwork to evade obstacles.",
+        "Activity": {
+          "Activity Name": "Dodging",
+          "Set Up": [
+            "Set up cones in a zig-zag pattern with each cone about a meter apart."
+          ],
+          "Practice": [
+            "Students weave in and out of cones, focusing on quick changes of direction and maintaining a low center of gravity.",
+            "Cones allow body leaning over centre point, flag posts force full body direction movement.",
+            "Students discuss the difference."
+          ],
+          "Assessment": [
+            "Evaluate students' ability to use quick footwork and maintain balance while dodging at speed."
+          ],
+          "Equipment": "Cones"
+        }
+      }
+    ]
+  },
+  {
+    "Week": 4,
+    "Stage": 1,
+    "OutcomeCode": "Kicking a ball with force towards a target; skipping at different speeds and directions in games.",
+    "Skills": [
+      {
+        "Skill": "Kicking & Striking",
+        "Description": "Students practice kicking with force and precision, aligning the foot with the target. They also focus on striking using controlled arm movements with implements like a bat.",
+        "Activity": {
+          "Activity Name": "Kicking & Striking",
+          "Set Up": [
+            "Use mini goals or targets on walls or the ground for kicking.",
+            "Provide lightweight bats or racquets for striking practice."
+          ],
+          "Practice": [
+            "Students work in pairs to kick and strike balls, focusing on accurate aiming and control.",
+            "They attempt 6 successful passes (3 each) before proceeding to shoot at the goal."
+          ],
+          "Assessment": [
+            "Assess students' accuracy and power in their kicking and striking actions, noting their aiming techniques."
+          ],
+          "Equipment": "Mini goals, lightweight bats or racquets, balls"
+        }
+      },
+      {
+        "Skill": "Skipping",
+        "Description": "Students practice coordinating their feet and rhythm, using skipping ropes to enhance timing and consistency in skipping routines.",
+        "Activity": {
+          "Activity Name": "Skipping",
+          "Set Up": [
+            "Provide each student with a skipping rope."
+          ],
+          "Practice": [
+            "Students skip individually and in pairs, trying different speeds and incorporating rhythmic chants or songs to maintain rhythm."
+          ],
+          "Assessment": [
+            "Look for students' rhythm and coordination during skipping activities, assessing their ability to maintain consistent timing."
+          ],
+          "Equipment": "Skipping ropes"
+        }
+      }
+    ]
+  },
+  {
+    "Week": 5,
+    "Stage": 1,
+    "OutcomeCode": "Running and sprinting, varying pace for purpose; catching balls and objects at different levels.",
+    "Skills": [
+      {
+        "Skill": "Forward & Backward Running",
+        "Description": "Students practice running forward and backward, emphasising posture and alignment of the body to enhance speed and control.",
+        "Activity": {
+          "Activity Name": "Running",
+          "Set Up": [
+            "Mark out relay lanes or use cones to create visible boundaries."
+          ],
+          "Practice": [
+            "Organise students in teams for a relay.",
+            "Each student sprints forward to a designated point, jogs backward to the starting line, and tags the next teammate to go.",
+            "Emphasis is on smooth transitions between running forward and backward."
+          ],
+          "Assessment": [
+            "Evaluate students' posture and speed during forward sprints and backward jogs, noting their understanding of transitions."
+          ],
+          "Equipment": "Cones, relay lanes"
+        }
+      },
+      {
+        "Skill": "Catch & Throw",
+        "Description": "Students practice catching objects with hands, focusing on eye-hand coordination. Throwing involves proper arm positioning and release for accuracy.",
+        "Activity": {
+          "Activity Name": "Catch & Throw",
+          "Set Up": [
+            "Position students in pairs, using balls of varied sizes to increase difficulty as skill improves."
+          ],
+          "Practice": [
+            "Students engage in throwing and catching exercises with both underarm and overarm throws, focusing on accuracy and reaching targets.",
+            "Students can start close and step back after each successful catch."
+          ],
+          "Assessment": [
+            "Observe students' hand-eye coordination and ability to accurately aim their throws and maintain a soft catch."
+          ],
+          "Equipment": "Balls of varied sizes"
+        }
+      }
+    ]
+  },
+  {
+    "Week": 6,
+    "Stage": 1,
+    "OutcomeCode": "Leaping using a long running step; side gallop with control.",
+    "Skills": [
+      {
+        "Skill": "Leaping and Bounding",
+        "Description": "Students practice leaping by taking off from one foot and landing on the opposite. Emphasis is on height and distance, using arms to propel forward.",
+        "Activity": {
+          "Activity Name": "Leaping",
+          "Set Up": [
+            "Use markers to indicate starting and landing spots over varying distances to provide challenge."
+          ],
+          "Practice": [
+            "Students practice leaping over various distances, switching lead foot to increase versatility and control during take-offs and landings.",
+            "Challenge, static leap vs running leap. Discuss differences."
+          ],
+          "Assessment": [
+            "Observe students' ability to coordinate movements, focus on smooth landings and controlled strides during leaps."
+          ],
+          "Equipment": "Markers"
+        }
+      },
+      {
+        "Skill": "Sidestepping",
+        "Description": "Students practice sidestepping by positioning feet parallel and using quick lateral movements to shift sidewise, maintaining balance throughout.",
+        "Activity": {
+          "Activity Name": "Sidestepping",
+          "Set Up": [
+            "Create a line of cones in a straight line spaced evenly apart to guide movement."
+          ],
+          "Practice": [
+            "Students sidestep through the line of cones, focusing on maintaining a low centre of gravity and control of movements."
+          ],
+          "Assessment": [
+            "Observe students’ ability to sidestep with speed without disrupting their balance, evaluating control in transitions between cones."
+          ],
+          "Equipment": "Cones"
+        }
+      }
+    ]
+  },
+  {
+    "Week": 7,
+    "Stage": 1,
+    "OutcomeCode": "Participation and enjoyment in physical activities; demonstrating fundamental movement skills for wellbeing.",
+    "Games": [
+      {
+        "Game": "Athletics Carnival",
+        "Description": "Students participate in mini-events practicing the accumulated skills.",
+        "Events": [
+          "Mini-javelin throws",
+          "Shot-put",
+          "Relay races",
+          "Jumping contests",
+          "Dodging and sidestepping games"
+        ],
+        "Assessment": [
+          "Collective assessment of skills through participation, enjoyment, and enthusiasm during mini-events."
+        ]
+      }
+    ]
+  },
+  {
+    "Week": 8,
+    "Stage": 1,
+    "OutcomeCode": "Engaging in games that involve teamwork and coordination.",
+    "Games": [
+      {
+        "Game": "Bucket Freeze",
+        "Description": "Team A stands behind a throw line, attempting to throw a ball into a bucket. Team B sends one runner at a time around a circuit. If Team A successfully lands a ball in the bucket, the runner from Team B must freeze. The next runner starts and can free any frozen runner by tagging them. The team with the most players finishing a lap wins.",
+        "Equipment": "Cones, balls, bucket"
+      },
+      {
+        "Game": "Rob the Nest",
+        "Description": "Can be any number of teams. Teams run to the centre to collect items for their nest. Teams can steal from other nests. The team with the most items wins.",
+        "Equipment": "Cones, bean bags, hoops, various small items"
+      }
+    ]
+  },
+  {
+    "Week": 9,
+    "Stage": 1,
+    "OutcomeCode": "Engaging in strategic and team coordination games.",
+    "Games": [
+      {
+        "Game": "Ultimate Ball",
+        "Description": "This game is similar to Ultimate Frisbee but played with a ball. Players pass to teammates without dropping the ball, with no running allowed while holding it. The objective is to work together to move the ball towards the goal area.",
+        "Equipment": "Soft ball or vortex"
+      },
+      {
+        "Game": "Pin Guard",
+        "Description": "Each team guards a cone (pin) while trying to knock over others’ pins using dodgeballs. If your pin falls, you're out.",
+        "Equipment": "Cones, dodgeballs"
+      }
+    ]
+  },
+  {
+    "Week": 10,
+    "Stage": 1,
+    "OutcomeCode": "Demonstrating spatial awareness in games; effectively using strategies in physical activities.",
+    "Games": [
+      {
+        "Game": "Numbers Game",
+        "Description": "Set up a range of balls, bats etc in the middle. The team is divided into two groups, and each player is assigned a number. The teacher calls out a number and a ball/action. The corresponding player from each team races to the ball/activity and attempt to score. Example; 3, hockey. Number 3s run to pick up a hockey stick and get the ball into their goal.",
+        "Equipment": "Ball, cones, number tags or bibs"
+      },
+      {
+        "Game": "Clean Up the Yard",
+        "Description": "Teams throw bean bags or soft balls over a central line. The team with the fewest balls on their side after 5 minutes wins. Overthrows don't count and must be on the field.",
+        "Equipment": "Soft footballs"
+      }
+    ]
+  }
+]
