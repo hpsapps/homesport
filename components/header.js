@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 mainTitle.textContent = document.title;
             }
 
+            if (headerPlaceholder.dataset.showHomeIcon === 'true') {
+                const homeIconLink = document.getElementById('home-icon-link');
+                if (homeIconLink) {
+                    homeIconLink.classList.remove('hidden');
+                }
+            }
+
             const darkModeToggle = document.getElementById('dark-mode-toggle');
             if (darkModeToggle) {
                 darkModeToggle.addEventListener('click', () => {
