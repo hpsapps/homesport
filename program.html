@@ -281,6 +281,17 @@ const renderActivityContent = () => {
                 </div>
             </div>
 
+            ${weekData.Assessment ? `
+            <div>
+                <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">Assessment</h4>
+                <div class="p-4 rounded-lg ${state.darkMode ? 'bg-[#78013D]/20 border-[#78013D]' : 'bg-[#78013D]/10 border-[#78013D]/50'} border">
+                    <div class="space-y-2">
+                        ${Array.isArray(weekData.Assessment) ? weekData.Assessment.map(item => `<p class="text-sm ${state.darkMode ? 'text-stone-100' : 'text-stone-700'}">${item}</p>`).join('') : `<p class="text-sm ${state.darkMode ? 'text-stone-100' : 'text-stone-700'}">${weekData.Assessment}</p>`}
+                    </div>
+                </div>
+            </div>
+            ` : ''}
+
             <div>
                 <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">Equipment Required</h4>
                 <div class="p-4 rounded-lg ${state.darkMode ? 'bg-green-900/20 border-green-800' : 'bg-green-50 border-green-200'} border">
