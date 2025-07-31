@@ -2,68 +2,372 @@
   {
     "Week": 1,
     "Stage": 2,
-    "Skill": "Wackadoo",
+    "Content Point": "PH2-MSP-01: Apply static and dynamic balances at different levels.",
+    "Skill": "Balancing",
     "Practice": [
       {
-        "Activity Name": "Yoga-Inspired Balances",
-        "Description": "Practice simple yoga poses that require balance, such as Tree Pose (standing on one leg, foot on inner thigh/calf) or Warrior III (balancing on one leg, body T-shaped, reaching forward)."
+        "Activity Name": "One Foot Challenge",
+        "Description": "Students balance on one foot on a line drawn on the ground (tape or chalk). Encourage them to try holding for increasing durations (e.g., 'Can you balance for 5 seconds? 10 seconds?')."
       },
       {
-        "Activity Name": "Single-Leg Squats/Reaches",
-        "Description": "Balance on one leg while performing a small squat or reaching down to touch a cone placed beside them, then returning to standing."
+        "Activity Name": "Object Balance",
+        "Description": "While balancing on one foot, try holding a lightweight object (e.g., beanbag, small ball) in their hands, then try placing it on their head."
       },
       {
-        "Activity Name": "Wobble Board/Balance Disc Challenge",
-        "Description": "Use a wobble board or balance disc for balancing on two feet, then progressing to one foot. Try catching and throwing a ball while balancing."
+        "Activity Name": "Eyes Open/Closed Challenge",
+        "Description": "Try balancing on one foot with eyes open, then for a greater challenge, try briefly with eyes closed (ensure safety and supervision)."
       },
       {
-        "Activity Name": "Bosu Ball Balance",
-        "Description": "Balance on the flat side, then the dome side of a Bosu ball, trying different stances (e.g., wide, narrow, single-leg)."
+        "Activity Name": "Beam Walk",
+        "Description": "Walk forwards, backwards, and sideways along a low beam, a thick rope, or a line of cones laid out on the ground. Focus on slow, controlled steps."
+      },
+      {
+        "Activity Name": "Pillow/Cushion Balance",
+        "Description": "Balance on one or two feet on a soft, slightly unstable surface like a pillow or cushion, focusing on maintaining stability."
       }
     ],
     "Game": {
-      "Activity Name": "Balance Zone Challenge",
+      "Activity Name": "Balance Obstacle Relay",
       "Description": [
-        "Setup: Designate several 'balance zones' using various equipment or marked areas (e.g., a low beam, balance discs, a Bosu ball, a slackline if available, or even just marked spots on the ground for single-leg balance). Each zone has a specific balance task.",
-        "Gameplay: Students rotate through the zones, attempting to complete the challenge at each. For example:",
-        "Zone 1: Balance on the beam for 10 seconds while turning your head left and right.",
-        "Zone 2: Perform 3 single-leg squats on the balance disc without touching the ground.",
-        "Zone 3: One leg balance, toe tap North, South, East, West.",
-        "Zone 4: Balance on one foot on a Bosu ball while catching a thrown ball.",
-        "Students can be timed or scored based on successful completion of each zone. The emphasis is on control, precision, and smooth transitions between movements within and between zones."
+        "Setup: Create a simple course with various balance challenges. This could include:",
+        "Walking along a 'river' (blue mat or tape) without stepping off.",
+        "Stepping over 'rocks' (small cones or blocks) while maintaining balance.",
+        "Balancing on a 'log' (low beam or thick rope) for a short distance.",
+        "Balancing an object (beanbag) on their head while walking a short, clear path.",
+        "Gameplay: Students complete the course individually or in small teams, with the goal of maintaining balance and not touching the ground outside the designated path or dropping their object. If they fall or drop, they restart that specific section. Teams race to complete the course, emphasising control and precision over pure speed."
       ]
     },
-    "Equipment": "Low beams, balance discs, Bosu balls, slackline (optional), balls, cones, marked areas, yoga mats (optional), wobble boards"
+    "Assessment": "Observe students' ability to maintain static and dynamic balance, adjust to different surfaces, and control their body during movement.",
+    "Equipment": "Tape or chalk for lines, beanbags, small balls, low beams, thick rope, cones, blue mats, small blocks, pillows, cushions"
   },
   {
     "Week": 2,
     "Stage": 2,
-    "Skill": "FLIPPER",
+    "Content Point": "PH2-MSP-01: Combine running with smooth transitions in games.",
+    "Skill": "Running",
     "Practice": [
       {
-        "Activity Name": "Sprint to Stop",
-        "Description": "Students sprint for a short distance and then quickly decelerate to a complete stop on command."
+        "Activity Name": "Traffic Lights",
+        "Description": "Students run at different speeds based on a 'traffic light' call (Green = fast run, Yellow = jog, Red = stop)."
       },
       {
-        "Activity Name": "Change of Direction Drills",
-        "Description": "Set up cones in a zigzag or square pattern. Students sprint between cones, practicing sharp turns and quick changes in direction."
+        "Activity Name": "Follow the Leader",
+        "Description": "Students follow the teacher or a designated leader, matching their running pace and direction changes."
       },
       {
-        "Activity Name": "Timed Laps",
-        "Description": "Run laps around a designated area, aiming to maintain a consistent pace for a set time or number of laps."
+        "Activity Name": "Arm Swings",
+        "Description": "Practice running with exaggerated arm swings (like pistons) to understand proper arm mechanics."
       },
       {
-        "Activity Name": "Fartlek Runs",
-        "Description": "Incorporate periods of fast running (sprints) interspersed with slower jogging or walking, mimicking game scenarios."
+        "Activity Name": "Knee Lifts",
+        "Description": "Focus on lifting knees high while running, emphasising good running posture."
       }
     ],
     "Game": {
-      "Activity Name": "Strategic Relay Challenge",
+      "Activity Name": "Running Obstacle Course",
       "Description": [
-        "Setup: Divide students into teams. Design a relay course that requires different running strategies: A straight sprint leg, a section requiring weaving through obstacles, a segment where players must run backward or sideways, a 'pacing' leg where they must maintain a steady jog for a longer distance before a final sprint.",
-        "Gameplay: Teams compete to complete the relay, passing a baton or tagging the next teammate. Emphasise not just speed, but also effective transitions, strategic pacing, and communication within the team. Discuss how different parts of the course require different running approaches."
+        "Setup: Create a simple course with various running challenges. This could include:",
+        "Sprinting a short distance (e.g., 10-15 meters).",
+        "Weaving through cones (strategic direction changes).",
+        "Jogging to a designated spot.",
+        "Running backward for a short, safe distance.",
+        "Gameplay: Students complete the course individually or in small teams. The goal is to navigate the course efficiently, demonstrating controlled speed changes and smooth transitions between different running movements. Teams can race, but the focus remains on good form and controlled execution rather than just raw speed."
       ]
     },
-    "Equipment": "Markers/cones for distance, cones, stopwatch, markers for lap boundaries, batons, obstacles, markers for course sections"
+    "Assessment": "Focus on students' running form, ability to vary pace, and make smooth directional changes.",
+    "Equipment": "Cones, markers for distance measurement, markers for designated spots"
+  },
+  {
+    "Week": 3,
+    "Stage": 2,
+    "Content Point": "PH2-MSP-01: Apply throwing techniques with strategic intent.",
+    "Skill": "Throwing",
+    "Practice": [
+      {
+        "Activity Name": "Underarm Targets",
+        "Description": "Set up large, easy-to-hit targets (e.g., hula hoops on the ground, large buckets) at close distances. Practice underarm throws, focusing on stepping with the opposite foot."
+      },
+      {
+        "Activity Name": "Overarm Targets",
+        "Description": "Use slightly further targets or a large wall. Practice overarm throws, focusing on a sideways stance and a big arm swing."
+      },
+      {
+        "Activity Name": "Rolling Toss",
+        "Description": "Partners sit facing each other and roll a soft ball back and forth, aiming for accuracy."
+      },
+      {
+        "Activity Name": "Underarm Toss",
+        "Description": "Partners stand a short distance apart and practice underarm tossing a beanbag or soft ball, focusing on a gentle arc."
+      },
+      {
+        "Activity Name": "Overarm Toss (Soft Ball)",
+        "Description": "Partners practice overarm throwing a soft ball, gradually increasing distance as technique improves."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Target Zone Throw",
+      "Description": [
+        "Setup: Create several marked 'target zones' on the ground or a wall using tape, chalk, or hula hoops. Assign different point values to each zone (e.g., closer targets = 1 point, further targets = 3 points, a small bullseye = 5 points). Provide a variety of soft throwing objects (beanbags, soft balls, foam darts).",
+        "Gameplay: Students take turns throwing at the targets from a designated throwing line. They can choose which target to aim for based on their confidence and desired points. Encourage them to try both underarm and overarm throws. Students track their own scores or play in small teams to accumulate points. The game emphasises aiming, accuracy, and making simple strategic choices about which target to attempt."
+      ]
+    },
+    "Assessment": "Look for accuracy and developing technique in both underarm and overarm throws, and initial understanding of aiming.",
+    "Equipment": "Hula hoops, large buckets, soft balls, beanbags, foam darts, tape, chalk, wall targets, throwing line markers"
+  },
+  {
+    "Week": 4,
+    "Stage": 2,
+    "Content Point": "PH2-MSP-01: Integrate twisting and bending with movement sequences.",
+    "Skill": "Twisting and Bending",
+    "Practice": [
+      {
+        "Activity Name": "Waist Twists",
+        "Description": "Stand with feet shoulder-width apart, hands on hips. Gently twist the upper body from side to side, keeping hips relatively still."
+      },
+      {
+        "Activity Name": "Simple Bends",
+        "Description": "Practice bending forward at the waist (reaching for toes), bending sideways (reaching hand down leg), and gentle backbends (looking up)."
+      },
+      {
+        "Activity Name": "Twist and Reach",
+        "Description": "Twist to one side, then reach hands up high, then bend down low."
+      },
+      {
+        "Activity Name": "Animal Twists",
+        "Description": "Mimic animals that twist and bend (e.g., a 'snake' twisting on the ground, a 'cat' stretching and arching its back)."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Twist & Bend Challenge Course",
+      "Description": [
+        "Setup: Create a series of stations or a pathway where students perform specific twisting and bending actions.",
+        "Station 1 (Twist): Stand in a hula hoop and perform 5 twists to each side.",
+        "Station 2 (Bend): Bend down to pick up a beanbag, stand up, and place it on a cone. Repeat 3 times.",
+        "Station 3 (Twist & Reach): Twist to the right, reach for a cone, then twist to the left and reach for another cone.",
+        "Station 4 (Under/Over): Crawl under a low hurdle (bending) and then step over a higher obstacle (bending and reaching).",
+        "Gameplay: Students navigate the course, completing the required twisting and bending movements at each station. They can work individually or in small groups, focusing on controlled and fluid execution of the movements. The goal is to complete the course demonstrating good body control."
+      ]
+    },
+    "Assessment": "Assess control and coordination in the execution of basic twisting and bending movements, and their integration into simple sequences.",
+    "Equipment": "Hula hoops, beanbags, cones, low hurdles, obstacles"
+  },
+  {
+    "Week": 5,
+    "Stage": 2,
+    "Content Point": "PH2-MSP-01: Mix jumping techniques in games.",
+    "Skill": "Jumping",
+    "Practice": [
+      {
+        "Activity Name": "Vertical Jumps",
+        "Description": "Practice jumping straight up, focusing on landing softly with bent knees."
+      },
+      {
+        "Activity Name": "Horizontal Jumps",
+        "Description": "Practice jumping forward from a standing start, aiming for distance."
+      },
+      {
+        "Activity Name": "Hopping",
+        "Description": "Hop on one foot, then the other, for short distances."
+      },
+      {
+        "Activity Name": "Jump-Hop-Jump",
+        "Description": "Perform a two-footed jump, then a hop on one foot, then another two-footed jump."
+      },
+      {
+        "Activity Name": "Jump Over",
+        "Description": "Jump over small, safe obstacles (e.g., a rope on the ground, a pool noodle)."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Jumping Journey",
+      "Description": [
+        "Setup: Create a 'journey' on the ground using markers (e.g., tape, chalk, hoops). Each marker indicates a different type of jump:",
+        "'Rabbit Hops': Small, quick two-footed jumps.",
+        "'Kangaroo Jumps': Larger two-footed jumps for distance.",
+        "'Frog Leaps': Squat down and leap forward.",
+        "'One-Legged Path': Hop on one leg along a short path.",
+        "Gameplay: Students move along the 'journey,' performing the specified jump at each marker. They can be encouraged to count their successful jumps or to complete the journey without falling. The game encourages exploration of different jumping techniques and develops control in varied jumping movements."
+      ]
+    },
+    "Assessment": "Evaluate students' ability to control jump height and distance, and mix different jumping techniques.",
+    "Equipment": "Markers, tape, chalk, hoops, ropes, pool noodles"
+  },
+  {
+    "Week": 6,
+    "Stage": 2,
+    "Content Point": "PH2-MSP-01: Enhance catching skills with strategic elements.",
+    "Skill": "Catching",
+    "Practice": [
+      {
+        "Activity Name": "Soft Toss",
+        "Description": "Partners stand close and gently toss a large, soft ball (e.g., beach ball, foam ball) to each other, focusing on watching the ball into their hands."
+      },
+      {
+        "Activity Name": "Rolling Catch",
+        "Description": "Partners roll a ball to each other, practising scooping it up."
+      },
+      {
+        "Activity Name": "Varied Object Catch",
+        "Description": "Practice catching different sized and weighted objects (e.g., beanbags, scarves, small soft balls)."
+      },
+      {
+        "Activity Name": "Self-Toss & Catch",
+        "Description": "Students toss a ball up to themselves and catch it."
+      },
+      {
+        "Activity Name": "Wall Catch",
+        "Description": "Throw a ball against a wall and catch it on the rebound."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Catching Carousel",
+      "Description": [
+        "Setup: Students form a large circle. The teacher or a designated leader stands in the middle with a variety of soft balls or beanbags.",
+        "Gameplay: The leader gently throws different objects to individual students in the circle, varying the height and speed of the throws (e.g., a high lob, a gentle chest pass, a soft roll). Students focus on catching the object. After catching, they can throw it back to the leader or pass it to a designated 'return' spot.",
+        "As students get more confident, the leader can introduce simple 'strategic' elements, like calling out a colour and only throwing to students wearing that colour, or throwing to a student who quickly moves to an open space. The emphasis is on developing hand-eye coordination, anticipating the ball's path, and making successful catches."
+      ]
+    },
+    "Assessment": "Monitor accuracy and consistency in catching, and initial ability to anticipate and react to moving targets.",
+    "Equipment": "Beach balls, foam balls, soft balls, beanbags, scarves, walls, designated return spots"
+  },
+  {
+    "Week": 7,
+    "Stage": 2,
+    "Content Point": "PH2-MSP-01: Apply striking techniques with strategic intent.",
+    "Skill": "Striking",
+    "Practice": [
+      {
+        "Activity Name": "Tee Ball",
+        "Description": "Use a batting tee to practice striking a stationary ball with a plastic bat or paddle. Focus on eye-hand coordination and swinging through the ball."
+      },
+      {
+        "Activity Name": "Balloon Batting",
+        "Description": "Use a lightweight paddle or hand to strike a balloon, keeping it in the air."
+      },
+      {
+        "Activity Name": "Cone Knockdown",
+        "Description": "Use a soft bat or hand to strike a ball off a tee, aiming to knock over cones or targets placed at a short distance."
+      },
+      {
+        "Activity Name": "Rolling Ball Strike",
+        "Description": "Practice striking a slowly rolling ball with a foot (kicking) or a stick/bat."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Target Strike Challenge",
+      "Description": [
+        "Setup: Set up various stationary targets at different distances and with different shapes (e.g., hula hoops on the ground, cones, cardboard boxes). Provide different implements for striking (e.g., plastic bats, foam paddles, feet for kicking).",
+        "Gameplay: Students take turns striking a ball (from a tee or gently rolled) towards the targets. They can choose which implement to use and which target to aim for. Points can be awarded based on hitting the target, with higher points for smaller or further targets.",
+        "Encourage them to try different parts of their foot (e.g., inside, outside) for different types of kicks. The game emphasises basic striking technique, aiming, and making simple strategic decisions about target selection."
+      ]
+    },
+    "Assessment": "Monitor technique and control in basic striking actions, and initial understanding of aiming for strategic intent.",
+    "Equipment": "Batting tees, plastic bats, paddles, balloons, soft balls, cones, targets, cardboard boxes, hula hoops, foam paddles, sticks"
+  },
+  {
+    "Week": 8,
+    "Stage": 2,
+    "Content Point": "PH2-MSP-01: Use skipping in movement sequences.",
+    "Skill": "Skipping",
+    "Practice": [
+      {
+        "Activity Name": "Rhythm Practice",
+        "Description": "Practice the 'step-hop' rhythm of skipping slowly, then gradually increasing speed."
+      },
+      {
+        "Activity Name": "Directional Skipping",
+        "Description": "Skip forwards, backwards (carefully!), and sideways."
+      },
+      {
+        "Activity Name": "Skip and Run",
+        "Description": "Alternate between skipping for a few steps and then running for a few steps."
+      },
+      {
+        "Activity Name": "Skip Around Obstacles",
+        "Description": "Skip around cones or markers in a zigzag or circular pattern."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Skip and Move Relay",
+      "Description": [
+        "Setup: Divide students into teams. Set up a simple relay course with different segments.",
+        "Gameplay: Each segment requires a different movement:",
+        "Leg 1: Skip to a cone.",
+        "Leg 2: Run back to the start.",
+        "Leg 3: Skip sideways to a cone.",
+        "Leg 4: Hop back to the start.",
+        "Teams race to complete the relay, with each student performing a segment before tagging the next. The focus is on maintaining the skipping rhythm, transitioning smoothly between movements, and controlling direction."
+      ]
+    },
+    "Assessment": "Check for consistency and control during basic skipping, and the ability to integrate skipping with other movements in simple sequences.",
+    "Equipment": "Cones, markers, relay course markers"
+  },
+  {
+    "Week": 9,
+    "Stage": 2,
+    "Content Point": "PH2-MSP-01: Apply kicking with strategic placement.",
+    "Skill": "Kicking",
+    "Practice": [
+      {
+        "Activity Name": "Stationary Target Kicks",
+        "Description": "Place a stationary ball and kick it towards large, easy-to-hit targets (e.g., a large goal, a hula hoop). Focus on making good contact with the foot."
+      },
+      {
+        "Activity Name": "Rolling Ball Kicks",
+        "Description": "Gently roll a ball and practice kicking it while it's moving slowly."
+      },
+      {
+        "Activity Name": "Stationary Pass",
+        "Description": "Partners stand a short distance apart and practice kicking a stationary ball back and forth, aiming for the partner's feet."
+      },
+      {
+        "Activity Name": "Moving Pass (Simple)",
+        "Description": "One partner gently rolls the ball, and the other kicks it back, practising a simple moving pass."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Goal Kick Challenge",
+      "Description": [
+        "Setup: Set up several different 'goals' or target areas of varying sizes and distances (e.g., a wide goal, a narrow goal, a small target cone). Use soft, lightweight balls.",
+        "Gameplay: Students take turns kicking a stationary ball towards the goals. They can choose which goal to aim for. Points can be awarded based on hitting the target, with higher points for smaller or further goals.",
+        "Encourage them to try different parts of their foot (e.g., inside, outside) for different types of kicks. The game emphasises basic kicking accuracy, understanding of force, and simple strategic placement."
+      ]
+    },
+    "Assessment": "Monitor the accuracy and distance of kicks, and initial strategic thinking in selecting kicking targets.",
+    "Equipment": "Soft balls, lightweight balls, goals, hula hoops, target cones, markers for distance"
+  },
+  {
+    "Week": 10,
+    "Stage": 2,
+    "Content Point": "PH2-MSP-01: Apply dribbling techniques with control and precision.",
+    "Skill": "Bouncing and Dribbling",
+    "Practice": [
+      {
+        "Activity Name": "Bounce and Catch",
+        "Description": "Practice bouncing a ball (e.g., basketball, playground ball) with two hands, then catching it."
+      },
+      {
+        "Activity Name": "One-Hand Bounce",
+        "Description": "Progress to bouncing with one hand, then catching with two."
+      },
+      {
+        "Activity Name": "Target Bounce",
+        "Description": "Bounce a ball into a hula hoop or designated target area on the ground."
+      },
+      {
+        "Activity Name": "Bounce Pass",
+        "Description": "Practice bouncing a ball to a partner, aiming for their hands or a spot in front of them."
+      }
+    ],
+    "Game": {
+      "Activity Name": "Bounce & Pass Relay",
+      "Description": [
+        "Setup: Divide students into teams. Set up a simple course with a start and end line.",
+        "Gameplay: Students bounce a ball (with two hands or one, depending on skill) from the start line to a cone, then pass it (via a bounce pass) to the next teammate who is waiting at the cone. That teammate then bounces the ball back to the start line and passes to the next person.",
+        "The relay focuses on maintaining control of the bounce and executing an accurate bounce pass. Emphasise teamwork and communication."
+      ]
+    },
+    "Assessment": "Assess control and consistency in bouncing, and initial control and precision in dribbling.",
+    "Equipment": "Basketballs, playground balls, hula hoops, target areas, cones, start and end line markers"
   }
 ]
