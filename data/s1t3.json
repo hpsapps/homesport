@@ -2,7 +2,9 @@
   {
     "Week": 1,
     "Stage": 1,
-    "OutcomeCode": "Demonstrating throwing skills with objects of various shapes and sizes (overarm and underarm).",
+    "ContentPoint": [
+      "Throw balls and objects of various shapes and sizes underarm and overarm towards a target."
+    ],
     "Skills": [
       {
         "Skill": "Javelin Throwing",
@@ -45,7 +47,10 @@
   {
     "Week": 2,
     "Stage": 1,
-    "OutcomeCode": "Developing ball control skills and teamwork through modified soccer and scooter activities.",
+    "ContentPoint": [
+      "Dribble a ball at different levels (e.g., hand dribble, foot dribble).",
+      "Apply fundamental movement skills to create and participate in physically active games."
+    ],
     "Skills": [
       {
         "Skill": "Mini Soccer",
@@ -91,7 +96,10 @@
   {
     "Week": 3,
     "Stage": 1,
-    "OutcomeCode": "Developing coordination and teamwork through ball handling and rhythmic movement skills.",
+    "ContentPoint": [
+      "Skip at different speeds and directions in games.",
+      "Apply fundamental movement skills to create and participate in physically active games."
+    ],
     "Skills": [
       {
         "Skill": "Ball Game - Over and Under",
@@ -138,7 +146,11 @@
   {
     "Week": 4,
     "Stage": 1,
-    "OutcomeCode": "Developing accuracy, speed, and relay racing skills through targeted throwing and running activities.",
+    "ContentPoint": [
+      "Run and sprint, varying pace according to purpose.",
+      "Throw balls and objects of various shapes and sizes underarm and overarm towards a target.",
+      "Apply fundamental movement skills to create and participate in physically active games."
+    ],
     "Skills": [
       {
         "Skill": "Bean Bag Relay Races",
@@ -185,7 +197,11 @@
   {
     "Week": 5,
     "Stage": 1,
-    "OutcomeCode": "Building strength, teamwork, and sprinting technique through competitive team activities and individual running skills.",
+    "ContentPoint": [
+      "Run and sprint, varying pace according to purpose.",
+      "Demonstrate and explain how fair play and rules contribute to safety in group activities.",
+      "Apply fundamental movement skills to create and participate in physically active games."
+    ],
     "Skills": [
       {
         "Skill": "Tug-o-War",
@@ -231,7 +247,10 @@
   {
     "Week": 6,
     "Stage": 1,
-    "OutcomeCode": "Participation and enjoyment in physical activities; demonstrating fundamental movement skills for wellbeing.",
+    "ContentPoint": [
+      "Identify and participate in physical activities to enhance enjoyment and motivation.",
+      "Fundamental movement skills support health and wellbeing:"
+    ],
     "Skills": [
       {
         "Skill": "Athletics Carnival",
@@ -257,7 +276,10 @@
   {
     "Week": 7,
     "Stage": 1,
-    "OutcomeCode": "Engaging in strategic and team coordination games.",
+    "ContentPoint": [
+      "Apply fundamental movement skills to create and participate in physically active games.",
+      "Demonstrate and explain how fair play and rules contribute to safety in group activities."
+    ],
     "Skills": [
       {
         "Skill": "Traffic Light Tag",
@@ -317,7 +339,10 @@
   {
     "Week": 8,
     "Stage": 1,
-    "OutcomeCode": "Engaging in games that involve teamwork and coordination.",
+    "ContentPoint": [
+      "Apply fundamental movement skills to create and participate in physically active games.",
+      "Demonstrate and explain how fair play and rules contribute to safety in group activities."
+    ],
     "Skills": [
       {
         "Skill": "Bucket Freeze",
@@ -371,7 +396,10 @@
   {
     "Week": 9,
     "Stage": 1,
-    "OutcomeCode": "Engaging in strategic and team coordination games.",
+    "ContentPoint": [
+      "Apply fundamental movement skills to create and participate in physically active games.",
+      "Demonstrate and explain how fair play and rules contribute to safety in group activities."
+    ],
     "Skills": [
       {
         "Skill": "Ultimate Ball",
@@ -422,7 +450,10 @@
   {
     "Week": 10,
     "Stage": 1,
-    "OutcomeCode": "Demonstrating spatial awareness in games; effectively using strategies in physical activities.",
+    "ContentPoint": [
+      "Demonstrate spatial awareness in relation to people, objects, and the environment.",
+      "Apply fundamental movement skills to create and participate in physically active games."
+    ],
     "Skills": [
       {
         "Skill": "Numbers Game",

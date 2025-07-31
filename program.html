@@ -195,25 +195,30 @@ const renderActivityContent = () => {
     if (weekData.Skills && Array.isArray(weekData.Skills)) {
         contentHtml += `
             <div class="border-b pb-3 ${state.darkMode ? 'border-gray-600' : 'border-gray-200'}">
-                <h3 class="text-xl font-bold ${state.darkMode ? 'text-white' : 'text-gray-900'}">Week ${weekData.Week} - Stage ${weekData.Stage}</h3>
-                <p class="${state.darkMode ? 'text-gray-400' : 'text-gray-600'} mb-4"><strong>Outcome:</strong> ${weekData.OutcomeCode}</p>
+                <h3 class="text-xl font-bold ${state.darkMode ? 'text-stone-100' : 'text-stone-900'}">Week ${weekData.Week} - Stage ${weekData.Stage}</h3>
+                <div class="mb-4">
+                    <strong class="${state.darkMode ? 'text-stone-200' : 'text-stone-900'}">Content Point:</strong>
+                    <ul class="list-disc list-inside ml-5 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">
+                        ${Array.isArray(weekData.ContentPoint) ? weekData.ContentPoint.map(item => `<li>${item}</li>`).join('') : `<li>${weekData.ContentPoint}</li>`}
+                    </ul>
+                </div>
             </div>
         `;
 
         weekData.Skills.forEach((skill, i) => {
             contentHtml += `
                 <div class="mb-6">
-                    <h4 class="text-lg font-semibold mb-2 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">${skill.Skill}</h4>
-                    <p class="mb-3 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}">${skill.Description}</p>
+                    <h4 class="text-lg font-semibold mb-2 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">${skill.Skill}</h4>
+                    <p class="mb-3 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">${skill.Description}</p>
 
-                    <p class="mb-2 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}"><strong>Set Up:</strong>
+                    <p class="mb-2 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}"><strong>Set Up:</strong>
                         ${Array.isArray(skill.Activity['Set Up']) ? skill.Activity['Set Up'].join(' ') : 'No Set Up information available'}
                     </p>
-                    <p class="mb-1 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}"><strong>Practice:</strong></p>
-                    <ul class="list-disc list-inside ml-5 mb-2 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}">
+                    <p class="mb-1 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}"><strong>Practice:</strong></p>
+                    <ul class="list-disc list-inside ml-5 mb-2 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">
                         ${Array.isArray(skill.Activity['Practice']) ? skill.Activity['Practice'].map(item => `<li>${item}</li>`).join('') : ''}
                     </ul>
-                    <p class="mb-2 ${state.darkMode ? 'text-gray-300' : 'text-gray-700'}"><strong>Assessment:</strong>
+                    <p class="mb-2 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}"><strong>Assessment:</strong>
                         ${Array.isArray(skill.Activity['Assessment']) ? skill.Activity['Assessment'].join(' ') : ''}
                     </p>
 
@@ -226,12 +231,12 @@ const renderActivityContent = () => {
     else if (weekData.Game || weekData.Practice) {
         contentHtml += `
             <div class="border-b pb-3 ${state.darkMode ? 'border-gray-600' : 'border-gray-200'}">
-                <h3 class="text-xl font-bold ${state.darkMode ? 'text-white' : 'text-gray-900'}">${weekData.Skill || 'Skill'}</h3>
-                <p class="text-sm ${state.darkMode ? 'text-gray-400' : 'text-gray-600'}">Week ${weekData.Week} - Stage ${weekData.Stage}</p>
+                <h3 class="text-xl font-bold ${state.darkMode ? 'text-stone-100' : 'text-stone-900'}">${weekData.Skill || 'Skill'}</h3>
+                <p class="text-sm ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">Week ${weekData.Week} - Stage ${weekData.Stage}</p>
             </div>
 
             <div>
-                <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">Practice Activities</h4>
+                <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">Practice Activities</h4>
                 <div class="space-y-4">
         `;
 
@@ -239,15 +244,15 @@ const renderActivityContent = () => {
             weekData.Practice.forEach((activity) => {
                 contentHtml += `
                     <div class="p-4 rounded-lg ${state.darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}">
-                        <h5 class="font-medium mb-2 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">${activity['Activity Name']}</h5>
-                        <p class="${state.darkMode ? 'text-gray-300' : 'text-gray-600'}">${activity.Description}</p>
+                        <h5 class="font-medium mb-2 ${state.darkMode ? 'text-stone-300' : 'text-stone-700'}">${activity['Activity Name']}</h5>
+                        <p class="${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">${activity.Description}</p>
                     </div>
                 `;
             });
         } else {
             contentHtml += `
                 <div class="p-4 rounded-lg ${state.darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}">
-                    <p class="${state.darkMode ? 'text-gray-300' : 'text-gray-600'}">No practice activities found</p>
+                    <p class="${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">No practice activities found</p>
                 </div>
             `;
         }
@@ -257,9 +262,9 @@ const renderActivityContent = () => {
             </div>
 
             <div>
-                <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">Game</h4>
+                <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">Game</h4>
                 <div class="p-4 rounded-lg ${state.darkMode ? 'bg-blue-900/20 border-blue-800' : 'bg-blue-50 border-blue-200'} border">
-                    <h5 class="font-medium mb-3 ${state.darkMode ? 'text-blue-200' : 'text-blue-800'}">${weekData.Game['Activity Name']}</h5>
+                    <h5 class="font-medium mb-3 ${state.darkMode ? 'text-stone-300' : 'text-stone-700'}">${weekData.Game['Activity Name']}</h5>
                     <div class="space-y-2">
         `;
 
@@ -277,7 +282,7 @@ const renderActivityContent = () => {
             </div>
 
             <div>
-                <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-gray-200' : 'text-gray-800'}">Equipment Required</h4>
+                <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">Equipment Required</h4>
                 <div class="p-4 rounded-lg ${state.darkMode ? 'bg-green-900/20 border-green-800' : 'bg-green-50 border-green-200'} border">
         `;
 
