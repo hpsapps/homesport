@@ -1,0 +1,210 @@
+{
+  "carnival": {
+    "name": "K-2 Carnival",
+    "stations": {
+      "station1": {
+        "name": "Station 1",
+        "duration_per_activity": 6,
+        "activities": [
+          {
+            "id": 1,
+            "name": "Lolly and Spoon Race",
+            "equipment": ["Plastic spoons", "Small lollies or bean bags", "Cones for start/finish lines"],
+            "setup": "Create lanes approximately 10-15 meters long",
+            "instructions": [
+              "Students line up at starting line with spoon and lolly",
+              "Hold spoon in dominant hand with lolly balanced on top",
+              "Walk/jog to finish line without dropping lolly",
+              "If lolly drops, stop and pick it up before continuing",
+              "Return to start and pass spoon to next student"
+            ],
+            "modifications": {
+              "kindy": "Use larger spoons and shorter distance",
+              "year1_2": "Can increase pace or add obstacles"
+            }
+          },
+          {
+            "id": 2,
+            "name": "Ball Game - Over and Under",
+            "equipment": ["4-6 medium balls", "Cones for spacing"],
+            "setup": "Students in lines of 6-8, arm's length apart",
+            "instructions": [
+              "First student passes ball overhead to student behind",
+              "Second student passes ball between legs to next student",
+              "Continue alternating over/under pattern down the line",
+              "Last student runs to front and starts again",
+              "Continue until original first student returns to front"
+            ],
+            "safety": "Ensure adequate spacing between students"
+          },
+          {
+            "id": 3,
+            "name": "Skipping",
+            "equipment": ["Individual skipping ropes (one per student)"],
+            "setup": "Spread students out with enough space to skip safely",
+            "instructions": [
+              "Practice basic two-foot bounce",
+              "Try single foot hopping",
+              "Attempt running skip",
+              "Group counting challenges"
+            ],
+            "modifications": {
+              "kindy": "Focus on turning rope and basic jumping",
+              "year1_2": "Advanced tricks and speed challenges"
+            }
+          },
+          {
+            "id": 4,
+            "name": "Drink/Snack Break",
+            "equipment": ["Water bottles", "Snacks", "Seating area"],
+            "setup": "Designated quiet area with shade if possible",
+            "instructions": [
+              "Students sit in designated area",
+              "Supervised drink and snack time",
+              "Brief rest before next activity",
+              "Teachers use this time to check on students"
+            ]
+          },
+          {
+            "id": 5,
+            "name": "Bean Bag Relay Races (on head)",
+            "equipment": ["Bean bags (one per team)", "Cones for markers"],
+            "setup": "Teams of 4-6 students, lanes 15-20 meters long",
+            "instructions": [
+              "Students balance bean bag on head",
+              "Walk to cone and back without using hands to steady bean bag",
+              "If bean bag falls, stop and replace before continuing",
+              "Pass bean bag to next team member",
+              "First team to complete wins round"
+            ],
+            "modifications": {
+              "kindy": "Can use hands to steady if needed"
+            }
+          },
+          {
+            "id": 6,
+            "name": "Mini Hurdles",
+            "equipment": ["Low hurdles or pool noodles on cones (6-10 inches high)"],
+            "setup": "4-6 hurdles spaced 2-3 meters apart",
+            "instructions": [
+              "Students line up single file",
+              "Step or jump over each hurdle",
+              "Walk back along outside to rejoin line",
+              "Focus on safe landing and control"
+            ],
+            "safety": "Ensure hurdles are low and soft materials used"
+          }
+        ]
+      },
+      "station2": {
+        "name": "Station 2",
+        "duration_per_activity": 6,
+        "activities": [
+          {
+            "id": 1,
+            "name": "Pass the Hoop",
+            "equipment": ["2-3 large hula hoops"],
+            "setup": "Students stand in circle holding hands",
+            "instructions": [
+              "Start with hoop around one student's arm",
+              "Pass hoop around circle without letting go of hands",
+              "Students must step through or maneuver hoop over their body",
+              "Time the group to see how fast they can complete circle",
+              "Try going in opposite direction"
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Bean Bag in a Hoop",
+            "equipment": ["Bean bags (3-4 per student)", "Hula hoops", "Cones"],
+            "setup": "Place hoops at varying distances (2, 4, 6 meters)",
+            "instructions": [
+              "Students take turns throwing bean bags into hoops",
+              "Start with closest hoop, progress to furthest",
+              "Different point values for different distances",
+              "Collect bean bags between rounds"
+            ],
+            "scoring": "Closest hoop = 1 point, middle = 2 points, furthest = 3 points"
+          },
+          {
+            "id": 3,
+            "name": "Drink and Snack Break",
+            "equipment": ["Water bottles", "Snacks", "Seating area"],
+            "setup": "Designated quiet area with shade if possible",
+            "instructions": [
+              "Students sit in designated area",
+              "Supervised drink and snack time",
+              "Brief rest before next activity",
+              "Teachers check on individual students"
+            ]
+          },
+          {
+            "id": 4,
+            "name": "Parachute",
+            "equipment": ["Large parachute (12-20 foot diameter)"],
+            "setup": "Open area with students spaced around parachute edge",
+            "instructions": [
+              "Popcorn: Place lightweight balls on parachute, shake to make them 'pop'",
+              "Mushroom: Lift parachute high, pull down and sit on edge to create dome",
+              "Waves: Create small and large waves with different arm movements",
+              "Carousel: Hold with one hand and walk in circle"
+            ],
+            "safety": "Ensure students maintain grip and follow instructions"
+          },
+          {
+            "id": 5,
+            "name": "Tug-o-War",
+            "equipment": ["Thick rope (20-30 feet)", "Cones for center line", "Bandana for center marker"],
+            "setup": "Mark center line clearly, divide into two equal teams",
+            "instructions": [
+              "Teams grip rope with both hands",
+              "Pull steadily, no sudden jerking",
+              "Winning team pulls center marker past their line",
+              "Best of 3 rounds",
+              "Switch team members between rounds"
+            ],
+            "safety": "Supervise closely, ensure no wrapping rope around bodies"
+          },
+          {
+            "id": 6,
+            "name": "Ball Game - Over and Under",
+            "equipment": ["4-6 medium balls", "Cones for spacing"],
+            "setup": "Students in lines of 6-8, arm's length apart",
+            "instructions": [
+              "First student passes ball overhead to student behind",
+              "Second student passes ball between legs to next student",
+              "Continue alternating over/under pattern down the line",
+              "Last student runs to front and starts again",
+              "Continue until original first student returns to front"
+            ],
+            "safety": "Ensure adequate spacing between students"
+          }
+        ]
+      }
+    },
+    "schedule": {
+      "start_time": "9:20",
+      "rotation_duration": 40,
+      "rotations": [
+        {
+          "time": "9:20-10:00",
+          "year2": "Sprints",
+          "year1": "Station 2",
+          "kindergarten": "Station 1"
+        },
+        {
+          "time": "10:00-10:40",
+          "year2": "Station 1",
+          "year1": "Sprints",
+          "kindergarten": "Station 2"
+        },
+        {
+          "time": "10:40-11:20",
+          "year2": "Station 2",
+          "year1": "Station 1",
+          "kindergarten": "Sprints"
+        }
+      ]
+    }
+  }
+}

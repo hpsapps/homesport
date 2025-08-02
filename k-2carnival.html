@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-2 Carnival Schedule</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script>
+        // Configuration for Tailwind CSS dark mode
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <script>
+        // Set initial dark mode to prevent FOUC
+        if (localStorage.getItem('darkMode') === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+
+<body class="transition-colors duration-300">
+    <div id="app-container" class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div id="header-placeholder" data-show-home-icon="false"></div>
+
+            <!-- Year Group Selection Card -->
+            <div id="year-selector-card"
+                class="bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300">
+                <div class="p-4">
+                    <div id="stage-selector-container" class="p-4 pt-0 grid grid-cols-3 gap-3">
+                        <button
+                            class="year-btn px-6 py-3 border-2 border-stone-300 bg-white text-stone-600 rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 hover:border-stone-400 hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50"
+                            data-year="kindergarten">
+                            Kindy
+                        </button>
+                        <button
+                            class="year-btn px-6 py-3 border-2 border-stone-300 bg-white text-stone-600 rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 hover:border-stone-400 hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50"
+                            data-year="year1">
+                            Year 1
+                        </button>
+                        <button
+                            class="year-btn px-6 py-3 border-2 border-stone-300 bg-white text-stone-600 rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 hover:border-stone-400 hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50"
+                            data-year="year2">
+                            Year 2
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Container -->
+            <div id="schedule-card"
+                class="bg-white border-stone-200 shadow-lg border rounded-lg transition-colors duration-300 hidden">
+                <div class="p-4 pb-3">
+                    <h2 id="schedule-title" class="text-lg font-semibold text-gray-900">Schedule</h2>
+                </div>
+                <div id="schedule-container" class="p-4 pt-0">
+                    <!-- Schedule content will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- STATE MANAGEMENT ---
+            window.state = {
+                selectedYear: null,
+                darkMode: (() => {
+                    const savedMode = localStorage.getItem('darkMode');
+                    if (savedMode !== null) return savedMode === 'true';
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+                })(),
+                carnivalData: null
+            };
+
+            // --- DOM ELEMENT REFERENCES ---
+            const dom = {
+                html: document.documentElement,
+                appContainer: document.getElementById('app-container'),
+                yearSelectorCard: document.getElementById('year-selector-card'),
+                scheduleCard: document.getElementById('schedule-card'),
+                scheduleTitle: document.getElementById('schedule-title'),
+                scheduleContainer: document.getElementById('schedule-container'),
+                yearButtons: document.querySelectorAll('.year-btn')
+            };
+
+            // --- RENDER FUNCTIONS ---
+            window.render = () => {
+                // Update theme first
+                dom.html.classList.toggle('dark', state.darkMode);
+                dom.appContainer.className = state.darkMode ?
+                    'min-h-screen bg-gray-900 p-4' :
+                    'min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4';
+
+                // Update card themes
+                dom.yearSelectorCard.className = state.darkMode ?
+                    'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' :
+                    'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300';
+
+                dom.scheduleCard.className = state.darkMode ?
+                    'bg-gray-800 border-stone-600 shadow-lg border rounded-lg transition-colors duration-300' + (state.selectedYear ? '' : ' hidden') :
+                    'bg-white border-stone-200 shadow-lg border rounded-lg transition-colors duration-300' + (state.selectedYear ? '' : ' hidden');
+
+                if (dom.scheduleTitle) {
+                    dom.scheduleTitle.className = state.darkMode ?
+                        'text-lg font-semibold text-white' :
+                        'text-lg font-semibold text-gray-900';
+                }
+
+                // Update year buttons
+                dom.yearButtons.forEach(btn => {
+                    const isActive = btn.dataset.year === state.selectedYear;
+                    if (isActive) {
+                        btn.className = state.darkMode ?
+                            'year-btn px-6 py-3 border-2 border-[#78013D] bg-[#78013D] text-white rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50' :
+                            'year-btn px-6 py-3 border-2 border-[#78013D] bg-[#78013D] text-white rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50';
+                    } else {
+                        btn.className = state.darkMode ?
+                            'year-btn px-6 py-3 border-2 border-stone-600 bg-gray-700 text-stone-300 rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 hover:border-stone-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50' :
+                            'year-btn px-6 py-3 border-2 border-stone-300 bg-white text-stone-600 rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 hover:border-stone-400 hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50';
+                    }
+                });
+
+                // Render schedule if year selected
+                if (state.selectedYear && state.carnivalData) {
+                    renderSchedule();
+                }
+
+                // Update header elements if they exist
+                const mainTitle = document.getElementById('main-title');
+                const darkModeToggle = document.getElementById('dark-mode-toggle');
+                const moonIcon = document.getElementById('moon-icon');
+                const sunIcon = document.getElementById('sun-icon');
+
+                if (mainTitle && darkModeToggle && moonIcon && sunIcon) {
+                    mainTitle.className = state.darkMode ?
+                        'text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight' :
+                        'text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight';
+                    moonIcon.classList.toggle('hidden', state.darkMode);
+                    sunIcon.classList.toggle('hidden', !state.darkMode);
+                    darkModeToggle.className = `p-3 rounded-xl transition-all duration-300 flex-shrink-0 border ${state.darkMode
+                        ? 'bg-gray-700 hover:bg-gray-600 text-yellow-400 border-gray-600'
+                        : 'bg-white hover:bg-gray-50 text-gray-700 shadow-sm border-gray-200'
+                        }`;
+                }
+            };
+
+            const renderSchedule = () => {
+                const rotations = state.carnivalData.carnival.schedule.rotations;
+                let html = '<div class="space-y-2">';
+
+                rotations.forEach((rotation, index) => {
+                    const activity = rotation[state.selectedYear];
+                    const timeSlot = rotation.time;
+
+                    html += `
+                        <div class="time-slot border rounded-lg overflow-hidden transition-all duration-200 ${state.darkMode ? 'border-stone-600 bg-gray-700' : 'border-stone-200 bg-white'}">
+                            <div class="time-header p-4 cursor-pointer flex justify-between items-center transition-colors duration-200 ${state.darkMode ? 'hover:bg-gray-600' : 'hover:bg-stone-50'}" onclick="toggleTimeSlot(this)">
+                                <div>
+                                    <span class="text-lg font-semibold ${state.darkMode ? 'text-white' : 'text-gray-900'}">${timeSlot}</span>
+                                    <div class="text-[#78013D] dark:text-[#ff6bb3] font-semibold mt-1">${activity}</div>
+                                </div>
+                                <svg class="chevron w-5 h-5 transition-transform duration-200 ${state.darkMode ? 'text-stone-400' : 'text-stone-500'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                            <div class="time-content hidden">
+                                ${generateActivityContent(activity)}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += '</div>';
+                dom.scheduleContainer.innerHTML = html;
+            };
+
+            const generateActivityContent = (activity) => {
+                if (activity === 'Sprints') {
+                    return `
+                        <div class="p-4 text-center ${state.darkMode ? 'bg-gray-800 text-stone-300' : 'bg-stone-50 text-stone-600'}">
+<h3 class="font-semibold text-[#78013D] dark:text-[#ff6bb3] mb-2">Sprint Activities</h3>
+                            <p>Support marshalling and selection of first, second, and third place.</p>
+                        </div>
+                    `;
+                }
+
+                const stationKey = activity.toLowerCase().replace(' ', '');
+                const stationData = state.carnivalData.carnival.stations[stationKey];
+
+                if (!stationData) return '';
+
+                let html = `<div class="border-t ${state.darkMode ? 'border-stone-600' : 'border-stone-200'}">`;
+
+                stationData.activities.forEach((activityData, index) => {
+                    const isLast = index === stationData.activities.length - 1;
+                    html += `
+                        <div class="activity-item ${isLast ? '' : 'border-b'} ${state.darkMode ? 'border-stone-600' : 'border-stone-100'}">
+                            <div class="activity-header p-3 cursor-pointer flex justify-between items-center transition-colors duration-200 ${state.darkMode ? 'hover:bg-gray-700' : 'hover:bg-stone-25'}" onclick="toggleActivity(this)">
+                                <div class="flex items-center">
+                                    <span class="text-[#78013D] dark:text-[#ff6bb3] font-semibold mr-2">${activityData.id}.</span>
+                                    <span class="font-medium ${state.darkMode ? 'text-stone-200' : 'text-stone-700'}">${activityData.name}</span>
+                                </div>
+                                <svg class="small-chevron w-4 h-4 transition-transform duration-200 ${state.darkMode ? 'text-stone-400' : 'text-stone-500'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                            <div class="activity-instructions hidden p-4 ${state.darkMode ? 'bg-gray-800' : 'bg-stone-50'}">
+                                <h4 class="text-[#78013D] dark:text-[#ff6bb3] font-semibold mb-3">Instructions</h4>
+                                <ul class="space-y-2 ${state.darkMode ? 'text-stone-300' : 'text-stone-600'}">
+                                    ${activityData.instructions.map(instruction => `<li class="flex items-start"><span class="text-[#78013D] dark:text-[#ff6bb3] mr-2 font-bold">•</span><span>${instruction}</span></li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += '</div>';
+                return html;
+            };
+
+            // --- EVENT HANDLERS ---
+            const toggleTimeSlot = (element) => {
+                const content = element.nextElementSibling;
+                const chevron = element.querySelector('.chevron');
+                const isCurrentlyActive = !content.classList.contains('hidden');
+
+                // Close all time slots
+                document.querySelectorAll('.time-content').forEach(tc => {
+                    tc.classList.add('hidden');
+                });
+                document.querySelectorAll('.chevron').forEach(c => {
+                    c.style.transform = 'rotate(0deg)';
+                });
+
+                // Close all activities
+                document.querySelectorAll('.activity-instructions').forEach(ai => {
+                    ai.classList.add('hidden');
+                });
+                document.querySelectorAll('.small-chevron').forEach(sc => {
+                    sc.style.transform = 'rotate(0deg)';
+                });
+
+                // Open clicked time slot if it wasn't already active
+                if (!isCurrentlyActive) {
+                    content.classList.remove('hidden');
+                    chevron.style.transform = 'rotate(180deg)';
+                }
+            };
+
+            const toggleActivity = (element) => {
+                const instructions = element.nextElementSibling;
+                const chevron = element.querySelector('.small-chevron');
+                const isCurrentlyActive = !instructions.classList.contains('hidden');
+
+                // Close all activities in this time slot
+                const timeSlot = element.closest('.time-slot');
+                timeSlot.querySelectorAll('.activity-instructions').forEach(ai => {
+                    ai.classList.add('hidden');
+                });
+                timeSlot.querySelectorAll('.small-chevron').forEach(sc => {
+                    sc.style.transform = 'rotate(0deg)';
+                });
+
+                // Open clicked activity if it wasn't already active
+                if (!isCurrentlyActive) {
+                    instructions.classList.remove('hidden');
+                    chevron.style.transform = 'rotate(180deg)';
+                }
+            };
+
+            // Make functions globally available
+            window.toggleTimeSlot = toggleTimeSlot;
+            window.toggleActivity = toggleActivity;
+
+            // --- YEAR BUTTON EVENT LISTENERS ---
+            dom.yearButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const selectedYear = this.dataset.year;
+
+                    if (state.selectedYear === selectedYear) {
+                        // If clicking the same year, deselect it
+                        state.selectedYear = null;
+                        dom.scheduleCard.classList.add('hidden');
+                    } else {
+                        // Select new year
+                        state.selectedYear = selectedYear;
+                        dom.scheduleCard.classList.remove('hidden');
+
+                        // Update title
+                        const yearNames = {
+                            kindergarten: 'Kindergarten',
+                            year1: 'Year 1',
+                            year2: 'Year 2'
+                        };
+                        dom.scheduleTitle.textContent = `${yearNames[selectedYear]} Schedule`;
+                    }
+
+                    render();
+                });
+            });
+
+            // --- DATA LOADING ---
+            const loadCarnivalData = async () => {
+                try {
+                    const response = await fetch('data/k-2carnival.json');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    state.carnivalData = await response.json();
+                    console.log('Carnival data loaded successfully');
+                } catch (error) {
+                    console.error('Error loading carnival data:', error);
+                    dom.scheduleContainer.innerHTML = `
+                        <div class="text-center p-8 text-red-600">
+                            <p class="font-semibold">Error loading carnival data</p>
+                            <p class="text-sm">Please check that data/k-2carnival.json is available</p>
+                        </div>
+                    `;
+                }
+            };
+
+            // --- INITIALIZATION ---
+            const initialize = async () => {
+                await loadCarnivalData();
+                render();
+            };
+
+            initialize();
+        });
+    </script>
+    <script src="components/header.js"></script>
+</body>
+
+</html>
