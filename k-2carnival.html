@@ -174,6 +174,10 @@
                                 <div>
                                     <span class="text-lg font-semibold ${state.darkMode ? 'text-white' : 'text-gray-900'}">${timeSlot}</span>
                                     <div class="text-[#78013D] dark:text-[#ff6bb3] font-semibold mt-1">${activity}</div>
+                                    ${activity === 'Sprints' ?
+                            `<p class="text-sm ${state.darkMode ? 'text-stone-300' : 'text-stone-600'} mt-1">Running for fun</p>` :
+                            `<p class="text-sm ${state.darkMode ? 'text-stone-300' : 'text-stone-600'} mt-1">6 minute rotations</p>`
+                        }
                                 </div>
                                 <svg class="chevron w-5 h-5 transition-transform duration-200 ${state.darkMode ? 'text-stone-400' : 'text-stone-500'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
