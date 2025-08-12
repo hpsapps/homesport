@@ -89,14 +89,13 @@
       }
     ],
     "Game": {
-      "Activity Name": "Strategic Throwing Gauntlet",
+      "Activity Name": "Clean the yard",
       "Description": [
-        "Setup: Design a 'gauntlet' course with multiple throwing stations, each presenting a different strategic challenge:",
-        "Accuracy Zone: Throwing at small, precise targets (e.g., small buckets, specific wall markings).",
-        "Distance Zone: Throwing for maximum distance into a marked landing area.",
-        "Moving Target Zone: Throwing at a rolling hoop or a teammate who is jogging.",
-        "Obstacle Zone: Throwing over a low hurdle or through a hanging hoop.",
-        "Gameplay: Students move through the stations, attempting to complete the throwing task at each. They might earn points for successful throws, or be timed on how quickly they can complete all stations. The game encourages students to analyse the situation, choose the appropriate throwing technique and force, and adapt their throw to achieve the strategic goal."
+        "Teams throw soft balls over a central line.",
+        "Players can pick up a ball and throw it back.",
+        "Fewest balls on your side after 3 minutes wins.",
+        "Overthrows don't count, must be on the field.",
+        "Put down bonus hoops, if a ball lands in one, it can't be picked up."
       ]
     },
     "Equipment": "Tennis balls, foam javelins, markers for distance measurement, various balls, baskets, cones, targets, low obstacles/hurdles, small buckets, wall markings, rolling hoops, hanging hoops"
@@ -104,39 +103,38 @@
   {
     "Week": 4,
     "Stage": 3,
-    "Skill": "Twisting and Bending",
+    "Skill": "Dynamic Movement and Agility",
     "Practice": [
       {
-        "Activity Name": "Lunge with Twist",
-        "Description": "Perform a lunge, and at the bottom of the lunge, twist the torso towards the front leg."
+        "Activity Name": "Speed Demon Sprints",
+        "Description": "Practice running with different themes - sprint like a superhero, robot, or animal. Include high knees, butt kicks, and dynamic forward movements with proper form."
       },
       {
-        "Activity Name": "Windmills",
-        "Description": "Stand with feet wide, arms out to the sides. Bend at the waist and reach one hand towards the opposite foot, keeping arms straight and twisting the torso."
+        "Activity Name": "Sidestep Shuffle Mastery",
+        "Description": "Practice sidestepping in both directions along parallel lines. Focus on staying low, keeping feet wide, and maintaining balance while moving laterally at varying speeds."
       },
       {
-        "Activity Name": "Yoga Flow",
-        "Description": "Practice a short sequence of yoga poses that involve continuous twisting and bending (e.g., Cat-Cow, Spinal Twists, Sun Salutation variations)."
+        "Activity Name": "Hurdle Hop Progression",
+        "Description": "Navigate mini hurdles using different techniques - two feet together, alternating single leg hops, and sideways stepping. Progress from stationary to moving approaches."
       },
       {
-        "Activity Name": "Obstacle Manoeuvres",
-        "Description": "Practice twisting and bending to navigate through a series of increasingly complex obstacles (e.g., low hurdles to crawl under, ropes to step over while twisting)."
+        "Activity Name": "Backwards Blitz Training",
+        "Description": "Practice backpedalling with proper technique - stay on balls of feet, maintain posture, and use arms for balance. Include backwards navigation around simple obstacles."
       }
     ],
     "Game": {
-      "Activity Name": "Agility Maze with Flex Challenges",
+      "Activity Name": "Cunning Crabs and Clever Clams",
       "Description": [
-        "Setup: Design an agility maze using cones, low hurdles, and ropes. Integrate specific 'flex challenges' throughout the maze.",
-        "Start: Sprint to the first zone.",
-        "Zone A (Twist Gate): Twist through a narrow 'gate' (two cones close together) without touching them.",
-        "Zone B (Bend & Retrieve): Bend down to pick up a small object, then stand up and place it on a higher cone. Repeat 3 times.",
-        "Zone C (Dynamic Twist): Perform 5 quick torso twists jogging in place.",
-        "Zone D (Low Crawl): Crawl under a low barrier, requiring significant bending and core control.",
-        "Zone E (Full Body Bend): Perform a full forward bend to touch the ground, then reach high overhead.",
-        "Gameplay: Students navigate the maze, completing each challenge as quickly and precisely as possible. They can be timed individually or compete in teams. The game emphasises fluid integration of twisting and bending with locomotor movements, and executing these actions with precision."
+        "Setup: Large rectangular playing area with safe zones at each end marked by cones.",
+        "Roles: 2-3 students start as 'Cunning Crabs' (catchers) in the middle zone. All other students are 'Clever Clams' (runners) starting in one safe zone.",
+        "Objective: Clams must cross from one safe zone to the other without being tagged by the Crabs.",
+        "Movement Rules: Teacher calls out specific movement type before each crossing - 'sidestep only', 'backwards only', 'hurdle hops', or 'sprint forward'.",
+        "Tagging: Crabs must also use the called movement to tag Clams. Tagged Clams become Crabs for the next round.",
+        "Winning: Last Clam remaining becomes the head Crab for the next game.",
+        "Variations: Add mini hurdles in middle zone, include 'safe islands' (hula hoops) in middle, or change movements mid-crossing for extra challenge."
       ]
     },
-    "Equipment": "Yoga mats (optional), low hurdles, ropes, various obstacles, cones, small objects, low barriers"
+    "Equipment": "Cones for boundaries and safe zones, mini hurdles or pool noodles on cones, hula hoops (optional for safe islands), boundary markers"
   },
   {
     "Week": 5,

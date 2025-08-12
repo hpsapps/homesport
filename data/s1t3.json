@@ -97,7 +97,6 @@
     "Week": 3,
     "Stage": 1,
     "ContentPoint": [
-      "Skip at different speeds and directions in games.",
       "Apply fundamental movement skills to create and participate in physically active games."
     ],
     "Skills": [
@@ -122,23 +121,21 @@
         }
       },
       {
-        "Skill": "Skipping Rope",
-        "Description": "Students develop rhythm, coordination, and footwork through individual rope skipping. Focus on proper rope grip, timing, and maintaining consistent jumping rhythm. Emphasis on light landings and staying on the balls of feet.",
+        "Skill": "Hoop Hop - Scissor Paper Rock",
+        "Description": "Students hop on two feet through hoops, practicing coordination and balance and playing scissors-paper-rock when they meet. Winner continues on, next player from opposing team enters.",
         "Activity": {
-          "Activity Name": "Skipping Rope",
+          "Activity Name": "Hoop Hop - Scissor Paper Rock",
           "Set Up": [
-            "Ensure adequate spacing between students (arm's length plus rope length).",
-            "Use individual ropes appropriate for each student's height."
+            "Lane/s of hoops, with enough space for hopping."
           ],
           "Practice": [
-            "Start with basic two-foot bounce, progressing to alternate foot stepping.",
-            "Practice different rhythms and speeds.",
-            "Include partner activities where students take turns counting jumps or creating simple routines."
+            "Start with basic two-foot hopping through hoops.",
+            "Quick recap of scissors-paper-rock rules."
           ],
           "Assessment": [
-            "Check students' rope grip, jumping technique, landing softly on balls of feet, and ability to maintain consistent rhythm for sustained periods."
+            "Check students' hopping ability to maintain balance, and coordination for rapid stop and start."
           ],
-          "Equipment": "Individual skipping ropes"
+          "Equipment": "Hoops"
         }
       }
     ]
