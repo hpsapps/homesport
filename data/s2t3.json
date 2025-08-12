@@ -117,39 +117,39 @@
   {
     "Week": 4,
     "Stage": 2,
-    "Content Point": "PH2-MSP-01: Integrate twisting and bending with movement sequences.",
-    "Skill": "Twisting and Bending",
+"Skill": "Dynamic Movement and Agility",
     "Practice": [
       {
-        "Activity Name": "Waist Twists",
-        "Description": "Stand with feet shoulder-width apart, hands on hips. Gently twist the upper body from side to side, keeping hips relatively still."
+        "Activity Name": "Speed Demon Sprints",
+        "Description": "Practice running with different themes - sprint like a superhero, robot, or animal. Include high knees, butt kicks, and dynamic forward movements with proper form."
       },
       {
-        "Activity Name": "Simple Bends",
-        "Description": "Practice bending forward at the waist (reaching for toes), bending sideways (reaching hand down leg), and gentle backbends (looking up)."
+        "Activity Name": "Sidestep Shuffle Mastery",
+        "Description": "Practice sidestepping in both directions along parallel lines. Focus on staying low, keeping feet wide, and maintaining balance while moving laterally at varying speeds."
       },
       {
-        "Activity Name": "Twist and Reach",
-        "Description": "Twist to one side, then reach hands up high, then bend down low."
+        "Activity Name": "Hurdle Hop Progression",
+        "Description": "Navigate mini hurdles using different techniques - two feet together, alternating single leg hops, and sideways stepping. Progress from stationary to moving approaches."
       },
       {
-        "Activity Name": "Animal Twists",
-        "Description": "Mimic animals that twist and bend (e.g., a 'snake' twisting on the ground, a 'cat' stretching and arching its back)."
+        "Activity Name": "Backwards Blitz Training",
+        "Description": "Practice backpedalling with proper technique - stay on balls of feet, maintain posture, and use arms for balance. Include backwards navigation around simple obstacles."
       }
     ],
     "Game": {
-      "Activity Name": "Twist & Bend Challenge Course",
+      "Activity Name": "Cunning Crabs and Clever Clams",
       "Description": [
-        "Setup: Create a series of stations or a pathway where students perform specific twisting and bending actions.",
-        "Station 1 (Twist): Stand in a hula hoop and perform 5 twists to each side.",
-        "Station 2 (Bend): Bend down to pick up a beanbag, stand up, and place it on a cone. Repeat 3 times.",
-        "Station 3 (Twist & Reach): Twist to the right, reach for a cone, then twist to the left and reach for another cone.",
-        "Station 4 (Under/Over): Crawl under a low hurdle (bending) and then step over a higher obstacle (bending and reaching).",
-        "Gameplay: Students navigate the course, completing the required twisting and bending movements at each station. They can work individually or in small groups, focusing on controlled and fluid execution of the movements. The goal is to complete the course demonstrating good body control."
+        "Setup: Large rectangular playing area with safe zones at each end marked by cones.",
+        "Roles: 2-3 students start as 'Cunning Crabs' (catchers) in the middle zone. All other students are 'Clever Clams' (runners) starting in one safe zone.",
+        "Objective: Clams must cross from one safe zone to the other without being tagged by the Crabs.",
+        "Movement Rules: Teacher calls out specific movement type before each crossing - 'sidestep only', 'backwards only', 'hurdle hops', or 'sprint forward'.",
+        "Tagging: Crabs must also use the called movement to tag Clams. Tagged Clams become Crabs for the next round.",
+        "Winning: Last Clam remaining becomes the head Crab for the next game.",
+        "Variations: Add mini hurdles in middle zone, include 'safe islands' (hula hoops) in middle, or change movements mid-crossing for extra challenge."
       ]
     },
-    "Assessment": "Assess control and coordination in the execution of basic twisting and bending movements, and their integration into simple sequences.",
-    "Equipment": "Hula hoops, beanbags, cones, low hurdles, obstacles"
+    "Assessment": "Concentrate on Transitions between movements and how well students adapt to space constraints.",
+    "Equipment": "Cones for boundaries and safe zones, mini hurdles or pool noodles on cones, hula hoops (optional for safe islands), boundary markers"
   },
   {
     "Week": 5,
