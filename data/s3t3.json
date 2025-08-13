@@ -106,32 +106,30 @@
     "Skill": "Dynamic Movement and Agility",
     "Practice": [
       {
-        "Activity Name": "Speed Demon Sprints",
-        "Description": "Practice running with different themes - sprint like a superhero, robot, or animal. Include high knees, butt kicks, and dynamic forward movements with proper form."
-      },
-      {
         "Activity Name": "Sidestep Shuffle Mastery",
-        "Description": "Practice sidestepping in both directions along parallel lines. Focus on staying low, keeping feet wide, and maintaining balance while moving laterally at varying speeds."
+        "Description": "Sidestep through slalom flags/cones. Focus on staying low, keeping feet wide, and maintaining balance while moving laterally at varying speeds."
       },
       {
         "Activity Name": "Hurdle Hop Progression",
-        "Description": "Navigate mini hurdles using different techniques - two feet together, alternating single leg hops, and sideways stepping. Progress from stationary to moving approaches."
+        "Description": "Hop over mini hurdles using two feet together."
       },
       {
         "Activity Name": "Backwards Blitz Training",
-        "Description": "Practice backpedalling with proper technique - stay on balls of feet, maintain posture, and use arms for balance. Include backwards navigation around simple obstacles."
+        "Description": "Backpedalling with proper technique - stay on balls of feet, maintain posture, and use arms for balance."
+      },
+      {
+        "Activity Name": "Speed Demon Sprints",
+        "Description": "Sprint to the finish."
       }
     ],
     "Game": {
-      "Activity Name": "Cunning Crabs and Clever Clams",
+      "Activity Name": "Crazy crabs",
       "Description": [
-        "Setup: Large rectangular playing area with safe zones at each end marked by cones.",
-        "Roles: 2-3 students start as 'Cunning Crabs' (catchers) in the middle zone. All other students are 'Clever Clams' (runners) starting in one safe zone.",
-        "Objective: Clams must cross from one safe zone to the other without being tagged by the Crabs.",
-        "Movement Rules: Teacher calls out specific movement type before each crossing - 'sidestep only', 'backwards only', 'hurdle hops', or 'sprint forward'.",
-        "Tagging: Crabs must also use the called movement to tag Clams. Tagged Clams become Crabs for the next round.",
-        "Winning: Last Clam remaining becomes the head Crab for the next game.",
-        "Variations: Add mini hurdles in middle zone, include 'safe islands' (hula hoops) in middle, or change movements mid-crossing for extra challenge."
+        "Setup: Large rectangular playing area with safe zones at either end.",
+        "Roles: 1-3 students start as 'Crazy Crabs' (catchers that can run anywhere). All other students are runners starting in a safe zone.",
+        "Objective: Runners must cross from one safe zone to the other without being tagged by the Crabs.",
+        "When tagged, runners become crabs, but they can only run sideways along a single line.",
+        "Last runner remaining becomes the head Crab for the next game."
       ]
     },
     "Equipment": "Cones for boundaries and safe zones, mini hurdles or pool noodles on cones, hula hoops (optional for safe islands), boundary markers"
