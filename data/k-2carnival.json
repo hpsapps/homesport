@@ -1,6 +1,30 @@
 {
   "carnival": {
     "name": "K-2 Carnival",
+    "classes": {
+      "kindergarten": [
+        "KB",
+        "KE",
+        "KK",
+        "KN",
+        "KS",
+        "KV"
+      ],
+      "year1": [
+        "1A",
+        "1D",
+        "1G",
+        "1MS",
+        "1S"
+      ],
+      "year2": [
+        "2B",
+        "2D",
+        "2E",
+        "2H",
+        "2Y"
+      ]
+    },
     "stations": {
       "station1": {
         "name": "Station 1",
@@ -9,7 +33,11 @@
           {
             "id": 1,
             "name": "Lolly and Spoon Race",
-            "equipment": ["Plastic spoons", "Small lollies or bean bags", "Cones for start/finish lines"],
+            "equipment": [
+              "Plastic spoons",
+              "Small lollies or bean bags",
+              "Cones for start/finish lines"
+            ],
             "setup": "Create lanes approximately 10-15 meters long",
             "instructions": [
               "Students line up at starting line with spoon and lolly",
@@ -25,38 +53,44 @@
           },
           {
             "id": 2,
-            "name": "Ball Game - Over and Under",
-            "equipment": ["4-6 medium balls", "Cones for spacing"],
-            "setup": "Students in lines of 6-8, arm's length apart",
-            "instructions": [
-              "First student passes ball overhead to student behind",
-              "Second student passes ball between legs to next student",
-              "Continue alternating over/under pattern down the line",
-              "Last student runs to front and starts again",
-              "Continue until original first student returns to front"
+            "name": "Survivor Tag",
+            "equipment": [
+              "Students, field markings"
             ],
-            "safety": "Ensure adequate spacing between students"
+            "setup": "Cones marking boundaries",
+            "instructions": [
+              "Students spread out within boundaries",
+              "Students run around, tagging each other and avoiding being tagged.",
+              "If tagged, they sit down. They are freed if the person they tagged gets tagged.",
+              "If players tag each other simultaneously, the play scissor, paper, rock. Winner plays on, loser sits."
+            ],
+            "safety": "Ensure hurdles are low and soft materials used"
           },
           {
             "id": 3,
-            "name": "Skipping",
-            "equipment": ["Individual skipping ropes (one per student)"],
-            "setup": "Spread students out with enough space to skip safely",
+            "name": "Hoola Hooping",
+            "equipment": [
+              "Individual hula hoops (one per student)"
+            ],
+            "setup": "Spread students out with enough space to hoop safely",
             "instructions": [
-              "Practice basic two-foot bounce",
-              "Try single foot hopping",
-              "Attempt running skip",
+              "Practice basic hula hooping",
+              "Try different body movements while hooping",
               "Group counting challenges"
             ],
             "modifications": {
-              "kindy": "Focus on turning rope and basic jumping",
-              "year1_2": "Advanced tricks and speed challenges"
+              "kindy": "Focus on turning hoop and basic movements",
+              "year1_2": "Double hoop challenge"
             }
           },
           {
             "id": 4,
             "name": "Drink/Snack Break",
-            "equipment": ["Water bottles", "Snacks", "Seating area"],
+            "equipment": [
+              "Water bottles",
+              "Snacks",
+              "Seating area"
+            ],
             "setup": "Designated quiet area with shade if possible",
             "instructions": [
               "Students sit in designated area",
@@ -67,32 +101,40 @@
           },
           {
             "id": 5,
-            "name": "Bean Bag Relay Races (on head)",
-            "equipment": ["Bean bags (one per team)", "Cones for markers"],
-            "setup": "Teams of 4-6 students, lanes 15-20 meters long",
+            "name": "Dodgeball",
+            "equipment": [
+              "Dodgeballs",
+              "Cones for markers"
+            ],
+            "setup": "Dodgeballs on centre line, cones marking boundaries",
             "instructions": [
-              "Students balance bean bag on head",
-              "Walk to cone and back without using hands to steady bean bag",
-              "If bean bag falls, stop and replace before continuing",
-              "Pass bean bag to next team member",
-              "First team to complete wins round"
+              "Students line up on their side",
+              "On the whistle, they run to grab the dodgeballs",
+              "Players must try to hit opponents with the dodgeballs while avoiding being hit",
+              "Players go to sideline when hit",
+              "A catch frees a teammate, and gets the thrower out"
             ],
             "modifications": {
-              "kindy": "Can use hands to steady if needed"
+              "kindy": "Call jailbreak to free everyone",
+              "year1_2": "Put a tennis ball on a cone. If a team knocks off the opponent's ball, it's an instant win."
             }
           },
           {
             "id": 6,
-            "name": "Mini Hurdles",
-            "equipment": ["Low hurdles or pool noodles on cones (6-10 inches high)"],
-            "setup": "4-6 hurdles spaced 2-3 meters apart",
-            "instructions": [
-              "Students line up single file",
-              "Step or jump over each hurdle",
-              "Walk back along outside to rejoin line",
-              "Focus on safe landing and control"
+            "name": "Ball Game - Over and Under",
+            "equipment": [
+              "4-6 medium balls",
+              "Cones for spacing"
             ],
-            "safety": "Ensure hurdles are low and soft materials used"
+            "setup": "Students in lines of 6-8, arm's length apart",
+            "instructions": [
+              "First student passes ball overhead to student behind",
+              "Second student passes ball between legs to next student",
+              "Continue alternating over/under pattern down the line",
+              "Last student runs to front and starts again",
+              "Continue until original first student returns to front"
+            ],
+            "safety": "Ensure adequate spacing between students"
           }
         ]
       },
@@ -102,34 +144,40 @@
         "activities": [
           {
             "id": 1,
-            "name": "Pass the Hoop",
-            "equipment": ["2-3 large hula hoops"],
-            "setup": "Students stand in circle holding hands",
+            "name": "Rob the Nest",
+            "equipment": [
+              "4 hoops, lots of bean bags"
+            ],
+            "setup": "Hoops in corner of field with bean bags shared between them",
             "instructions": [
-              "Start with hoop around one student's arm",
-              "Pass hoop around circle without letting go of hands",
-              "Students must step through or maneuver hoop over their body",
-              "Time the group to see how fast they can complete circle",
-              "Try going in opposite direction"
+              "Students work in teams to collect/steal/rob bean bags and place them in their hoop",
+              "Only one bean bag at a time, no blocking or guarding",
+              "Set a timer and see which team collects the most bean bags"
             ]
           },
           {
             "id": 2,
             "name": "Bean Bag in a Hoop",
-            "equipment": ["Bean bags (3-4 per student)", "Hula hoops", "Cones"],
+            "equipment": [
+              "Bean bags (3-4 per student)",
+              "Hula hoops",
+              "Cones"
+            ],
             "setup": "Place hoops at varying distances (2, 4, 6 meters)",
             "instructions": [
               "Students take turns throwing bean bags into hoops",
-              "Start with closest hoop, progress to furthest",
               "Different point values for different distances",
-              "Collect bean bags between rounds"
-            ],
-            "scoring": "Closest hoop = 1 point, middle = 2 points, furthest = 3 points"
+              "Closest hoop = 1 point, middle = 2 points, furthest = 3 points"
+            ]
           },
           {
             "id": 3,
             "name": "Drink and Snack Break",
-            "equipment": ["Water bottles", "Snacks", "Seating area"],
+            "equipment": [
+              "Water bottles",
+              "Snacks",
+              "Seating area"
+            ],
             "setup": "Designated quiet area with shade if possible",
             "instructions": [
               "Students sit in designated area",
@@ -141,7 +189,9 @@
           {
             "id": 4,
             "name": "Parachute",
-            "equipment": ["Large parachute (12-20 foot diameter)"],
+            "equipment": [
+              "Large parachute"
+            ],
             "setup": "Open area with students spaced around parachute edge",
             "instructions": [
               "Popcorn: Place lightweight balls on parachute, shake to make them 'pop'",
@@ -154,12 +204,16 @@
           {
             "id": 5,
             "name": "Tug-o-War",
-            "equipment": ["Thick rope (20-30 feet)", "Cones for center line", "Bandana for center marker"],
-            "setup": "Mark center line clearly, divide into two equal teams",
+            "equipment": [
+              "Thick rope",
+              "Cones for centre line",
+              "Bandana for centre marker"
+            ],
+            "setup": "Mark centre line clearly, divide into two equal teams",
             "instructions": [
               "Teams grip rope with both hands",
               "Pull steadily, no sudden jerking",
-              "Winning team pulls center marker past their line",
+              "Winning team pulls centre marker past their line",
               "Best of 3 rounds",
               "Switch team members between rounds"
             ],
@@ -167,19 +221,104 @@
           },
           {
             "id": 6,
-            "name": "Ball Game - Over and Under",
-            "equipment": ["4-6 medium balls", "Cones for spacing"],
-            "setup": "Students in lines of 6-8, arm's length apart",
-            "instructions": [
-              "First student passes ball overhead to student behind",
-              "Second student passes ball between legs to next student",
-              "Continue alternating over/under pattern down the line",
-              "Last student runs to front and starts again",
-              "Continue until original first student returns to front"
+            "name": "Traffic Light Game",
+            "equipment": [
+              "Cones for start/finish lines",
+              "Optional: coloured cards (green, orange, red)"
             ],
-            "safety": "Ensure adequate spacing between students"
+            "setup": "Create lanes approximately 15-20 meters long with clear start and finish lines",
+            "instructions": [
+              "Students line up at starting line",
+              "Teacher calls out traffic light colours:",
+              "GREEN = run forward",
+              "ORANGE = walk forward",
+              "RED = stop/freeze completely",
+              "If a student does the wrong action, they must return to start line",
+              "First student to reach finish line wins the round"
+            ],
+            "modifications": {
+              "kindy": "Add extra commands like 'Ambulance = hop on one foot' or 'Reverse = walk backwards",
+              "year1_2": "Add extra commands like 'Ambulance = hop on one foot' or 'Reverse = walk backwards'"
+            },
+            "safety": "Ensure students have enough space between them when running, watch for collisions when stopping"
           }
         ]
+      }
+    },
+    "starting_stations_map": {
+      "kindergarten": {
+        "KB": {
+          "station1_activity_id": 1,
+          "station2_activity_id": 1
+        },
+        "KE": {
+          "station1_activity_id": 2,
+          "station2_activity_id": 2
+        },
+        "KK": {
+          "station1_activity_id": 3,
+          "station2_activity_id": 3
+        },
+        "KN": {
+          "station1_activity_id": 4,
+          "station2_activity_id": 4
+        },
+        "KS": {
+          "station1_activity_id": 5,
+          "station2_activity_id": 5
+        },
+        "KV": {
+          "station1_activity_id": 6,
+          "station2_activity_id": 6
+        }
+      },
+      "year1": {
+        "1A": {
+          "station1_activity_id": 1,
+          "station2_activity_id": 1
+        },
+        "1D": {
+          "station1_activity_id": 2,
+          "station2_activity_id": 2
+        },
+        "1G": {
+          "station1_activity_id": 3,
+          "station2_activity_id": 3
+        },
+        "1MS": {
+          "station1_activity_id": 4,
+          "station2_activity_id": 4
+        },
+        "10": {
+          "station1_activity_id": 5,
+          "station2_activity_id": 5
+        },
+        "1S": {
+          "station1_activity_id": 6,
+          "station2_activity_id": 6
+        }
+      },
+      "year2": {
+        "2B": {
+          "station1_activity_id": 1,
+          "station2_activity_id": 1
+        },
+        "2D": {
+          "station1_activity_id": 2,
+          "station2_activity_id": 2
+        },
+        "2E": {
+          "station1_activity_id": 3,
+          "station2_activity_id": 3
+        },
+        "2H": {
+          "station1_activity_id": 4,
+          "station2_activity_id": 4
+        },
+        "2Y": {
+          "station1_activity_id": 5,
+          "station2_activity_id": 5
+        }
       }
     },
     "schedule": {

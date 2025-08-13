@@ -60,6 +60,17 @@
                 </div>
             </div>
 
+            <!-- Starting Station Card -->
+            <div id="starting-station-card"
+                class="bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300 hidden">
+                <div class="p-4">
+                    <div id="starting-station-content">
+                        <div id="class-buttons-container" class="grid grid-cols-3 gap-3"></div>
+                        <div id="selected-station-info" class="mt-4 hidden"></div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Schedule Container -->
             <div id="schedule-card"
                 class="bg-white border-red-200 shadow-lg border rounded-lg transition-colors duration-300 hidden">
@@ -80,6 +91,7 @@
             // --- STATE MANAGEMENT ---
             window.state = {
                 selectedYear: null,
+                selectedClass: null, // New state variable for selected class
                 darkMode: (() => {
                     const savedMode = localStorage.getItem('darkMode');
                     if (savedMode !== null) return savedMode === 'true';
@@ -96,7 +108,11 @@
                 scheduleCard: document.getElementById('schedule-card'),
                 scheduleTitle: document.getElementById('schedule-title'),
                 scheduleContainer: document.getElementById('schedule-container'),
-                yearButtons: document.querySelectorAll('.year-btn')
+                yearButtons: document.querySelectorAll('.year-btn'),
+                startingStationCard: document.getElementById('starting-station-card'),
+                startingStationContent: document.getElementById('starting-station-content'),
+                classButtonsContainer: document.getElementById('class-buttons-container'), // New DOM reference
+                selectedStationInfo: document.getElementById('selected-station-info') // New DOM reference
             };
 
             // --- RENDER FUNCTIONS ---
@@ -116,6 +132,10 @@
                     'bg-gray-800 border-[#78013D] shadow-lg border rounded-lg transition-colors duration-300' + (state.selectedYear ? '' : ' hidden') :
                     'bg-white border-[#78013D] shadow-lg border rounded-lg transition-colors duration-300' + (state.selectedYear ? '' : ' hidden');
 
+                dom.startingStationCard.className = state.darkMode ?
+                    'bg-gray-800 border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' + (state.selectedYear ? '' : ' hidden') :
+                    'bg-white border-[#78013D] mb-4 shadow-lg border rounded-lg transition-colors duration-300' + (state.selectedYear ? '' : ' hidden');
+
                 if (dom.scheduleTitle) {
                     dom.scheduleTitle.className = state.darkMode ?
                         'text-lg font-semibold text-white' :
@@ -125,20 +145,22 @@
                 // Update year buttons
                 dom.yearButtons.forEach(btn => {
                     const isActive = btn.dataset.year === state.selectedYear;
+                    const baseClasses = 'year-btn px-6 py-3 border-2 rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50';
+                    let specificClasses = '';
                     if (isActive) {
-                        btn.className = state.darkMode ?
-                            'year-btn px-6 py-3 border-2 border-[#78013D] bg-[#78013D] text-white rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50' :
-                            'year-btn px-6 py-3 border-2 border-[#78013D] bg-[#78013D] text-white rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50';
+                        specificClasses = 'border-[#78013D] bg-[#78013D] text-white';
                     } else {
-                        btn.className = state.darkMode ?
-                            'year-btn px-6 py-3 border-2 border-stone-600 bg-gray-700 text-stone-300 rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 hover:border-stone-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50' :
-                            'year-btn px-6 py-3 border-2 border-stone-300 bg-white text-stone-600 rounded-lg font-semibold text-base cursor-pointer transition-all duration-200 hover:border-stone-400 hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50';
+                        specificClasses = state.darkMode
+                            ? 'border-stone-600 bg-gray-700 text-stone-300 hover:border-stone-500 hover:bg-gray-600'
+                            : 'border-stone-300 bg-white text-stone-600 hover:border-stone-400 hover:bg-stone-50';
                     }
+                    btn.className = `${baseClasses} ${specificClasses}`;
                 });
 
                 // Render schedule if year selected
                 if (state.selectedYear && state.carnivalData) {
                     renderSchedule();
+                    renderStartingStation();
                 }
 
                 // Update header elements if they exist
@@ -194,6 +216,66 @@
                 dom.scheduleContainer.innerHTML = html;
             };
 
+            const renderStartingStation = () => {
+                const yearData = state.carnivalData.carnival;
+                const classes = yearData.classes[state.selectedYear];
+                const startingStationsMap = yearData.starting_stations_map[state.selectedYear];
+
+                let classButtonsHtml = '';
+                if (classes) {
+                    const baseClasses = 'class-btn px-4 py-2 border-2 rounded-lg font-semibold text-sm cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#78013D] focus:ring-opacity-50';
+                    classes.forEach(className => {
+                        const isActive = state.selectedClass === className;
+                        let specificClasses = '';
+                        if (isActive) {
+                            specificClasses = 'border-[#78013D] bg-[#78013D] text-white';
+                        } else {
+                            specificClasses = state.darkMode
+                                ? 'border-stone-600 bg-gray-700 text-stone-300 hover:border-stone-500 hover:bg-gray-600'
+                                : 'border-stone-300 bg-white text-stone-600 hover:border-stone-400 hover:bg-stone-50';
+                        }
+                        classButtonsHtml += `<button class="${baseClasses} ${specificClasses}" data-class="${className}">${className}</button>`;
+                    });
+                }
+                dom.classButtonsContainer.innerHTML = classButtonsHtml;
+                dom.classButtonsContainer.className = "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2";
+
+                dom.classButtonsContainer.querySelectorAll('.class-btn').forEach(button => {
+                    button.addEventListener('click', function () {
+                        state.selectedClass = state.selectedClass === this.dataset.class ? null : this.dataset.class;
+                        render();
+                    });
+                });
+
+                if (state.selectedClass && startingStationsMap && startingStationsMap[state.selectedClass]) {
+                    dom.selectedStationInfo.classList.remove('hidden');
+                    const selectedClassMap = startingStationsMap[state.selectedClass];
+                    const station1Activity = yearData.stations.station1.activities.find(act => act.id === selectedClassMap.station1_activity_id);
+                    const station2Activity = yearData.stations.station2.activities.find(act => act.id === selectedClassMap.station2_activity_id);
+
+                    const scheduleOrder = yearData.schedule.rotations.map(rotation => rotation[state.selectedYear]);
+
+                    const listItems = scheduleOrder.map(activity => {
+                        if (activity === 'Sprints') return `<li>Sprints</li>`;
+                        if (activity === 'Station 1') return `<li>Station 1: <span class="font-bold text-[#78013D] dark:text-[#ff6bb3]">${station1Activity?.name || 'N/A'}</span></li>`;
+                        if (activity === 'Station 2') return `<li>Station 2: <span class="font-bold text-[#78013D] dark:text-[#ff6bb3]">${station2Activity?.name || 'N/A'}</span></li>`;
+                        return '';
+                    }).join('');
+
+                    dom.selectedStationInfo.innerHTML = `
+                        <p class="text-lg ${state.darkMode ? 'text-stone-300' : 'text-stone-700'}">
+                            Starting activities for <span class="font-bold text-[#78013D] dark:text-[#ff6bb3]">${state.selectedClass}</span>:
+                        </p>
+                        <ul class="list-disc list-inside mt-2 space-y-1 ${state.darkMode ? 'text-stone-300' : 'text-stone-600'}">
+                            ${listItems}
+                        </ul>
+                    `;
+                } else {
+                    dom.selectedStationInfo.classList.add('hidden');
+                    dom.selectedStationInfo.innerHTML = '';
+                }
+            };
+
             const generateActivityContent = (activity) => {
                 if (activity === 'Sprints') {
                     return `
@@ -213,6 +295,7 @@
 
                 stationData.activities.forEach((activityData, index) => {
                     const isLast = index === stationData.activities.length - 1;
+
                     html += `
                         <div class="activity-item ${isLast ? '' : 'border-b'} ${state.darkMode ? 'border-stone-600' : 'border-stone-100'}">
                             <div class="activity-header p-3 cursor-pointer flex justify-between items-center transition-colors duration-200 ${state.darkMode ? 'hover:bg-gray-700' : 'hover:bg-stone-25'}" onclick="toggleActivity(this)">
@@ -225,10 +308,36 @@
                                 </svg>
                             </div>
                             <div class="activity-instructions hidden p-4 ${state.darkMode ? 'bg-gray-800' : 'bg-stone-50'}">
-                                <h4 class="text-[#78013D] dark:text-[#ff6bb3] font-semibold mb-3">Instructions</h4>
-                                <ul class="space-y-2 ${state.darkMode ? 'text-stone-300' : 'text-stone-600'}">
-                                    ${activityData.instructions.map(instruction => `<li class="flex items-start"><span class="text-[#78013D] dark:text-[#ff6bb3] mr-2 font-bold">•</span><span>${instruction}</span></li>`).join('')}
-                                </ul>
+                                ${activityData.instructions ? `
+                                    <h4 class="text-[#78013D] dark:text-[#ff6bb3] font-semibold mb-3">Instructions</h4>
+                                    <ul class="space-y-2 ${state.darkMode ? 'text-stone-300' : 'text-stone-600'} mb-4">
+                                        ${activityData.instructions.map(instruction => `<li class="flex items-start"><span class="text-[#78013D] dark:text-[#ff6bb3] mr-2 font-bold">•</span><span>${instruction}</span></li>`).join('')}
+                                    </ul>
+                                ` : ''}
+
+                                ${activityData.safety ? `
+                                    <h4 class="text-yellow-600 dark:text-yellow-400 font-semibold mb-3">Safety</h4>
+                                    <p class="${state.darkMode ? 'text-stone-300' : 'text-stone-600'} mb-4">${activityData.safety}</p>
+                                ` : ''}
+
+                                ${(() => {
+                                    if (!activityData.modifications) return '';
+                                    
+                                    let modificationText = '';
+                                    if (state.selectedYear === 'kindergarten' && activityData.modifications.kindy) {
+                                        modificationText = activityData.modifications.kindy;
+                                    } else if ((state.selectedYear === 'year1' || state.selectedYear === 'year2') && activityData.modifications.year1_2) {
+                                        modificationText = activityData.modifications.year1_2;
+                                    }
+
+                                    if (modificationText) {
+                                        return `
+                                            <h4 class="text-blue-600 dark:text-blue-400 font-semibold mb-3">Modifications</h4>
+                                            <p class="${state.darkMode ? 'text-stone-300' : 'text-stone-600'}">${modificationText}</p>
+                                        `;
+                                    }
+                                    return '';
+                                })()}
                             </div>
                         </div>
                     `;
@@ -296,17 +405,12 @@
             dom.yearButtons.forEach(button => {
                 button.addEventListener('click', function () {
                     const selectedYear = this.dataset.year;
-
                     if (state.selectedYear === selectedYear) {
-                        // If clicking the same year, deselect it
                         state.selectedYear = null;
-                        dom.scheduleCard.classList.add('hidden');
+                        state.selectedClass = null;
                     } else {
-                        // Select new year
                         state.selectedYear = selectedYear;
-                        dom.scheduleCard.classList.remove('hidden');
-
-                        // Update title
+                        state.selectedClass = null;
                         const yearNames = {
                             kindergarten: 'Kindergarten',
                             year1: 'Year 1',
@@ -314,7 +418,6 @@
                         };
                         dom.scheduleTitle.textContent = `${yearNames[selectedYear]} Schedule`;
                     }
-
                     render();
                 });
             });
