@@ -221,26 +221,28 @@
           },
           {
             "id": 6,
-            "name": "Traffic Light Game",
+            "name": "What's the Time Mr Wolf",
             "equipment": [
-              "Cones for start/finish lines",
-              "Optional: coloured cards (green, orange, red)"
+              "Boundary markers (cones or lines)"
             ],
-            "setup": "Create lanes approximately 15-20 meters long with clear start and finish lines",
+            "setup": "Mark a clear starting line where children will stand and a 'safe zone' at the opposite end.",
             "instructions": [
-              "Students line up at starting line",
-              "Teacher calls out traffic light colours:",
-              "GREEN = run forward",
-              "ORANGE = walk forward",
-              "RED = stop/freeze completely",
-              "If a student does the wrong action, they must return to start line",
-              "First student to reach finish line wins the round"
+              "All children except the Wolf line up at the starting line",
+              "The Wolf stands at the far end with back turned to the group",
+              "Children call out together 'What's the time Mr Wolf?'",
+              "The Wolf calls back a time (e.g., '3 o'clock', '7 o'clock')",
+              "Children take that many steps forward",
+              "Repeat the process with children getting closer to the Wolf",
+              "When the Wolf decides, instead of calling a time, they shout 'DINNER TIME!'",
+              "The Wolf turns around and chases the children back to the starting line",
+              "Any child caught becomes the new Wolf",
+              "If no one is caught, the Wolf continues for another round"
             ],
             "modifications": {
-              "kindy": "Add extra commands like 'Ambulance = hop on one foot' or 'Reverse = walk backwards",
-              "year1_2": "Add extra commands like 'Ambulance = hop on one foot' or 'Reverse = walk backwards'"
+              "kindy": "Use smaller steps, shorter distance, and give the Wolf a visual cue card for when to call 'dinner time'",
+              "year1_2": "Add variations like 'What's the time Mrs Bear?' to introduce different animals with different movement styles (hop like a rabbit, waddle like a penguin)"
             },
-            "safety": "Ensure students have enough space between them when running, watch for collisions when stopping"
+            "safety": "Watch for children colliding when running back"
           }
         ]
       }
