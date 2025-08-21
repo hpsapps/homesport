@@ -157,39 +157,46 @@
     "Skill": "Jumping",
     "Practice": [
       {
-        "Activity Name": "Vertical Jumps",
-        "Description": "Practice jumping straight up, focusing on landing softly with bent knees."
+        "Activity Name": "High Vertical Jumps",
+        "Description": "Practice jumping straight up against a wall, marking with chalk as high as students could reach. Focus on explosive upward movement and soft landings."
       },
       {
-        "Activity Name": "Horizontal Jumps",
-        "Description": "Practice jumping forward from a standing start, aiming for distance."
+        "Activity Name": "Standing Long Jump",
+        "Description": "Two-footed standing jump for maximum distance. Mark the ground where students land and measure for distance records."
       },
       {
-        "Activity Name": "Hopping",
-        "Description": "Hop on one foot, then the other, for short distances."
+        "Activity Name": "Two-Step Run-Up Leap",
+        "Description": "Take a two-step approach then leap forward for distance. Practice the approach timing and explosive takeoff, marking landing distances."
       },
       {
-        "Activity Name": "Jump-Hop-Jump",
-        "Description": "Perform a two-footed jump, then a hop on one foot, then another two-footed jump."
+        "Activity Name": "Vertical Jump with Leg Lift",
+        "Description": "Jump vertically while lifting legs/feet as high as possible. Mark the lowest point of the body (feet) to see how high students can get their entire body off the ground."
       },
       {
-        "Activity Name": "Jump Over",
-        "Description": "Jump over small, safe obstacles (e.g., a rope on the ground, a pool noodle)."
+        "Activity Name": "Team Jumping Championships",
+        "Description": [
+          "Teams select 2 champions for each of the 4 jumping skills (8 students total per team).",
+          "Champions compete against other teams' champions in each jumping category.",
+          "Scoring: 2 points for first place, 1 point for second place in each skill.",
+          "Multiple students from the same team can score points in each category.",
+          "Team with the most total points wins the jumping championship."
+        ]
       }
     ],
     "Game": {
-      "Activity Name": "Jumping Journey",
+      "Activity Name": "Jumping Hoops Battle",
       "Description": [
-        "Setup: Create a 'journey' on the ground using markers (e.g., tape, chalk, hoops). Each marker indicates a different type of jump:",
-        "'Rabbit Hops': Small, quick two-footed jumps.",
-        "'Kangaroo Jumps': Larger two-footed jumps for distance.",
-        "'Frog Leaps': Squat down and leap forward.",
-        "'One-Legged Path': Hop on one leg along a short path.",
-        "Gameplay: Students move along the 'journey,' performing the specified jump at each marker. They can be encouraged to count their successful jumps or to complete the journey without falling. The game encourages exploration of different jumping techniques and develops control in varied jumping movements."
+        "Setup: Line of hoops arranged in a straight row between two teams.",
+        "Teams line up at either end of the hoop line, facing each other.",
+        "Players hop on two feet through the hoops toward the middle, one player from each team starting simultaneously.",
+        "When players meet in the middle, they play scissors-paper-rock.",
+        "Winner continues hopping through remaining hoops toward opponent's end.",
+        "Loser goes to back of their team line, and next player from losing team immediately enters the game.",
+        "Objective: First team to get a player all the way through to the opponent's end wins the round."
       ]
     },
-    "Assessment": "Evaluate students' ability to control jump height and distance, and mix different jumping techniques.",
-    "Equipment": "Markers, tape, chalk, hoops, ropes, pool noodles"
+    "Assessment": "Evaluate students' ability to control jump height and distance across different jumping techniques, and observe tactical thinking in the tic tac toe game.",
+    "Equipment": "Line of hoops, chalk for marking, walls for vertical jump marking"
   },
   {
     "Week": 6,

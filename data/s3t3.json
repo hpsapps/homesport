@@ -137,38 +137,49 @@
   {
     "Week": 5,
     "Stage": 3,
+    "Content Point": "PH2-MSP-01: Mix jumping techniques in games.",
     "Skill": "Jumping",
     "Practice": [
       {
-        "Activity Name": "Box Jumps",
-        "Description": "Jump onto and off a low box or step, focusing on soft landings and controlled take-offs."
+        "Activity Name": "High Vertical Jumps",
+        "Description": "Practice jumping straight up against a wall, marking with chalk as high as students could reach. Focus on explosive upward movement and soft landings."
       },
       {
-        "Activity Name": "Broad Jumps",
-        "Description": "Practice jumping for maximum horizontal distance, emphasising arm swing and landing technique."
+        "Activity Name": "Standing Long Jump",
+        "Description": "Two-footed standing jump for maximum distance. Mark the ground where students land and measure for distance records."
       },
       {
-        "Activity Name": "Consecutive Jumps",
-        "Description": "Perform a series of jumps (e.g., five consecutive two-footed jumps, then five consecutive hops on one leg)."
+        "Activity Name": "Two-Step Run-Up Leap",
+        "Description": "Take a two-step approach then leap forward for distance. Practice the approach timing and explosive takeoff, marking landing distances."
       },
       {
-        "Activity Name": "Mini-Hurdle Drills",
-        "Description": "Jump over a series of low hurdles, focusing on rhythm and clearance."
+        "Activity Name": "Vertical Jump with Leg Lift",
+        "Description": "Jump vertically while lifting legs/feet as high as possible. Mark the lowest point of the body (feet) to see how high students can get their entire body off the ground."
+      },
+      {
+        "Activity Name": "Team Jumping Championships",
+        "Description": [
+          "Teams select 2 champions for each of the 4 jumping skills (8 students total per team).",
+          "Champions compete against other teams' champions in each jumping category.",
+          "Scoring: 2 points for first place, 1 point for second place in each skill.",
+          "Multiple students from the same team can score points in each category.",
+          "Team with the most total points wins the jumping championship."
+        ]
       }
     ],
     "Game": {
-      "Activity Name": "Jump Zone Challenge",
+      "Activity Name": "Tic Tac Toe Relay",
       "Description": [
-        "Setup: Design a multi-zone jumping course. Each zone presents a different type of jumping challenge:",
-        "Zone 1 (Vertical Power): Jump to touch a target (e.g., a handprint on a wall, a hanging object) as high as possible.",
-        "Zone 2 (Broad Leap): Perform a broad jump from a marked line, aiming to land in a designated 'landing zone.'",
-        "Zone 3 (Hurdle Hop): Jump over a series of 3-5 mini-hurdles or cones placed in a line.",
-        "Zone 4 (Agility Grid): Jump forwards, backwards, and sideways within a small grid marked on the ground.",
-        "Zone 5 (Single-Leg Endurance): Hop on one leg for a short, marked distance.",
-        "Gameplay: Students move through the zones, attempting to successfully complete each jumping task. They can be timed for the entire circuit or scored based on successful attempts in each zone. The game emphasises controlled execution of various jumping techniques, adapting to different jump requirements, and performing jumps in sequence."
+        "Setup: 9 hoops arranged in a 3x3 grid, 6 bean bags total (3 of each team colour).",
+        "Teams take turns running a bean bag to place in any hoop, then run back and tag next teammate.",
+        "Objective: Get 3 bean bags of your team's colour in a row (horizontal, vertical, or diagonal).",
+        "Strategy: Each team only has 3 bean bags, so if their row gets blocked, they must move an existing bean bag to a new hoop on their turn.",
+        "Players can block opponent's potential winning rows by strategic placement and movement of their bean bags.",
+        "First team to achieve 3 in a row wins the round."
       ]
     },
-    "Equipment": "Low boxes/steps, markers for distance measurement, mini-hurdles, wall targets/hanging objects, markers for landing zones, cones, grid markings"
+    "Assessment": "Evaluate students' ability to control jump height and distance across different jumping techniques, and observe tactical thinking in the tic tac toe game.",
+    "Equipment": "9 hoops, 6 bean bags (3 of each team colour), chalk for marking, walls for vertical jump marking"
   },
   {
     "Week": 6,

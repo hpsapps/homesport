@@ -251,7 +251,9 @@ const renderActivityContent = () => {
                 contentHtml += `
                     <div class="p-4 rounded-lg ${state.darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}">
                         <h5 class="font-medium mb-2 ${state.darkMode ? 'text-stone-300' : 'text-stone-700'}">${activity['Activity Name']}</h5>
-                        <p class="${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">${activity.Description}</p>
+                        <div class="space-y-1">
+                            ${Array.isArray(activity.Description) ? activity.Description.map(desc => `<p class="${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">${desc}</p>`).join('') : `<p class="${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">${activity.Description}</p>`}
+                        </div>
                     </div>
                 `;
             });
@@ -276,10 +278,10 @@ const renderActivityContent = () => {
 
         if (Array.isArray(weekData.Game.Description)) {
             weekData.Game.Description.forEach(desc => {
-                contentHtml += `<p class="text-sm ${state.darkMode ? 'text-blue-100' : 'text-blue-700'}">${desc}</p>`;
+                contentHtml += `<p class="text-md ${state.darkMode ? 'text-blue-100' : 'text-blue-700'}">${desc}</p>`;
             });
         } else {
-            contentHtml += `<p class="text-sm ${state.darkMode ? 'text-blue-100' : 'text-blue-700'}">${weekData.Game.Description}</p>`;
+            contentHtml += `<p class="text-md ${state.darkMode ? 'text-blue-100' : 'text-blue-700'}">${weekData.Game.Description}</p>`;
         }
 
         contentHtml += `
@@ -292,7 +294,7 @@ const renderActivityContent = () => {
                 <h4 class="text-lg font-semibold mb-3 ${state.darkMode ? 'text-stone-200' : 'text-stone-800'}">Assessment</h4>
                 <div class="p-4 rounded-lg ${state.darkMode ? 'bg-[#78013D]/20 border-[#78013D]' : 'bg-[#78013D]/10 border-[#78013D]/50'} border">
                     <div class="space-y-2">
-                        ${Array.isArray(weekData.Assessment) ? weekData.Assessment.map(item => `<p class="text-sm ${state.darkMode ? 'text-stone-100' : 'text-stone-700'}">${item}</p>`).join('') : `<p class="text-sm ${state.darkMode ? 'text-stone-100' : 'text-stone-700'}">${weekData.Assessment}</p>`}
+                        ${Array.isArray(weekData.Assessment) ? weekData.Assessment.map(item => `<p class="text-md ${state.darkMode ? 'text-stone-100' : 'text-stone-700'}">${item}</p>`).join('') : `<p class="text-md ${state.darkMode ? 'text-stone-100' : 'text-stone-700'}">${weekData.Assessment}</p>`}
                     </div>
                 </div>
             </div>
@@ -310,13 +312,13 @@ const renderActivityContent = () => {
                 contentHtml += `
                     <div class="flex items-center">
                         <input type="checkbox" id="equipment-${index}" class="form-checkbox h-4 w-4 text-green-600 transition duration-150 ease-in-out ${state.darkMode ? 'bg-gray-700 border-gray-600 checked:bg-green-500' : 'border-gray-300 focus:ring-green-500'}">
-                        <label for="equipment-${index}" class="ml-2 text-sm">${item}</label>
+                        <label for="equipment-${index}" class="ml-2 text-md">${item}</label>
                     </div>
                 `;
             });
             contentHtml += `</div>`;
         } else {
-            contentHtml += `<p class="text-sm ${state.darkMode ? 'text-green-100' : 'text-green-700'}">No equipment specified</p>`;
+            contentHtml += `<p class="text-md ${state.darkMode ? 'text-green-100' : 'text-green-700'}">No equipment specified</p>`;
         }
 
         contentHtml += `
