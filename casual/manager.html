@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Substitute Manager</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body { font-family: system-ui, sans-serif; background-color: #f4f4f5; color: #18181b; margin: 0; }
+        #root { max-width: 1200px; margin: 20px auto; padding: 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1, h2, h3 { color: #18181b; }
+        .controls { display: flex; gap: 20px; margin-bottom: 20px; padding: 20px; background-color: #fafafa; border-radius: 8px; }
+        .control-group { display: flex; flex-direction: column; }
+        label { font-weight: 500; margin-bottom: 5px; }
+        select, input, button { padding: 8px 12px; border-radius: 6px; border: 1px solid #d4d4d8; font-size: 14px; }
+        button { background-color: #2563eb; color: white; cursor: pointer; border-color: #2563eb; }
+        button:disabled { background-color: #a1a1aa; cursor: not-allowed; }
+        .schedule-display { margin-top: 20px; }
+        .timeline-item { border-left: 3px solid; padding: 10px 15px; margin-bottom: 10px; border-radius: 4px; }
+        .timeline-item.duty { border-color: #ef4444; background-color: #fee2e2; }
+        .timeline-item.rff { border-color: #3b82f6; background-color: #dbeafe; }
+        .timeline-item.break { border-color: #6b7280; background-color: #f3f4f6; }
+        .timeline-time { font-weight: bold; }
+
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+            }
+            #root {
+                margin: 0;
+                padding: 10px;
+                border-radius: 0;
+            }
+            .control-group {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import { getTeachersFromDutyRoster, findDutiesForTeacher } from './data/DutyRosterData.js';
+        import { rawRFFRoster, getTeachersFromRFFRoster, findRFFForTeacher } from './data/RFFRosterData.js';
+        import { getPaybackForTeacher } from './data/RFFPaybackData.js';
+        import { getTeacherClass } from './data/ClassTeacher.js';
+
+        function App() {
+            const [selectedTeacher, setSelectedTeacher] = React.useState('');
+            const [selectedDate, setSelectedDate] = React.useState(new Date().toISOString().split('T')[0]);
+            const [schedule, setSchedule] = React.useState(null);
+
+            // Combine and unique teachers from both rosters
+            const allTeachers = React.useMemo(() => {
+                const combined = new Set([...getTeachersFromDutyRoster(), ...getTeachersFromRFFRoster()]);
+                return Array.from(combined).sort();
+            }, []);
+
+            const handleDateChange = (offset) => {
+                const currentDate = new Date(selectedDate);
+                currentDate.setDate(currentDate.getDate() + offset);
+                setSelectedDate(currentDate.toISOString().split('T')[0]);
+            };
+
+            React.useEffect(() => {
+                if (!selectedTeacher) {
+                    setSchedule(null);
+                    return;
+                }
+
+                const date = new Date(selectedDate);
+                const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                const dayOfWeek = days[date.getUTCDay()];
+
+                const duties = findDutiesForTeacher(selectedTeacher, dayOfWeek);
+                const paybackInfo = getPaybackForTeacher(selectedTeacher);
+                const teacherClass = getTeacherClass(selectedTeacher);
+
+                // Find RFF slots for the teacher's class
+                const findRFFForClass = (className, day) => {
+                    const slots = [];
+                    if (!className) return slots;
+                    const dayIndex = days.indexOf(day);
+                    if (dayIndex === -1) return slots;
+
+                    rawRFFRoster.slice(2).forEach(row => {
+                        const time = row[0];
+                        row.slice(1).forEach((cell, index) => {
+                            if (cell && cell.includes(className)) {
+                                const teacher = rawRFFRoster[0][index + 1];
+                                const activity = rawRFFRoster[1][index + 1];
+                                slots.push({ timeSlot: time, activity: `RFF: ${activity}`, class: cell, teacher });
+                            }
+                        });
+                    });
+                    return slots;
+                };
+                
+                const classRFFSlots = findRFFForClass(teacherClass, dayOfWeek);
+                const timeline = generateTimeline(duties, classRFFSlots);
+
+                setSchedule({
+                    teacher: selectedTeacher,
+                    teacherClass: teacherClass,
+                    date: selectedDate,
+                    day: dayOfWeek,
+                    duties,
+                    rffSlots: classRFFSlots,
+                    paybackInfo,
+                    timeline
+                });
+            }, [selectedTeacher, selectedDate]);
+
+            const generateTimeline = (duties, classRFFSlots) => {
+                const items = [];
+                duties.forEach(duty => items.push({ type: 'duty', time: duty.timeSlot, description: `Duty: ${duty.area}` }));
+                classRFFSlots.forEach(rff => items.push({ type: 'rff', time: rff.timeSlot, description: `${rff.activity} for ${rff.class} (covered by ${rff.teacher})` }));
+                
+                // A simple sort - this could be improved with proper time parsing
+                return items.sort((a, b) => a.time.localeCompare(b.time));
+            };
+
+            return (
+                <div>
+                    <h1>School Substitute Manager</h1>
+                    <div className="controls">
+                        <div className="control-group">
+                            <label htmlFor="teacher-select">Absent Teacher</label>
+                            <select id="teacher-select" value={selectedTeacher} onChange={e => setSelectedTeacher(e.target.value)}>
+                                <option value="">-- Select a Teacher --</option>
+                                {allTeachers.map(teacher => <option key={teacher} value={teacher}>{teacher}</option>)}
+                            </select>
+                        </div>
+                        <div className="control-group">
+                            <label htmlFor="date-select">Date</label>
+                            <div style={{display: 'flex'}}>
+                                <button onClick={() => handleDateChange(-1)}>‹ Prev</button>
+                                <input id="date-select" type="date" value={selectedDate} onChange={e => setSelectedDate(e.target.value)} style={{margin: '0 5px'}}/>
+                                <button onClick={() => handleDateChange(1)}>Next ›</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {schedule && (
+                        <div className="schedule-display">
+                            <h2>Schedule for {schedule.teacher} ({schedule.teacherClass || 'No class assigned'}) on {schedule.day}, {schedule.date}</h2>
+                            {schedule.paybackInfo && (
+                                <p><b>RFF Payback Info:</b> This teacher is owed {schedule.paybackInfo.slotsOwed} slot(s). Priority: {schedule.paybackInfo.priority}. Notes: {schedule.paybackInfo.notes}</p>
+                            )}
+                            <h3>Daily Timeline</h3>
+                            {schedule.timeline.length > 0 ? (
+                                schedule.timeline.map((item, index) => (
+                                    <div key={index} className={`timeline-item ${item.type}`}>
+                                        <div className="timeline-time">{item.time}</div>
+                                        <div>{item.description}</div>
+                                    </div>
+                                ))
+                            ) : (
+                                <p>No duties or RFF slots found for this teacher on the selected day.</p>
+                            )}
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
