@@ -20,8 +20,8 @@ export const classAssignments = [
   // Year 1 Classes
   { teacher: 'Giuseppe', class: '1S', yearLevel: 'Year 1', fullTime: true, notes: 'ICT Coordinator' },
   { teacher: 'Renee', class: '1A', yearLevel: 'Year 1', fullTime: false, notes: '4 days per week' },
-  { teacher: 'Sarah O', class: '1D', yearLevel: 'Year 1', fullTime: true },
-  { teacher: 'Tarsh', class: '1O', yearLevel: 'Year 1', fullTime: true },
+  { teacher: 'Sarah O', class: '1O', yearLevel: 'Year 1', fullTime: true },
+  { teacher: 'Tarsh', class: '1D', yearLevel: 'Year 1', fullTime: true },
   { teacher: 'Aliy', class: '1MS', yearLevel: 'Year 1', fullTime: true },
   { teacher: 'Jen B', class: '1G', yearLevel: 'Year 1', fullTime: true },
   
@@ -34,9 +34,9 @@ export const classAssignments = [
   
   // Year 3 Classes
   { teacher: 'Chelsea', class: '3C', yearLevel: 'Year 3', fullTime: true, notes: 'ECT - Early Career Teacher' },
-  { teacher: 'Kati H', class: '3E', yearLevel: 'Year 3', fullTime: true },
+  { teacher: 'Kati H', class: '3H', yearLevel: 'Year 3', fullTime: true },
   { teacher: 'Jeanette', class: '3N', yearLevel: 'Year 3', fullTime: true },
-  { teacher: 'Liz W', class: '3W', yearLevel: 'Year 3', fullTime: true },
+  { teacher: 'Liz W', class: '3E', yearLevel: 'Year 3', fullTime: true },
   
   // Year 4 Classes
   { teacher: 'Claire D', class: '4W', yearLevel: 'Year 4', fullTime: true },
@@ -45,11 +45,15 @@ export const classAssignments = [
   
   // Year 5 Classes
   { teacher: 'Gemma', class: '5H', yearLevel: 'Year 5', fullTime: true, notes: 'Fed Rep arrangements' },
-  
+  { teacher: 'Rachel', class: '5F', yearLevel: 'Year 5', fullTime: true },
+  { teacher: 'Dane', class: '5M', yearLevel: 'Year 5', fullTime: true },
+  { teacher: 'Michael', class: '5E', yearLevel: 'Year 5', fullTime: true },
+
+
   // Year 6 Classes
-  { teacher: 'Holly', class: '6W', yearLevel: 'Year 6', fullTime: true, notes: 'ECT - Early Career Teacher' },
-  { teacher: 'Christina', class: '6H', yearLevel: 'Year 6', fullTime: true },
-  { teacher: 'Rachel', class: '6L', yearLevel: 'Year 6', fullTime: true }
+  { teacher: 'Holly', class: '6L', yearLevel: 'Year 6', fullTime: true, notes: 'ECT - Early Career Teacher' },
+  { teacher: 'Christina', class: '6W', yearLevel: 'Year 6', fullTime: true },
+  { teacher: 'Kati', class: '6H', yearLevel: 'Year 6', fullTime: true }
 ];
 
 /**

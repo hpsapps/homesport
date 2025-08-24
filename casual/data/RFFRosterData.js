@@ -27,13 +27,13 @@ loadRFFData();
  * From the original roster - these explain special arrangements
  */
 export const rffNotes = {
-  'KN!': 'Narelle to cover 4C every even week as both Narelle and Gabi are 4 days per week',
+  'KN': 'Narelle to cover 4C every even week as both Narelle and Gabi are 4 days per week',
   'Fed Rep': 'Maz to cover 5H in classroom for Gemma to have Fed Rep time',
   'ECT#': 'Karen to cover 3C and 6L (in classrooms) for Chelsea and Holly to have school funded ECT time. 3C odd weeks and 6L even weeks',
   'Christina': 'James to take whatever class Christina has for the day in the classroom for Christina to have RFF',
-  '1G!': 'Fi to cover 1A every even week as both Fi and Renee work 4 days per week',
+  '1G': 'Fi to cover 1A every even week as both Fi and Renee work 4 days per week',
   'ICT': 'Sport RFF and Karen to cover 1S in classroom for Giuseppe to have ICT coordinator RFF',
-  '6H%': 'Sport RFF to cover 6H in classroom for Christina to have RFF'
+  '6H': 'Sport RFF to cover 6H in classroom for Christina to have RFF'
 };
 
 /**
