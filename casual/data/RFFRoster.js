@@ -7,20 +7,20 @@
 let rffData = {};
 
 // Fetch and load the RFF JSON data
-async function loadRFFData() {
+export async function loadRFFData() {
     try {
         const response = await fetch('./data/RFF.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        rffData = await response.json();
+        const data = await response.json();
+        rffData = data; // Still set module-level variable for existing calls
+        return data;
     } catch (error) {
         console.error("Could not load RFF data:", error);
+        return {}; // Return empty object on error
     }
 }
-
-// Load the data immediately
-loadRFFData();
 
 /**
  * RFF SPECIAL ASSIGNMENTS NOTES
@@ -63,7 +63,7 @@ export const findRFFForTeacher = (teacherName, dayOfWeek) => {
   if (dayData) {
     dayData.forEach(timeSlot => {
       timeSlot.assignments.forEach(assignment => {
-        if (assignment.teacher === teacherName && assignment.class && assignment.class !== 'RFF') {
+        if (assignment.teacher === teacherName && assignment.class) { // Removed assignment.class !== 'RFF'
           rffSlots.push({
             timeSlot: timeSlot.time,
             activity: assignment.activity,
