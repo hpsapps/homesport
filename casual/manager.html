@@ -18,15 +18,69 @@
         button { background-color: #2563eb; color: white; cursor: pointer; border-color: #2563eb; }
         button:disabled { background-color: #a1a1aa; cursor: not-allowed; }
         .schedule-display { margin-top: 20px; }
+        .schedule-header { background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 20px; margin-bottom: 20px; }
+        .schedule-header h2 { margin-top: 0; margin-bottom: 5px; }
+        .schedule-date { font-size: 1.1em; color: #52525b; margin-top: 0; margin-bottom: 10px; }
+        .schedule-content { display: flex; gap: 20px; }
+        .schedule-column { flex: 1; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 20px; }
         .timeline-item { border-left: 3px solid; padding: 10px 15px; margin-bottom: 10px; border-radius: 4px; }
         .timeline-item.duty { border-color: #ef4444; background-color: #fee2e2; }
         .timeline-item.rff { border-color: #3b82f6; background-color: #dbeafe; }
         .timeline-item.break { border-color: #6b7280; background-color: #f3f4f6; }
         .timeline-time { font-weight: bold; }
 
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            position: relative; /* Added for positioning dropdown */
+        }
+
+        .teacher-dropdown {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #d4d4d8;
+            border-radius: 6px;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #ffffff;
+            position: absolute;
+            top: 100%; /* Position below the input */
+            left: 0;
+            z-index: 10;
+            width: 100%; /* Match parent width */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .teacher-dropdown li {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .teacher-dropdown li:hover {
+            background-color: #f4f4f5;
+        }
+
+        .teacher-dropdown-no-results {
+            padding: 8px 12px;
+            color: #71717a;
+            border: 1px solid #d4d4d8;
+            border-radius: 6px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 100%; /* Position below the input */
+            left: 0;
+            z-index: 10;
+            width: 100%; /* Match parent width */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
         @media (max-width: 768px) {
             .controls {
                 flex-direction: column;
+            }
+            .teacher-dropdown, .teacher-dropdown-no-results {
+                width: 100%; /* Ensure full width within parent on mobile */
             }
             #root {
                 margin: 0;
@@ -36,6 +90,9 @@
             .control-group {
                 width: 100%;
             }
+            .schedule-content {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -43,21 +100,48 @@
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
-        import { getTeachersFromDutyRoster, findDutiesForTeacher } from './data/DutyRosterData.js';
-        import { getTeachersFromRFFRoster, findRFFForTeacher, findRFFForClass } from './data/RFFRosterData.js';
-        import { getPaybackForTeacher } from './data/RFFPaybackData.js';
-        import { getTeacherClass } from './data/ClassTeacher.js';
+        import { getTeachersFromDutyRoster, findDutiesForTeacher, loadDutyData } from './data/DutyRoster.js';
+        import { getTeachersFromRFFRoster, findRFFForTeacher, findRFFForClass, loadRFFData } from './data/RFFRoster.js';
+        import { getPaybackForTeacher, getRFFPaybackList } from './data/RFFPaybackData.js'; // Import getRFFPaybackList
+        import { getTeacherClass, getTeachersByRole, getTeacherInfo } from './data/ClassTeacher.js'; // Import getTeachersByRole and getTeacherInfo
 
         function App() {
             const [selectedTeacher, setSelectedTeacher] = React.useState('');
+            const [searchTerm, setSearchTerm] = React.useState(''); // New state for search input
+            const [showDropdown, setShowDropdown] = React.useState(false); // New state for dropdown visibility
             const [selectedDate, setSelectedDate] = React.useState(new Date().toISOString().split('T')[0]);
             const [schedule, setSchedule] = React.useState(null);
+            const [isLoading, setIsLoading] = React.useState(true);
 
-            // Combine and unique teachers from both rosters
-            const allTeachers = React.useMemo(() => {
-                const combined = new Set([...getTeachersFromDutyRoster(), ...getTeachersFromRFFRoster()]);
-                return Array.from(combined).sort();
+            React.useEffect(() => {
+                async function loadAllData() {
+                    setIsLoading(true);
+                    await Promise.all([loadDutyData(), loadRFFData()]);
+                    setIsLoading(false);
+                }
+                loadAllData();
             }, []);
+
+            // Combine and unique teachers from all sources
+            const allTeachers = React.useMemo(() => {
+                if (isLoading) return []; // Return empty array while loading
+                // Use getTeachersByRole('all') from ClassTeacher.js for a comprehensive list
+                return getTeachersByRole('all').sort();
+            }, [isLoading]); // Depend on isLoading to re-compute after data is loaded
+
+            // Filter teachers based on search term
+            const filteredTeachers = React.useMemo(() => {
+                if (!searchTerm) return allTeachers;
+                return allTeachers.filter(teacher =>
+                    teacher.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }, [searchTerm, allTeachers]);
+
+            const handleTeacherSelect = (teacher) => {
+                setSelectedTeacher(teacher);
+                setSearchTerm(teacher); // Display selected teacher in the input
+                setShowDropdown(false); // Hide dropdown after selection
+            };
 
             const handleDateChange = (offset) => {
                 const currentDate = new Date(selectedDate);
@@ -66,7 +150,7 @@
             };
 
             React.useEffect(() => {
-                if (!selectedTeacher) {
+                if (isLoading || !selectedTeacher) { // Do not generate schedule if still loading or no teacher selected
                     setSchedule(null);
                     return;
                 }
@@ -74,30 +158,49 @@
                 const date = new Date(selectedDate);
                 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
                 const dayOfWeek = days[date.getUTCDay()];
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = date.toLocaleDateString('en-AU', options);
 
+                // Rely on module-level data for these functions
                 const duties = findDutiesForTeacher(selectedTeacher, dayOfWeek);
                 const paybackInfo = getPaybackForTeacher(selectedTeacher);
                 const teacherClass = getTeacherClass(selectedTeacher);
+                const teacherInfo = getTeacherInfo(selectedTeacher); // Get teacher's role
+                const isRFFSpecialist = teacherInfo && teacherInfo.role === 'RFF Specialist';
 
-                const classRFFSlots = findRFFForClass(teacherClass, dayOfWeek);
-                const timeline = generateTimeline(duties, classRFFSlots);
+                let allRFFSlots = [];
+                if (isRFFSpecialist) {
+                    // For RFF specialists, only show their own RFF times (where class is 'RFF')
+                    allRFFSlots = findRFFForTeacher(selectedTeacher, dayOfWeek).filter(rff => rff.class === 'RFF');
+                } else {
+                    // For classroom teachers, show RFF slots covered by their class
+                    allRFFSlots = findRFFForClass(teacherClass, dayOfWeek);
+                }
+
+                const timeline = generateTimeline(duties, allRFFSlots);
 
                 setSchedule({
                     teacher: selectedTeacher,
                     teacherClass: teacherClass,
                     date: selectedDate,
                     day: dayOfWeek,
+                    formattedDate: formattedDate,
                     duties,
-                    rffSlots: classRFFSlots,
+                    rffSlots: allRFFSlots, // Use allRFFSlots here for consistency with timeline
                     paybackInfo,
                     timeline
                 });
-            }, [selectedTeacher, selectedDate]);
+            }, [selectedTeacher, selectedDate, isLoading]);
 
-            const generateTimeline = (duties, classRFFSlots) => {
+            const generateTimeline = (duties, rffSlots) => { // Changed classRFFSlots to rffSlots
                 const items = [];
                 duties.forEach(duty => items.push({ type: 'duty', time: duty.timeSlot, description: `Duty: ${duty.area}` }));
-                classRFFSlots.forEach(rff => items.push({ type: 'rff', time: rff.timeSlot, description: `${rff.activity} for ${rff.class} (covered by ${rff.teacher})` }));
+                rffSlots.forEach(rff => { // Use rffSlots parameter
+                    const description = rff.class === 'RFF'
+                        ? `${rff.activity} (Own RFF)`
+                        : `${rff.activity} for ${rff.class} (covered by ${rff.teacher})`;
+                    items.push({ type: 'rff', time: rff.timeSlot, description: description });
+                });
                 
                 // A simple sort - this could be improved with proper time parsing
                 return items.sort((a, b) => a.time.localeCompare(b.time));
@@ -108,11 +211,33 @@
                     <h1>Daily Casual Manager</h1>
                     <div className="controls">
                         <div className="control-group">
-                            <label htmlFor="teacher-select">Absent Teacher</label>
-                            <select id="teacher-select" value={selectedTeacher} onChange={e => setSelectedTeacher(e.target.value)}>
-                                <option value="">Teacher</option>
-                                {allTeachers.map(teacher => <option key={teacher} value={teacher}>{teacher}</option>)}
-                            </select>
+                            <label htmlFor="teacher-search">Absent Teacher</label>
+                            <input
+                                id="teacher-search"
+                                type="text"
+                                placeholder={isLoading ? 'Loading Teachers...' : 'Search for a teacher...'}
+                                value={searchTerm} // Always display searchTerm
+                                onChange={e => {
+                                    setSearchTerm(e.target.value);
+                                    setShowDropdown(true); // Show dropdown when typing
+                                }}
+                                onFocus={() => setShowDropdown(true)} // Show dropdown on focus
+                                onBlur={() => setTimeout(() => setShowDropdown(false), 100)} // Hide dropdown on blur with a slight delay
+                                disabled={isLoading}
+                                style={{ marginBottom: '5px' }}
+                            />
+                            {!isLoading && showDropdown && searchTerm && filteredTeachers.length > 0 && (
+                                <ul className="teacher-dropdown">
+                                    {filteredTeachers.map(teacher => (
+                                        <li key={teacher} onMouseDown={() => handleTeacherSelect(teacher)}> {/* Use onMouseDown to prevent onBlur from firing too soon */}
+                                            {teacher}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                            {!isLoading && showDropdown && searchTerm && filteredTeachers.length === 0 && (
+                                <div className="teacher-dropdown-no-results">No matching teachers</div>
+                            )}
                         </div>
                         <div className="control-group">
                             <label htmlFor="date-select">Date</label>
@@ -126,21 +251,44 @@
 
                     {schedule && (
                         <div className="schedule-display">
-                            <h2>Schedule for {schedule.teacher} ({schedule.teacherClass || 'No class assigned'}) on {schedule.day}, {schedule.date}</h2>
-                            {schedule.paybackInfo && (
-                                <p><b>RFF Payback Info:</b> This teacher is owed {schedule.paybackInfo.slotsOwed} slot(s). Priority: {schedule.paybackInfo.priority}. Notes: {schedule.paybackInfo.notes}</p>
-                            )}
-                            <h3>Daily Timeline</h3>
-                            {schedule.timeline.length > 0 ? (
-                                schedule.timeline.map((item, index) => (
-                                    <div key={index} className={`timeline-item ${item.type}`}>
-                                        <div className="timeline-time">{item.time}</div>
-                                        <div>{item.description}</div>
+                            <div className="schedule-header">
+                                <h2>Schedule for {schedule.teacher} ({schedule.teacherClass || 'No class assigned'})</h2>
+                                <p className="schedule-date">{schedule.formattedDate}</p>
+                            </div>
+                            <div className="schedule-content">
+                                <div className="schedule-column">
+                                    <h3>Daily Timeline</h3>
+                                {schedule.day === 'Saturday' || schedule.day === 'Sunday' ? (
+                                    <p>It's the weekend! Hopefully {schedule.teacher} is enjoying their time off.</p>
+                                ) : schedule.timeline.length > 0 ? (
+                                    schedule.timeline.map((item, index) => (
+                                        <div key={index} className={`timeline-item ${item.type}`}>
+                                            <div className="timeline-time">{item.time}</div>
+                                            <div>{item.description}</div>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p>No duties or RFF slots found for this teacher on the selected day.</p>
+                                )}
+                                </div> {/* Close schedule-column */}
+
+                                {schedule.rffSlots.length > 0 && (
+                                    <div className="schedule-column">
+                                    <h3>Suggested RFF Payback</h3>
+                                    {getRFFPaybackList().length > 0 ? (
+                                        <ol>
+                                            {getRFFPaybackList().map((teacher, index) => (
+                                                <li key={index}>
+                                                    {teacher.teacher}: {teacher.slotsOwed} {teacher.slotsOwed === 1 ? 'slot' : 'slots'} owed
+                                                </li>
+                                            ))}
+                                        </ol>
+                                    ) : (
+                                        <p>No teachers currently owed RFF payback.</p>
+                                    )}
                                     </div>
-                                ))
-                            ) : (
-                                <p>No duties or RFF slots found for this teacher on the selected day.</p>
-                            )}
+                                )}
+                            </div> {/* Close schedule-content */}
                         </div>
                     )}
                 </div>
