@@ -1,31 +1,26 @@
 /**
  * RFF ROSTER DATA
  * 
- * Structure: 2D array matching the RFF roster spreadsheet exactly
- * Row 0: Teacher names across columns
- * Row 1: Activity types (Music, Sport, Library, Computer, Exec)
- * Subsequent rows: [Time slot, Class assignments for each teacher column]
- * 
- * To update: Replace this array with CSV data from your RFF roster spreadsheet
- * The parsing logic will automatically work with new data
+ * This file now fetches and processes data from RFF.json
  */
 
-export const rawRFFRoster = [
-  // Teacher names across columns (Monday schedule shown)
-  ['Time', 'Alice', 'James', 'Maz', 'Christine', 'Karen', 'Savanah', 'Glenda', 'Alice', 'James', 'Christine', 'Karen'],
-  
-  // Activity types for each column
-  ['', 'Music', 'Sport', 'Sport', 'Library', 'Library', 'Exec', 'Exec', 'Music', 'Sport', 'Library', 'Library'],
-  
-  // Time slots and class assignments
-  ['9:10 - 9:50', '4W', 'ECT', '3E', 'RFF', 'RFF', '1S (ICT)', 'RFF', '4C', 'RFF', '', ''],
-  ['9:50 - 10:30', '6W', '2H', '1A', '2E', '1S', 'KB', 'RFF', 'KN', '', '', ''],
-  ['10:30 - 11:10', '3C', '2E', '1S', '2H', '1A', 'KN', 'Sport Set Up', 'KB', '', '', ''],
-  ['11:35 - 12:15', '6H', '2Y', '1D', '2B', '1O', 'KV', 'KS', '', '', '', ''],
-  ['12:15 - 12:55', '3N', '2B', '1O', '2Y', '1D', 'KS', 'KV', '', '', '', ''],
-  ['1:45 - 2:25', '3W', '2D', '1MS', '4I', 'ECT#', 'KK', 'KE', '', '', '', ''],
-  ['2:25 - 3:05', '4I', 'Christina', '1G!', '2D', '5H', 'KE', 'RFF', 'KK', '', '', '']
-];
+let rffData = {};
+
+// Fetch and load the RFF JSON data
+async function loadRFFData() {
+    try {
+        const response = await fetch('./data/RFF.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        rffData = await response.json();
+    } catch (error) {
+        console.error("Could not load RFF data:", error);
+    }
+}
+
+// Load the data immediately
+loadRFFData();
 
 /**
  * RFF SPECIAL ASSIGNMENTS NOTES
@@ -48,73 +43,86 @@ export const rffNotes = {
 // Get all teachers from RFF roster
 export const getTeachersFromRFFRoster = () => {
   const teachers = new Set();
-  
-  if (rawRFFRoster.length > 0) {
-    rawRFFRoster[0].slice(1).forEach(teacher => {
-      if (teacher && teacher !== '' && teacher !== 'Time') {
-        teachers.add(teacher);
-      }
+  for (const day in rffData) {
+    rffData[day].forEach(timeSlot => {
+      timeSlot.assignments.forEach(assignment => {
+        if (assignment.teacher && assignment.teacher !== 'TBC') {
+          teachers.add(assignment.teacher);
+        }
+      });
     });
   }
-  
   return Array.from(teachers);
 };
 
-// Find RFF slots for a specific teacher (currently Monday only)
-export const findRFFForTeacher = (teacherName, dayOfWeek = 'Monday') => {
+// Find RFF slots for a specific teacher
+export const findRFFForTeacher = (teacherName, dayOfWeek) => {
   const rffSlots = [];
-  
-  if (rawRFFRoster.length < 3) return rffSlots;
-  
-  // Find teacher column(s) - teachers can appear multiple times
-  const teacherColumns = [];
-  rawRFFRoster[0].forEach((teacher, index) => {
-    if (teacher === teacherName) {
-      teacherColumns.push(index);
-    }
-  });
-  
-  if (teacherColumns.length === 0) return rffSlots;
-  
-  // Parse time slots (starting from row 2, skipping header rows)
-  rawRFFRoster.slice(2).forEach(row => {
-    const timeSlot = row[0];
-    if (timeSlot && timeSlot.includes('-')) {
-      teacherColumns.forEach(colIndex => {
-        const assignment = row[colIndex];
-        if (assignment && assignment !== '' && assignment !== 'RFF') {
-          // Get activity type from header row
-          const activity = rawRFFRoster[1][colIndex] || 'Unknown';
-          
+  const dayData = rffData[dayOfWeek];
+
+  if (dayData) {
+    dayData.forEach(timeSlot => {
+      timeSlot.assignments.forEach(assignment => {
+        if (assignment.teacher === teacherName && assignment.class && assignment.class !== 'RFF') {
           rffSlots.push({
-            timeSlot: timeSlot,
-            activity: activity,
-            class: assignment,
+            timeSlot: timeSlot.time,
+            activity: assignment.activity,
+            class: assignment.class,
             teacher: teacherName,
-            notes: rffNotes[assignment] || ''
+            notes: rffNotes[assignment.class] || ''
           });
         }
       });
-    }
-  });
+    });
+  }
   
   return rffSlots;
 };
 
 // Get all time slots from RFF roster
 export const getRFFTimeSlots = () => {
-  return rawRFFRoster.slice(2).map(row => row[0]).filter(time => time && time.includes('-'));
+  const timeSlots = new Set();
+  for (const day in rffData) {
+    rffData[day].forEach(timeSlot => {
+      timeSlots.add(timeSlot.time);
+    });
+  }
+  return Array.from(timeSlots);
 };
 
 // Get activity types for a teacher
 export const getTeacherActivities = (teacherName) => {
   const activities = new Set();
-  
-  rawRFFRoster[0].forEach((teacher, index) => {
-    if (teacher === teacherName && rawRFFRoster[1][index]) {
-      activities.add(rawRFFRoster[1][index]);
-    }
-  });
-  
+  for (const day in rffData) {
+    rffData[day].forEach(timeSlot => {
+      timeSlot.assignments.forEach(assignment => {
+        if (assignment.teacher === teacherName && assignment.activity) {
+          activities.add(assignment.activity);
+        }
+      });
+    });
+  }
   return Array.from(activities);
+};
+
+// A function to find RFF slots for a given class on a specific day
+export const findRFFForClass = (className, dayOfWeek) => {
+    const slots = [];
+    const dayData = rffData[dayOfWeek];
+
+    if (dayData && className) {
+        dayData.forEach(timeSlot => {
+            timeSlot.assignments.forEach(assignment => {
+                if (assignment.class && assignment.class.includes(className)) {
+                    slots.push({
+                        timeSlot: timeSlot.time,
+                        activity: `RFF: ${assignment.activity}`,
+                        class: assignment.class,
+                        teacher: assignment.teacher
+                    });
+                }
+            });
+        });
+    }
+    return slots;
 };

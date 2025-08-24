@@ -44,7 +44,7 @@
 
     <script type="text/babel" data-type="module">
         import { getTeachersFromDutyRoster, findDutiesForTeacher } from './data/DutyRosterData.js';
-        import { rawRFFRoster, getTeachersFromRFFRoster, findRFFForTeacher } from './data/RFFRosterData.js';
+        import { getTeachersFromRFFRoster, findRFFForTeacher, findRFFForClass } from './data/RFFRosterData.js';
         import { getPaybackForTeacher } from './data/RFFPaybackData.js';
         import { getTeacherClass } from './data/ClassTeacher.js';
 
@@ -79,26 +79,6 @@
                 const paybackInfo = getPaybackForTeacher(selectedTeacher);
                 const teacherClass = getTeacherClass(selectedTeacher);
 
-                // Find RFF slots for the teacher's class
-                const findRFFForClass = (className, day) => {
-                    const slots = [];
-                    if (!className) return slots;
-                    const dayIndex = days.indexOf(day);
-                    if (dayIndex === -1) return slots;
-
-                    rawRFFRoster.slice(2).forEach(row => {
-                        const time = row[0];
-                        row.slice(1).forEach((cell, index) => {
-                            if (cell && cell.includes(className)) {
-                                const teacher = rawRFFRoster[0][index + 1];
-                                const activity = rawRFFRoster[1][index + 1];
-                                slots.push({ timeSlot: time, activity: `RFF: ${activity}`, class: cell, teacher });
-                            }
-                        });
-                    });
-                    return slots;
-                };
-                
                 const classRFFSlots = findRFFForClass(teacherClass, dayOfWeek);
                 const timeline = generateTimeline(duties, classRFFSlots);
 
@@ -125,12 +105,12 @@
 
             return (
                 <div>
-                    <h1>School Substitute Manager</h1>
+                    <h1>Daily Casual Manager</h1>
                     <div className="controls">
                         <div className="control-group">
                             <label htmlFor="teacher-select">Absent Teacher</label>
                             <select id="teacher-select" value={selectedTeacher} onChange={e => setSelectedTeacher(e.target.value)}>
-                                <option value="">-- Select a Teacher --</option>
+                                <option value="">Teacher</option>
                                 {allTeachers.map(teacher => <option key={teacher} value={teacher}>{teacher}</option>)}
                             </select>
                         </div>
