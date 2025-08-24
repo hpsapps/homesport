@@ -14,8 +14,9 @@
         .controls { display: flex; gap: 20px; margin-bottom: 20px; padding: 20px; background-color: #fafafa; border-radius: 8px; }
         .control-group { display: flex; flex-direction: column; }
         label { font-weight: 500; margin-bottom: 5px; }
-        select, input, button { padding: 8px 12px; border-radius: 6px; border: 1px solid #d4d4d8; font-size: 14px; }
-        button { background-color: #2563eb; color: white; cursor: pointer; border-color: #2563eb; }
+        select, input, button { padding: 8px 12px; border-radius: 6px; border: 1px solid #d4d4d8; font-size: 14px; height: 36px; box-sizing: border-box; }
+        button { background-color: #e6ebfb; color: #18181b; cursor: pointer; border-color: #d4d4d8; }
+        button:hover { background-color: #e0e7fb; border-color: #c6c6ca; }
         button:disabled { background-color: #a1a1aa; cursor: not-allowed; }
         .schedule-display { margin-top: 20px; }
         .schedule-header { background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 20px; margin-bottom: 20px; }
@@ -104,6 +105,7 @@
         import { getTeachersFromRFFRoster, findRFFForTeacher, findRFFForClass, loadRFFData } from './data/RFFRoster.js';
         import { getPaybackForTeacher, getRFFPaybackList } from './data/RFFPaybackData.js'; // Import getRFFPaybackList
         import { getTeacherClass, getTeachersByRole, getTeacherInfo } from './data/ClassTeacher.js'; // Import getTeachersByRole and getTeacherInfo
+        import { getSessionTitle, loadTimeSlotsData } from './data/TimeSlots.js'; // Import getSessionTitle and loadTimeSlotsData
 
         function App() {
             const [selectedTeacher, setSelectedTeacher] = React.useState('');
@@ -116,7 +118,7 @@
             React.useEffect(() => {
                 async function loadAllData() {
                     setIsLoading(true);
-                    await Promise.all([loadDutyData(), loadRFFData()]);
+                    await Promise.all([loadDutyData(), loadRFFData(), loadTimeSlotsData()]); // Load time slots data
                     setIsLoading(false);
                 }
                 loadAllData();
@@ -192,18 +194,43 @@
                 });
             }, [selectedTeacher, selectedDate, isLoading]);
 
-            const generateTimeline = (duties, rffSlots) => { // Changed classRFFSlots to rffSlots
+            const generateTimeline = (duties, rffSlots) => {
                 const items = [];
                 duties.forEach(duty => items.push({ type: 'duty', time: duty.timeSlot, description: `Duty: ${duty.area}` }));
-                rffSlots.forEach(rff => { // Use rffSlots parameter
+                rffSlots.forEach(rff => {
                     const description = rff.class === 'RFF'
                         ? `${rff.activity} (Own RFF)`
                         : `${rff.activity} for ${rff.class} (covered by ${rff.teacher})`;
                     items.push({ type: 'rff', time: rff.timeSlot, description: description });
                 });
                 
-                // A simple sort - this could be improved with proper time parsing
-                return items.sort((a, b) => a.time.localeCompare(b.time));
+                const formatTime = (timeStr) => {
+                    // Handles both "HH:MM-HH:MM" and "HH:MM" formats
+                    const parts = timeStr.split('-');
+                    const start = parts[0].replace('.', ':').trim();
+                    return start;
+                };
+
+                // Sort items by time
+                items.sort((a, b) => {
+                    const timeA = formatTime(a.time);
+                    const timeB = formatTime(b.time);
+                    return timeA.localeCompare(timeB);
+                });
+
+                const groupedItems = {};
+                items.forEach(item => {
+                    const sessionTitle = getSessionTitle(item.time);
+                    if (!groupedItems[sessionTitle]) {
+                        groupedItems[sessionTitle] = [];
+                    }
+                    groupedItems[sessionTitle].push({
+                        ...item,
+                        displayTime: item.time.replace(/\s*(am|pm)/gi, '').replace(/\./g, ':') // Clean up for display
+                    });
+                });
+
+                return groupedItems;
             };
 
             return (
@@ -224,7 +251,6 @@
                                 onFocus={() => setShowDropdown(true)} // Show dropdown on focus
                                 onBlur={() => setTimeout(() => setShowDropdown(false), 100)} // Hide dropdown on blur with a slight delay
                                 disabled={isLoading}
-                                style={{ marginBottom: '5px' }}
                             />
                             {!isLoading && showDropdown && searchTerm && filteredTeachers.length > 0 && (
                                 <ul className="teacher-dropdown">
@@ -243,7 +269,7 @@
                             <label htmlFor="date-select">Date</label>
                             <div style={{display: 'flex'}}>
                                 <button onClick={() => handleDateChange(-1)}>‹ Prev</button>
-                                <input id="date-select" type="date" value={selectedDate} onChange={e => setSelectedDate(e.target.value)} style={{margin: '0 5px'}}/>
+                                <input id="date-select" type="date" value={selectedDate} onChange={e => setSelectedDate(e.target.value)} style={{margin: '0 5px', height: '36px'}}/>
                                 <button onClick={() => handleDateChange(1)}>Next ›</button>
                             </div>
                         </div>
@@ -260,11 +286,16 @@
                                     <h3>Daily Timeline</h3>
                                 {schedule.day === 'Saturday' || schedule.day === 'Sunday' ? (
                                     <p>It's the weekend! Hopefully {schedule.teacher} is enjoying their time off.</p>
-                                ) : schedule.timeline.length > 0 ? (
-                                    schedule.timeline.map((item, index) => (
-                                        <div key={index} className={`timeline-item ${item.type}`}>
-                                            <div className="timeline-time">{item.time}</div>
-                                            <div>{item.description}</div>
+                                ) : Object.keys(schedule.timeline).length > 0 ? (
+                                    Object.keys(schedule.timeline).map(sessionTitle => (
+                                        <div key={sessionTitle}>
+                                            <h4>{sessionTitle}</h4>
+                                            {schedule.timeline[sessionTitle].map((item, index) => (
+                                                <div key={index} className={`timeline-item ${item.type}`}>
+                                                    <div className="timeline-time">{item.displayTime}</div>
+                                                    <div>{item.description}</div>
+                                                </div>
+                                            ))}
                                         </div>
                                     ))
                                 ) : (
