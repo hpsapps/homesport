@@ -71,6 +71,7 @@
       "Activity Name": "Catch Race",
       "Description": [
         "In pairs, race to 10 successful overarm catches.",
+        "After 10, take a step back.",
         "Option B: See which pair can get the most successful catches.",
         "Drop is restart count."
       ],
@@ -182,7 +183,7 @@
       "Description": [
         "Strike bean bag off a tee.",
         "Fielders stand back outside the diamond.",
-        "Run to base before it is returned to the catcher.",
+        "Run around diamond back to base before it is returned to the catcher.",
         "Fielding team must pass the bean bag 5 times before returning it to catcher."
       ],
       "Equipment": "Bean bags, bats (if striking), cones"
@@ -194,8 +195,10 @@
       "Type": ["Passing"],
       "Activity Name": "Pass and Move",
       "Description": [
-        "In pairs: pass short distances.",
-        "After passing, sprint to a new position."
+        "4 groups: two sets of two lines facing each other.",
+        "Pass short distances.",
+        "After passing, run to join the line you passed to.",
+        "Optional challenge: make it a passing relay race"
       ],
       "Equipment": "Balls (soccer or tennis), cones"
     },
@@ -304,7 +307,8 @@
       "Type": ["Game"],
       "Activity Name": "Pin Guard",
       "Description": [
-        "Each team guards a cone - pin while trying to knock over others'.",
+        "Circle divided in thirds.",
+        "Each team guards a pin or ball on a cone while trying to knock over others'.",
         "If your pin falls, you're out."
       ],
       "Equipment": "Cones, dodgeballs"
@@ -332,10 +336,10 @@
         "Team A: stands behind throw line, tries to throw ball into bucket",
         "Team B: sends one runner at a time around a circuit",
         "If Team A gets a ball in the bucket, the runner freezes",
-        "Next runner starts and can free any frozen runner (1) by tagging them",
+        "Next runner starts and can free 1 frozen runner by tagging them",
         "Team with most players who finish a lap wins"
       ],
-      "Equipment": "Cones, balls, bucket"
+      "Equipment": "Cones, balls, beanbags, bucket"
     },
     {
       "Week": 8,
@@ -344,11 +348,11 @@
       "Type": ["Game"],
       "Activity Name": "Sinking Islands",
       "Description": [
-        "\"Sharks\" (with hands up as fin on head) tip \"sailors.\"",
+        "Sharks (with hands up as fin on head) tip sailors.",
         "Tipped players become sharks.",
-        "Sailors safe in hoops but can't stay longer than 5 sec.",
-        "Teacher removes hoop after 5 sec.",
-        "Final sailors get to \"level up\" and tag sharks."
+        "Sailors safe in hoops for 5 sec.",
+        "Teacher removes hoop if sailor stays longer than 5 sec.",
+        "Final sailors get to 'level up' and tag sharks."
       ],
       "Equipment": "Hoops, cones, pinnies or belts (optional)"
     },
