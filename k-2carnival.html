@@ -264,7 +264,7 @@
 
                     dom.selectedStationInfo.innerHTML = `
                         <p class="text-lg ${state.darkMode ? 'text-stone-300' : 'text-stone-700'}">
-                            Starting activities for <span class="font-bold text-[#78013D] dark:text-[#ff6bb3]">${state.selectedClass}</span>:
+                            Starting activities for <span class="font-bold text-[#78013D] dark:text-[#ff6bb3]">${state.selectedClass}</span>
                         </p>
                         <ul class="list-disc list-inside mt-2 space-y-1 ${state.darkMode ? 'text-stone-300' : 'text-stone-600'}">
                             ${listItems}
@@ -278,10 +278,13 @@
 
             const generateActivityContent = (activity) => {
                 if (activity === 'Sprints') {
+                    const sprintHelpers = state.carnivalData.carnival.sprints.studentHelpers.join(' & ');
                     return `
                         <div class="p-4 text-center ${state.darkMode ? 'bg-gray-800 text-stone-300' : 'bg-stone-50 text-stone-600'}">
-<h3 class="font-semibold text-[#78013D] dark:text-[#ff6bb3] mb-2">Sprint Activities</h3>
-                            <p>Support marshalling and selection of first, second, and third place.</p>
+                            <h3 class="font-semibold text-[#78013D] dark:text-[#ff6bb3] mb-2">Sprint Activities</h3>
+                            <p class="mb-2">Support marshalling and selection of first, second, and third place.</p>
+                            <h4 class="text-green-700 dark:text-green-400 font-semibold mb-2">Student Helpers</h4>
+                            <p class="${state.darkMode ? 'text-stone-300' : 'text-stone-600'}">${sprintHelpers}</p>
                         </div>
                     `;
                 }
@@ -308,6 +311,10 @@
                                 </svg>
                             </div>
                             <div class="activity-instructions hidden p-4 ${state.darkMode ? 'bg-gray-800' : 'bg-stone-50'}">
+                                ${activityData.studentHelpers ? `
+                                    <h4 class="text-green-700 dark:text-green-400 font-semibold mb-3">Student Helpers</h4>
+                                    <p class="${state.darkMode ? 'text-stone-300' : 'text-stone-600'} mb-4">${activityData.studentHelpers.join(' & ')}</p>
+                                ` : ''}
                                 ${activityData.instructions ? `
                                     <h4 class="text-[#78013D] dark:text-[#ff6bb3] font-semibold mb-3">Instructions</h4>
                                     <ul class="space-y-2 ${state.darkMode ? 'text-stone-300' : 'text-stone-600'} mb-4">

@@ -33,6 +33,7 @@
           {
             "id": 1,
             "name": "Lolly and Spoon Race",
+            "studentHelpers": ["Tillie", "Harley"],
             "equipment": [
               "Plastic spoons",
               "Small lollies or bean bags",
@@ -54,6 +55,7 @@
           {
             "id": 2,
             "name": "Survivor Tag",
+            "studentHelpers": ["Sylvie", "Molly"],
             "equipment": [
               "Students, field markings"
             ],
@@ -69,6 +71,7 @@
           {
             "id": 3,
             "name": "Hoola Hooping",
+            "studentHelpers": ["Ava", "Indigo"],
             "equipment": [
               "Individual hula hoops (one per student)"
             ],
@@ -102,6 +105,7 @@
           {
             "id": 5,
             "name": "Dodgeball",
+            "studentHelpers": ["Abi", "George"],
             "equipment": [
               "Dodgeballs",
               "Cones for markers"
@@ -122,6 +126,7 @@
           {
             "id": 6,
             "name": "Ball Game - Over and Under",
+            "studentHelpers": ["Heidi", "Ella"],
             "equipment": [
               "4-6 medium balls",
               "Cones for spacing"
@@ -145,6 +150,7 @@
           {
             "id": 1,
             "name": "Rob the Nest",
+            "studentHelpers": ["Alistair", "Audrey"],
             "equipment": [
               "4 hoops, lots of bean bags"
             ],
@@ -158,6 +164,7 @@
           {
             "id": 2,
             "name": "Bean Bag in a Hoop",
+            "studentHelpers": ["Frankie", "Mattia"],
             "equipment": [
               "Bean bags (3-4 per student)",
               "Hula hoops",
@@ -189,6 +196,7 @@
           {
             "id": 4,
             "name": "Parachute",
+            "studentHelpers": ["Olivia", "Kiran", "Anouk"],
             "equipment": [
               "Large parachute"
             ],
@@ -204,6 +212,7 @@
           {
             "id": 5,
             "name": "Tug-o-War",
+            "studentHelpers": ["Emily", "Sam"],
             "equipment": [
               "Thick rope",
               "Cones for centre line",
@@ -222,6 +231,7 @@
           {
             "id": 6,
             "name": "What's the Time Mr Wolf",
+            "studentHelpers": ["Lucy", "Elliot"],
             "equipment": [
               "Boundary markers (cones or lines)"
             ],
@@ -346,6 +356,9 @@
           "kindergarten": "Sprints"
         }
       ]
+    },
+    "sprints": {
+      "studentHelpers": ["Sami", "Riley"]
     }
   }
 }
